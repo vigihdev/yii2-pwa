@@ -1,0 +1,62 @@
+{
+    "name": "PWA",
+    "short_name": "PWA Demo",
+    "description": "PWA Demo Jos.",
+    "lang": "en-ID",
+    "dir": "ltr",
+    "theme_color": "#CC0000",
+    "start_url": "/?homescreen=1",
+    "id": "/?homescreen=1",
+    "scope": "/",
+    "background_color": "#fff",
+    "display_override": ["window-control-overlay", "minimal-ui"],
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "intent_filters": {
+        "scope_url_scheme": "https",
+        "scope_url_host": "pwa.dev.yii2",
+        "scope_url_path": "/"
+    },
+    "icons": [{
+        "src": "images/pwa/72x72.png",
+        "sizes": "72x72",
+        "type": "image/png",
+        "purpose": "any"
+    }, {
+        "src": "images/pwa/512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any"
+    }],
+
+    "screenshots": [{
+        "src": "images/pwa/screenshot-1280X720.png",
+        "sizes": "1280x720",
+        "type": "image/png"
+    }],
+
+    "shortcuts": [{
+        "name": "Open Thrubus",
+        "short_name": "Mulai dengan Thrubus",
+        "description": "Lihat Yang baru di Thrubus",
+        "url": "?utm_source=homescreen",
+        "icons": [{
+            "src": "images/pwa/shortcuts-letter-192x192.png",
+            "sizes": "192x192"
+        }]
+    }, {
+        "name": "Thrubus",
+        "short_name": "Notifications",
+        "description": "Pemberitahuan dari Thrubus",
+        "url": "?utm_source=homescreen",
+        "icons": [{
+            "src": "images/pwa/shortcuts-subscriptions-192x192.png",
+            "sizes": "192x192"
+        }]
+    }],
+
+
+    "categories": ["business", "travel", "productivity"],
+
+    "gcm_sender_id": "929162986123"
+}

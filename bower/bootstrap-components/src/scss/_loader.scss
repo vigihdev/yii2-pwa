@@ -1,0 +1,25 @@
+.--loader-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 2000;
+    width: 100%;
+    margin: auto;
+    top: 50%;
+    left: 50%;
+    @include transform-translate(-50%, -50%);
+}
+.--loader-wrapper .--loader-message{
+    font-weight: 700;
+    color: $white;
+    text-align: center;
+    padding: $getter;
+}
+
+// BACKDROP
+body .--loader-backdrop.modal-backdrop.show{
+    opacity: .4;
+    z-index: 1070;
+}

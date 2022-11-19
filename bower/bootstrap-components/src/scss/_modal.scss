@@ -1,0 +1,60 @@
+@use "sass:math";
+
+// MODAL-BOTTOM-STATIC
+#modal-bottom-static{
+	position:fixed;
+	bottom:0;
+	padding:0;
+	margin: 0;
+	max-width: $themes-max-width;
+	width: 100%;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#modal-bottom-static{
+	.modal-dialog{
+		transform: none;
+		position: fixed;
+		bottom: 0;
+		margin:0;
+		padding:0;
+		width: 100%;
+		max-width: $themes-max-width;
+	    .modal-content{
+	    	@include transform-translate(0);
+	    	@include transition(transform .5s ease-out);
+	    	@include BoxShadow(3);
+	    	@include border-top-radius(math.div($getter,1.5));
+	    }
+	}
+
+}
+
+// MODAL-CENTER-STATIC
+#modal-center-static{
+	position:fixed;
+	bottom:0;
+	padding:0;
+	margin: 0;
+	max-width: $themes-max-width;
+	width: 100%;
+    right: 0;
+    left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#modal-center-static{
+	.modal-dialog{
+	    	// @include transform-translate(0,0);
+	    min-height: calc(100% - (1.75rem * 2));
+	    display:flex;
+	    align-items: center;
+	    .modal-content{
+	    }
+	}
+
+}

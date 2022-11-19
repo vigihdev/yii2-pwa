@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <link rel="stylesheet" href="/css/offline.css" type="text/css">
+        <title> Anda sedang offline </title>
+    </head>
+    <body>
+    	<div class="container">
+    		<div class="lost-connection">
+	    		<div class="lost-connection-page-title"></div>
+	    		<div class="lost-connection-media"><img src="/images/no-connection.png" class="img-lost-connection" /></div>
+	    		<div class="lost-connection-title"><h2> Anda sedang offline </h2></div>
+	    		<div class="lost-connection-content"><span>Ups, tidak ada koneksi internet ditemukan. Silakan periksa koneksi Anda</span></div>
+	    		<div class="lost-connection-button-action"><button class="btn btn-danger btn-block" type="button"> Reload </button></div>
+    		</div>
+    	</div>
+
+        <script>
+
+            document.querySelector("button").addEventListener("click", () => {
+                window.location.reload();
+            });
+
+            window.addEventListener('online', () => {
+                window.location.reload();
+            });
+
+            async function checkNetworkAndReload() {
+                try {
+                    const response = await fetch('.');
+
+                    if (response.status >= 200 && response.status < 500) {
+                        window.location.reload();
+                        return;
+                    }
+
+                } catch {}
+                window.setTimeout(checkNetworkAndReload, 2500);
+            }
+
+            // checkNetworkAndReload();
+        </script>
+    </body>
+</html>

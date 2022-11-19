@@ -1,0 +1,188 @@
+@use "sass:math";
+
+.checkbox-switch {
+	vertical-align: middle;
+	-moz-user-select: none;
+	label,
+	input,
+	.checkbox-switch-label {
+		-moz-user-select: none;
+	}
+	label { 
+		cursor: pointer;
+		font-weight: 400;
+		margin-bottom: 0;
+		input[type="checkbox"] {
+			height: 0; 
+			opacity: 0; 
+			width: 0; 
+			position:absolute;
+		}
+		.checkbox-switch-label,
+		input[type="checkbox][disabled"] + .checkbox-switch-label {
+			background-color: $toggle-switch-bar-bg; 
+			border-radius:15px; 
+			content:""; 
+			display:block; 
+			height:15px;
+			@include transition($transition-base);
+			vertical-align:middle;
+			width:30px;
+			position:relative;
+		}
+		.checkbox-switch-label::after {
+			background-color: $toggle-switch-bg; 
+			border-radius: 20px; 
+			@include box-shadow-depth(1); 
+			content: ""; 
+			display: inline-block; 
+			height: 20px; 
+			left: -6px; 
+			position: absolute; 
+			top: -2px; 
+			@include transition($transition-base);
+			width: 20px;
+		}
+		input[type="checkbox][disabled"] {
+			+ .checkbox-switch-label::after,
+			&:checked + .checkbox-switch-label::after {
+				background-color: $toggle-switch-disabled-bg;
+			}
+		}
+		input[type="checkbox"], 
+		input[type="checkbox][disabled"] {
+			+ .checkbox-switch-label:active::after {
+				@include box-shadow-depth(1);
+			}
+		}
+		input[type="checkbox"]:checked {
+			+ .checkbox-switch-label::after {
+				left: 15px;
+				background-color: $toggle-switch-check-bg;
+			}
+			+ .checkbox-switch-label {
+				background-color: $toggle-switch-bar-check-bg;
+			}
+			+ .checkbox-switch-label:active::after {
+				@include box-shadow-depth(1);
+			}
+		}
+	}
+} 
+
+
+//============= SLIDE TOGGLE =================
+//================================================
+$slide-toggle-width							: 36px !default;
+$slide-toggle-height						: 16px !default;
+$slide-toggle-ripple-width					: 40px !default;
+$slide-toggle-ripple-height 				: 40px !default;
+$slide-toggle-thumb-width					: 20px !default;
+$slide-toggle-thumb-height 					: 20px !default;
+
+.toggle-switch{
+	display: flex;
+	align-items: center;
+	margin-right: $getter;
+	.label-trigger{
+		margin-bottom: 0;
+		margin-right: $getter;
+	}
+} 
+
+.slide-toggle-switch-bar{
+	position: relative;
+	width: $slide-toggle-width;
+	height: $slide-toggle-height;
+	border-radius: 8px;
+	background-color: $toggle-switch-bar-bg;
+	&.checked{
+		background-color: rgba($primary,.5);
+	}
+	@include BoxShadow(1);
+	input[type="checkbox"]{
+		bottom: 0;
+		left: 10px;	
+		border: 0;
+		clip: rect(0 0 0 0);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+		white-space: nowrap;
+		outline: 0;
+		-webkit-appearance: none;
+		-moz-appearance: none;		
+
+	}
+	.slide-toggle-thumb-container{
+		position: absolute;
+		z-index: 1;
+		height: $slide-toggle-thumb-height;
+		width: $slide-toggle-thumb-width;
+		top: -3px;
+		left: 0;
+		transform: translate3d(0, 0, 0);
+		@include transition($transition-base);
+		.slide-toggle-thumb{
+			height: $slide-toggle-thumb-height;
+			width: $slide-toggle-thumb-width;
+			border-radius: 50%;
+			@include BoxShadow(2);
+			background-color: $white;
+			@include transition($transition-base);
+			&.checked{
+				background: $primary;
+			}
+
+		}
+
+		.slide-toggle-ripple{
+			position: absolute;
+			top: calc(50% - 20px);
+			left: calc(50% - 20px);
+			height: $slide-toggle-ripple-height;
+			width: $slide-toggle-ripple-width;
+			z-index: 1;
+			pointer-events: none;
+			opacity: .2;
+			border-radius: 50%;
+			@include transition($transition-base);
+			&.mouseover{
+				background: $danger;
+				opacity: .2;
+				@include transition($transition-base);
+			}					
+		}
+		&.checked{
+			transform: translate3d($slide-toggle-width * 0.5, 0, 0);
+		}
+
+	}
+}
+.toggle-switch .toggle-switch-label{
+	margin-bottom: 0;
+}
+
+//============= THEME COLOR SLIDE TOGGLE
+//===========================================
+
+@each $name, $value in $theme-colors {
+	.slide-toggle-switch-bar.slide-toggle-switch-bar-#{$name},
+	.slide-toggle-switch-bar.#{$name}{
+		&.checked{
+			background-color: rgba($value,.5);
+		}
+		.slide-toggle-ripple.mouseover{
+			background: $value;
+		}
+		.slide-toggle-ripple.mouseover.checked,
+		.slide-toggle-thumb.checked,
+		.slide-toggle-ripple.checked{
+			background: $value;
+		}
+	}
+}
+//============= END SLIDE TOGGLE

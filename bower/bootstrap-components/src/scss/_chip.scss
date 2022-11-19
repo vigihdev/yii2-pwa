@@ -1,0 +1,44 @@
+
+.chip{
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing:border-box;
+	padding: $chip-padding;
+	line-height:$chip-line-height;
+	text-transform:capitalize;
+	cursor:default;
+	background: $chip-bg;
+	border:1px solid $chip-border-color;
+	border-radius:$chip-border-radius;
+
+	.chip-action{
+		display: flex;
+	}
+}
+
+
+@each $color, $value in $theme-colors{
+  	.chip.chip-#{$color}{
+		@include button-variant($value,$value);
+		border-color: $value;
+  		.chip-action{
+  			color: color-yiq($value);
+  		}
+	}
+  	.chip.chip-outline-#{$color}{
+  		background-color: transparent;
+  		@include button-outline-variant($value);
+		
+  		.chip-action{
+  			background-color: transparent;
+			color: $value;
+  		}  
+	  	@include hover() {
+	  		.chip-action{
+	  			color: color-yiq($value);
+		    	text-decoration: none;
+	  		}
+	 	}  				
+	}
+}

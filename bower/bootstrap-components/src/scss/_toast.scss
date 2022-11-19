@@ -1,0 +1,15 @@
+.toast{
+    &.toast-flash{
+        background-color: #333;
+        position: fixed;
+        bottom: 0;
+        z-index: 2010;
+        width: 100%;
+        max-width: $themes-max-width; 
+        border-radius: 0;
+        border: 0;
+        .toast-body{
+            color: #fff;
+        }    
+    }
+}

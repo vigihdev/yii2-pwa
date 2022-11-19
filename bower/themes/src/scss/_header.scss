@@ -1,0 +1,98 @@
+@use "sass:math";
+/** 
+ * 
+ * views/layouts/header/header
+ */
+
+#header{
+	height: 110px;
+	background-image: url('../images/top-bar.png');
+	background-repeat:no-repeat;
+	background-size: cover;
+	background-repeat: no-repeat;
+	@include border-bottom-radius($getter);	
+}
+
+#header .header-main{
+	display:flex;
+	position:relative;
+	justify-content: space-between;
+	align-items: center;
+	padding : $getter;
+    .header-notification{
+        @include centerFlex();
+        position: relative;
+        .material-icons{
+            color: white;
+            font-size: 38px;
+        }
+        .count-notif{
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #B99841;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            color: $white;
+            font-weight: $font-weight-bolds;
+            @include centerFlex();
+            font-size: .7em;
+            @include BoxShadow(2);
+        }
+    }
+
+    .header-share{
+        @include centerFlex();
+        position: relative;
+        @include BoxShadow(1);
+        padding: math.div($getter,2);
+        border-radius: 50%;
+        .material-icons-outlined{
+            color: $black;
+            font-weight: $font-weight-bolds;
+        }       
+    }
+}
+
+
+#header .header-breadcrumb{
+	.breadcrumb{
+		padding-right : $getter;
+		padding-left : $getter;		
+		.breadcrumb-item{
+			display: flex;
+			flex:auto;
+			width:100%;
+			.breadcrumb-back, .breadcrumb-title{
+				color:$black;
+				font-weight: $font-weight-bold;
+			}
+			.breadcrumb-back{
+				flex: 0 0 40px;
+				display:flex;
+				align-items:center;
+				justify-content:center;
+
+			}
+			.breadcrumb-title{
+				display: flex;
+				justify-content: center;
+				flex:auto;
+				margin-right: 40px;
+			}
+
+		}
+		margin-bottom: 0;
+		padding : 0;
+		background-color : transparent;
+
+	}
+}
+#header .header-breadcrumb .breadcrumb .breadcrumb-item.whihout-back{
+	.breadcrumb-title{
+		margin-right: 0px;
+	}
+}
+// header-breadcrumb
+

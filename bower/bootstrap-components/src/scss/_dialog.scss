@@ -1,0 +1,100 @@
+@use "sass:math";
+
+$zindex-alert : 2000;
+
+.dialog-alert{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: $zindex-alert + 1;
+	display: block;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	outline: 0;
+	&.dialog-alert-center{
+		.alert-dialog{
+			top: 50%;
+			left: 50%;
+			@include transform-translate(-50%,-50%);
+			width: 100%;
+			max-width: $themes-max-width;		
+			padding: math.div($getter,2);
+			position: fixed;
+			z-index: $zindex-alert + 2;
+		}
+	}
+}
+
+.dialog-alert-backdrop{
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  z-index: $zindex-alert;
+	  width: 100vw;
+	  height: 100vh;
+	  background-color: $modal-backdrop-bg;
+
+	  // Fade for backdrop
+	  &.fade { opacity: 0; }
+	  &.show { opacity: $modal-backdrop-opacity; }
+}
+
+//===== LOADER
+.dialog-loader{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: $zindex-alert + 1;
+	display: block;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	outline: 0;
+	&.dialog-loader-center{
+		.loader-dialog{
+			@include user-select-none;
+			top: 50%;
+			left: 50%;
+			@include transform-translate(-50%,-50%);
+			width: 100%;
+			max-width: $themes-max-width;
+			padding: math.div($getter,2);
+			position: fixed;
+			z-index: $zindex-alert + 2;
+			.loader-content{
+				background-color: $white;
+				padding: math.div($getter,2);
+				@include border-radius(8px);
+				.loader-body{
+					display: flex;
+					align-items: center;
+					.spinner-border{
+						height: 40px;
+						flex: 0 0 40px;
+					}
+					.dialog-loader-message{
+						margin-left: math.div($getter,2);
+						font-weight: $font-weight-bold;
+						color: $secondary;
+
+					}
+				}
+			}
+		}
+	}
+}
+
+.dialog-loader-backdrop{
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  z-index: $zindex-alert;
+	  width: 100vw;
+	  height: 100vh;
+	  background-color: $modal-backdrop-bg;
+
+	  // Fade for backdrop
+	  &.fade { opacity: 0; }
+	  &.show { opacity: $modal-backdrop-opacity; }
+}

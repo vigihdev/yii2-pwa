@@ -1,0 +1,55 @@
+// Order 
+//
+$order-status: () !default;
+$order-status: map-merge(
+  (
+	"expired--time--payment": 		$secondary,
+	"expired--time--booking": 		$secondary,
+	"cancel--mitra": 				$secondary,
+	"terjadwal":					$info,
+	"booking":						$warning,
+	"process":						$primary,
+	"close": 						$success,
+	"telepon--masuk": 				$warning,
+	"cancel": 						$secondary,
+	"expired": 						$secondary,
+	"proses": 						$info,
+	"cancel--customer": 			$secondary,
+	"cancel--driver": 				$secondary,
+	"cancel--member": 				$secondary,	
+  ),
+  $order-status
+);
+
+@each $color, $value in $order-status {
+  .badge-order-status-#{$color} {
+    @include badge-variant($value);
+  }
+}
+// MOBIL
+$mobil-status: () !default;
+
+// PEMBAYARAN
+// order-status-pembayaran-
+
+$pembayaran-status: () !default;
+$pembayaran-status: map-merge(
+  (
+		"lunas": 			$success,
+		"cancel": 			$danger,
+		"pending": 			$warning,
+		"denied": 			$danger,
+		"settlement": 		$success,
+		"capture": 			$success,
+		"authorize": 		$success,
+		"expire": 			$warning,
+		"belum--lunas": 		$secondary,
+  ),
+  $pembayaran-status
+);
+@each $color, $value in $pembayaran-status {
+  .badge-order-status-pembayaran-#{$color} {
+    @include badge-variant($value);
+  }
+}
+///-------------- End Theme Color status
