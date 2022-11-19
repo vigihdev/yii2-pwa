@@ -11,6 +11,7 @@ namespace app\assets;
 use Yii;
 use yii\web\AssetBundle;
 use yii\helpers\FileHelper;
+use yii\web\JqueryAsset;
 
 /**
  * Main application asset bundle.
@@ -49,7 +50,7 @@ class AppAsset extends AssetBundle
     ];
 
     public $depends = [
-        'yii\web\JqueryAsset',
+        JqueryAsset::class,
     ];
 
 }

@@ -1,18 +1,9 @@
 <?php
 
-/** 
- * Reflection Reletion
- * @return $tests->orderTujuans = app\models\base\OrderTujuan
- * @return $order->orderTujuans = app\models\base\OrderTujuan
- * @return $order->customers = app\models\base\Customer
- * @return $order->customerTamus = app\models\base\CustomerTamu
- * @return $order->midtransPayments = app\models\base\MidtransPayment
- * @return $tests = app\models\base\Test
- */
-
+use yii\bootstrap5\Html;
+use app\assets\AppAsset;
 
 $this->title = 'Test';
-
 ?>
 
 <section class="section">

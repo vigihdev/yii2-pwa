@@ -14,9 +14,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-    ],
+    'aliases' => [ '@bower' => '@vendor/bower-asset' ],
 
     'components' => [
         'request' => [
@@ -54,9 +52,10 @@ $config = [
 
         'db' => $db,
         'urlManager' => [
+            'baseUrl' => $baseUrl,
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [ 'baseUrl' => $baseUrl ],
+            'rules' => [ ],
         ],
     ],
     'params' => $params,
