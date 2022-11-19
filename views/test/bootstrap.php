@@ -1,15 +1,11 @@
 <?php
 
-/** 
- * Reflection Reletion
- * @return $order->users = app\models\base\User
- * @return $order = app\models\base\Order
- */
-
+use yii\bootstrap5\Html;
 
 $this->title = 'Test Bootstrap';
 
 ?>
 
 <section class="bootstrap">
+    <?= Html::tag('div','alert ',['class' => 'alert alert-danger']) ?>
 </section>

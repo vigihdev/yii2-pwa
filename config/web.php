@@ -15,7 +15,11 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [ '@bower' => '@vendor/bower-asset' ],
-
+    'modules' => [
+        'twa' => [
+            'class' => 'app\modules\twa\Module',
+        ],                  
+    ],
     'components' => [
         'request' => [
             'baseUrl' => $baseUrl,

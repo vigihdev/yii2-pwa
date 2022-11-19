@@ -23,15 +23,6 @@
 	}
 }
 
-.centerXY{
-}
-.centerY{
-}
-
-.text-label{
-}
-.text-content{}
-
 .visually-hidden, 
 .visually-hidden-focusable:not(:focus):not(:focus-within) {
 	position: absolute !important;
@@ -44,21 +35,11 @@
 	white-space: nowrap !important;
 	border: 0 !important
 }
-
-.input-text-readonly{
-}
 .no-select-text,.user-select-none{
 	@include user-select-none();
 }
-.readonly-white{
-
-}  
 .pointer-events-none{
 	pointer-events: none;
-}
-.center-y{
-}
-.center-xy{
 }
 
 @each $value in $listPosition {
