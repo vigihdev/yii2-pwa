@@ -541,6 +541,12 @@ class Model extends Component implements StaticInstanceInterface, IteratorAggreg
         return isset($hints[$attribute]) ? $hints[$attribute] : '';
     }
 
+    public function restError()
+    {
+        $model = new ModelRestError($this);
+        return $model;
+    }
+
     /**
      * Returns a value indicating whether there is any validation error.
      * @param string|null $attribute attribute name. Use null to check all attributes.

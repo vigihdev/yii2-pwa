@@ -6,6 +6,8 @@ namespace app\controllers;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use app\models\test\TestModel;
+use yii\base\Model;
 
 class TestController extends \yii\web\Controller
 {
@@ -15,6 +17,15 @@ class TestController extends \yii\web\Controller
     {      
         // $model = new Dancok();
         return $this->render('index');
+    }
+
+    public function actionModel()
+    {      
+        $model = new TestModel();
+        $model->username = 'hhs';
+        $model->validate();
+        $model->addError('email','Test Error');
+        return $this->render('model',['model' => $model]);
     }
 
     public function actionApi()
