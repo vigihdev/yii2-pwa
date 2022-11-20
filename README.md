@@ -1,1 +1,1 @@
-# Simple Minimize Yii2 Power Pwa
+Simple Minimize Yii2 Power Pwa
