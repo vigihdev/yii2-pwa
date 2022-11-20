@@ -17,6 +17,10 @@ class ErrorController extends Controller
 
     public function actionIndex()
     {
+        $handler = Yii::$app->getErrorHandler();
+        if(is_object($handler)){
+            $message = $handler->exception->getMessage();
+        }
         return $this->render('index');
     }
 

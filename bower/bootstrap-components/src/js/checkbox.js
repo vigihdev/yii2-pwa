@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 (function($){
     'use strict';
 var VghCheckBoxs = function(){

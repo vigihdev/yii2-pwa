@@ -15,7 +15,6 @@
 			@include fab-button-size($btn-fab-size-xs)
 		}		
 	}
-	&.btn-raised{}
 	// Buttons raised 
 	&.btn-raised {
 		@include BoxShadow(5);

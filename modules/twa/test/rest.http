@@ -1,0 +1,36 @@
+@hostname = pwa.dev.yii2/twa
+@error401 = error401
+@error404 = error404
+@error500 = error500
+@errorexception = errorexception
+@errormodel = errormodel
+@contentType = application/json
+
+
+POST https://{{hostname}}/test/
+Content-Type: {{contentType}}
+
+###
+POST https://{{hostname}}/test/{{error404}}
+Content-Type: {{contentType}}
+
+###
+POST https://{{hostname}}/test/{{error401}}
+Content-Type: {{contentType}}
+
+###
+POST https://{{hostname}}/test/{{error500}}
+Content-Type: {{contentType}}
+
+###
+POST https://{{hostname}}/test/{{errormodel}}
+Content-Type: {{contentType}}
+
+{
+    "name" : "name",
+    "user_id" : "name"
+}
+
+###
+POST https://{{hostname}}/test/{{errorexception}}
+Content-Type: {{contentType}}

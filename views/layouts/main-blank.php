@@ -25,13 +25,10 @@ ViewHeader::addTagMeta();
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
-    <?= $this->render('header/index') ?>
-
     <main id="main" class="flex-shrink-0" role="main">
         <?= $content ?>
     </main>
 
-    <?= $this->render('footer/index') ?>
 <?php $this->endBody() ?>
 </body>
 </html>

@@ -23,6 +23,7 @@ const Bootstrap = {
 };
 
 const dirs = {
+    BOWER_POSIX: '../pwa/bower',
     APP: BOWER + 'app',
     BOOTSTRAP_COMPONENTS: BOWER + 'bootstrap-components',
     JQUERY: BOWER + 'jquery',
@@ -46,6 +47,7 @@ const items = {
     js: [
         dirs.srcJs(dirs.BOOTSTRAP_COMPONENTS),
         dirs.srcJs(dirs.THEMES),
+        dirs.srcJs(dirs.YII2),
     ]
 };
 

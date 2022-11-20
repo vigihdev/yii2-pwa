@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 (function($){
 
 "use strict";
@@ -12,7 +14,7 @@ function delay(ms){
 	var _ms = typeof ms === 'undefined' ? 700 : ms;
 	return new Promise(resolve => setTimeout(resolve, _ms));
 }
-// 
+
 class ModalData{
     constructor(options){
     	this.data = options;
@@ -170,6 +172,6 @@ class ModalStatics {
 }
 
 ModalStatics.instance();
-})(window.jQuery); 
+})(jQuery); 
 
 

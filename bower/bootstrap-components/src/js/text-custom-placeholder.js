@@ -74,6 +74,6 @@ $(document).on('afterShow.bs.modal',function(e){
 	TextCustomPlaceholder.instance();
 })
 
-})(window.jQuery); 
+})(jQuery); 
 
 

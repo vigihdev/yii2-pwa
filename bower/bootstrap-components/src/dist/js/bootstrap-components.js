@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 (function($){
     'use strict';
 var VghCheckBoxs = function(){
@@ -235,6 +235,8 @@ $(document).on('show.bs.modal',function(e){
 	// 	delay(1000).then(() => {initialize() })
 	// })
 })(window.jQuery); 
+// @ts-nocheck
+
 (function($){
 
 "use strict";
@@ -249,7 +251,7 @@ function delay(ms){
 	var _ms = typeof ms === 'undefined' ? 700 : ms;
 	return new Promise(resolve => setTimeout(resolve, _ms));
 }
-// 
+
 class ModalData{
     constructor(options){
     	this.data = options;
@@ -407,7 +409,7 @@ class ModalStatics {
 }
 
 ModalStatics.instance();
-})(window.jQuery); 
+})(jQuery); 
 
 
 
@@ -860,7 +862,7 @@ $(document).on('afterShow.bs.modal',function(e){
 	TextCustomPlaceholder.instance();
 })
 
-})(window.jQuery); 
+})(jQuery); 
 
 
 

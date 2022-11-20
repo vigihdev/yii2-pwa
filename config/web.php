@@ -1,10 +1,8 @@
 <?php
 
-use yii\helpers\Url;
 use yii\web\Request;
 use yii\db\Expression;
 use yii\db\Query;
-use yii\web\Response;
 
 $baseUrl = str_replace('/web', '', (new Request)->getBaseUrl());
 $params = require __DIR__ . '/params.php';
@@ -36,7 +34,7 @@ $config = [
         ],
 
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'error',
         ],
 
         'dateNow' => function(){

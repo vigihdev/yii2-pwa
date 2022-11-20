@@ -192,7 +192,6 @@
         }
     };
 
-
     var methods = {
         init: function (attributes, options) {
             return this.each(function () {
@@ -933,4 +932,4 @@
             $form.find(attribute.input).attr('aria-invalid', hasError ? 'true' : 'false');
         }
     }
-})(window.jQuery);
+})(jQuery);

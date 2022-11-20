@@ -9,9 +9,11 @@ use yii\helpers\Json;
 
 class TestController extends \yii\web\Controller
 {
+    public $layout = 'main-blank';
 
     public function actionIndex()
     {      
+        // $model = new Dancok();
         return $this->render('index');
     }
 

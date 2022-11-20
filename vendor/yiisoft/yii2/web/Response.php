@@ -160,6 +160,8 @@ class Response extends \yii\base\Response
      * @var bool whether the response has been sent. If this is true, calling [[send()]] will do nothing.
      */
     public $isSent = false;
+
+    private $statusCodeByException = false;
     /**
      * @var array list of HTTP status codes and the corresponding texts
      */
@@ -306,11 +308,18 @@ class Response extends \yii\base\Response
     {
         if ($e instanceof HttpException) {
             $this->setStatusCode($e->statusCode);
+            $this->statusCodeByException = true;
         } else {
             $this->setStatusCode(500);
+            $this->statusCodeByException = true;
         }
 
         return $this;
+    }
+
+    public function hasStatusCodeByException()
+    {
+        return $this->statusCodeByException;
     }
 
     /**

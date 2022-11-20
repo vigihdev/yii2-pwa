@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Yii JavaScript module.
  *
@@ -783,7 +784,7 @@ window.yii = (function ($) {
     }
 
     return pub;
-})(window.jQuery);
+})(jQuery);
 
 window.jQuery(function () {
     window.yii.initModule(window.yii);
