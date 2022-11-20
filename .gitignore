@@ -12,3 +12,4 @@ package.json
 bower/node_modules
 bower/package-lock.json
 bower/package.json
+web/assets
