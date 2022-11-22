@@ -10,6 +10,8 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'language' => 'id-ID',
+    'sourceLanguage' => 'id-ID',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [ '@bower' => '@vendor/bower-asset' ],
@@ -41,6 +43,14 @@ $config = [
             $expression = new Expression('NOW()'); 
             return (new Query())->select($expression)->scalar(); 
         },
+
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                ],
+            ],
+        ],// i18n
 
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

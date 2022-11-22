@@ -9,12 +9,18 @@ class TestModel extends \yii\base\Model
 
     public $username;
     public $email;
+    public $nama_depan;
+    public $address;
+    public $password;
+    public $ulangi_password;
+    public $alamat;
+    public $no_hp;
 
     public function rules()
     {
         return [
-            [['email'],'safe'],
-            [['username'],'required'],
+            [['email','nama_depan','address','no_hp','alamat','ulangi_password'],'safe'],
+            [['username','email'],'required'],
         ];
     }
 }

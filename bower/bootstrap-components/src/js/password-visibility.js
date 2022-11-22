@@ -2,66 +2,58 @@
     'use strict';
 
 var TAG = 'PasswordVisibility';
+const VISIBILITY = 'visibility';
+const VISIBILITY_OFF = 'visibility_off';
+const INPUT_PASSWORD = 'input.form-control[type="password"]';
 
-class ModelPasswordVisibility {
-    constructor(){
+class PasswordVisibility{
+
+    constructor(element){
+        this.$element = $(element);
+        const self = this;
+        const icon = $(element).find('.input-group-append .material-icons').text();
+        $(element).find('.input-group-append .input-group-text').addClass('ripple-effect');
+
+        $(element).find('.input-group-append').addClass('ripple-effect').on('click',function(e){
+            if($(this).find('.material-icons').text() === VISIBILITY){
+                self.#runVisibility();
+                return;
+            }
+
+            if($(this).find('.material-icons').text() === VISIBILITY_OFF){
+                self.#runVisibilityOff();
+            }
+        });
 
     }
 
-    get $element(){
-        return $('input.form-control[type="password"]').closest('.input-group').find('.password-visibility')
+    #runVisibility(){
+        this.$element.find('input[id]').attr({type:'text'});
+        this.$element.find('.input-group-append .material-icons').text(VISIBILITY_OFF);
     }
 
-    onVisibility($element){
-    	$element.closest('.input-group').find('input.form-control[type="text"]')
-    		.attr({
-    			type:'password',
-    		})
-    	$element.find('.material-icons').text('visibility')
+    #runVisibilityOff(){
+        this.$element.find('input[id]').attr({type:'password'});
+        this.$element.find('.input-group-append .material-icons').text(VISIBILITY);
     }
 
-    onNoVisibility($element){
-    	$element.closest('.input-group').find('input.form-control[type="password"]')
-    		.attr({
-    			type:'text',
-    		})
-    	$element.find('.material-icons').text('visibility_off')    	
-    }
+	static validate(){
+		return $(INPUT_PASSWORD).length > 0;
+	}
 
-}
-
-class PasswordVisibility extends ModelPasswordVisibility {
-
-    constructor(){
-        super();
-        this.init();
-        var self = this;
-        $(document).on('afterShow.bs.modal',function(e){
-            self.init()
-        })
-        // console.log(TAG)
-    }
-
-    init(){
-    	var self = this;
-        this.$element.each(function(i,element){
-            var $element = $(element)
-            $element.on('click',function(e){
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                $(this).toggleClass('visibility')
-
-            	if ($(this).hasClass('visibility')) {
-            		self.onVisibility($(this))
-
-            	}else {
-            		self.onNoVisibility($(this))
-            	}
-
+	static instance(){
+		if (PasswordVisibility.validate()) {
+            $(INPUT_PASSWORD).each((i,element) => {
+                const $append = $(element).closest('.input-group').find('.input-group-append');
+                if($append.length > 0){
+                    if($append.find('.material-icons').length > 0 ){
+                        new PasswordVisibility( $(element).closest('.input-group').get(0) )
+                    }
+                }
             });
-        })    	
-    }
+		}
+	}
 }
-var passwordvisibility = new PasswordVisibility();
+PasswordVisibility.instance();
 
-})(window.jQuery);
+})(jQuery);

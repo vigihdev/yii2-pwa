@@ -1,10 +1,11 @@
 // @ts-nocheck
+
 /**
  * Yii JavaScript module.
  *
- * @link http://www.yiiframework.com/
+ * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license https://www.yiiframework.com/license/
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
@@ -42,7 +43,7 @@
  *
  * You must call "yii.initModule()" once for the root module of all your modules.
  */
-window.yii = (function ($) {
+ window.yii = (function ($) {
     var pub = {
         /**
          * List of JS or CSS URLs that can be loaded multiple times via AJAX requests.
@@ -115,254 +116,6 @@ window.yii = (function ($) {
                 !cancel || cancel();
             }
         },
-
-
-        //===== AJUST FORM
-        ajaxSubmitLoader:function(){
-        	var self = this;
-        	var $form = $('form[data-ajax-submit-loader]')
-        	var $body = $('body')
-
-        	$form
-        	.on('afterValidate',function(e){})
-        	.on('beforeSubmit',function(e){
-        		var loader = $form.closest('.modal-dialog').length > 0 ? 
-        			self.loaders().show({modal:'true'}).message('Wait ..........')
-        			: self.loaders().show().message('Wait ..........');
-
-        		var client = self.ajax($form).done(function(r){
-        			if (r.hasOwnProperty('error')) {
-        				self.addError($form,r.error)
-        				loader.delay(1000).then(() => {loader.message('Error .........').delay(1000).then(() => {loader.hide()})})
-        				return false;
-        			}
-        			if (r.hasOwnProperty('code')) {
-        				var code = r.code,d = r.data
-        				
-        				if ( code === 200 ) {
-        					loader.delay(1000).then(() => {
-        						loader.message('Success .........').delay(1000).then(() => {
-		        					if (d.hasOwnProperty('returnUrl')) {
-		        						return self.redirect(d.returnUrl)
-		        					}
-        							loader.hide();
-        						})
-        					})
-        				}
-
-        				if ( code === 201 ) { // SET ERRORS ALERT
-        					if ( d.hasOwnProperty('context')) {
-	        					loader.delay(1000).then(() => {
-	        						loader.message(r.message).delay(1000).then(() => {
-	        							loader.hide();
-        								$body.append($(d.context))
-	        						})
-	        					})
-        					}
-        				}
-        			}
-        			loader.delay(25000).then(() => {loader.hide()})
-        		})
-        		return false;
-        	})
-        },
-
-        loaders:function(){
-        	var $body = $('body')
-        	var c = {
-        		spinner:function(){
-        			return $('<div/>').addClass('form-loader centerXY w-100');
-        		},
-        		message:function(message){
-        			$body.find('.form-loader .text-message').empty().text(message)
-        			return this;
-        		},
-        		backdrop:function(){
-        			return $('<div/>').addClass('form-backdrop modal-backdrop fade show')
-        		},
-			  	delay: function(ms) {
-			  		return new Promise(resolve => setTimeout(resolve, ms));
-			    },
-        		$:function(){
-        			return this.spinner().addClass('d-flex justify-content-center flex-column align-items-center').css({zIndex:'1060'})
-	        					.append([
-	        						$('<div/>').addClass('spinner-border text-secondary').attr({role:"status"})
-	        						,$('<div/>').addClass('text-message text-white bold')
-	        					])
-	        				       					
-        		},			    
-        		show:function(option){
-        			var opt = typeof option === 'undefined' ? {} : option;
-        			if ( opt.hasOwnProperty('modal')) {
-        				$body.find('.modal.show .modal-dialog').append([
-        						this.$().css({background:'rgba(255,255,255,.7)',height:'100vh',width:'100%'})
-
-        					])
-        				$body.find('.text-message').addClass('text-secondary')
-        				return this;
-        			}
-        			$body.append([this.$(),this.backdrop()])
-        			return this;
-        		},
-        		hide:function(){
-        			$body.find('.form-loader').remove()
-        			$body.find('.form-backdrop').remove()
-        		},
-        	};
-        	return c;
-        },
-
-        ajax:function($form){
-		    var ajax = $.ajax({
-	            type: $form.attr('method'),
-	            url: $form.attr('action'),
-	            data: $form.serializeArray(),
-		    });
-		    return ajax;      	
-        },
-
-        ajaxs:function(url,data,method){
-        	var method = typeof method === 'undefined' ? 'POST' : method;
-        	var data = $.extend({},data,{_csrf : this.getCsrfToken()});
-		    var ajax = $.ajax({
-	            type: method,
-	            url: url,
-	            data: data,
-		    });
-		    return ajax;      	
-        },
-
-        finds:function(id){
-        	var $form = $(this);
-        	var $input = $form.find('input#' + id)
-        	var $field = $form.find('.field-' + id)
-        	return {$field:$field,$input:$input}
-        },
-        attributeArray:function(){
-        	var attributes = $(this).data('yiiActiveForm').attributes
-        	var result = []
-        	$.each(attributes,function(i,attr){
-        		result.push(attr.id)
-        	})
-        	return result;
-        },
-
-        addError:function($form,error){
-        	var self = this
-        	var attributes = $form.data('yiiActiveForm').attributes
-        	var arrAttribute = this.attributeArray.call($form);
-        	if ( error.hasOwnProperty('validation') ) {
-        		$form.yiiActiveForm('updateMessages', error.validation, true);
-
-	        		$.each(error.validation,function(attribute,errors){
-	        			if ( errors.length > 0 ) {
-        					$('#' + attribute ).on('change keydown focusin',function(e){
-        						$(this).closest('.field-' + attribute).removeClass('has-error').find('.help-block-error').empty()
-    						})
-	        			}
-	        			if ( $.inArray(attribute,arrAttribute) < 0 && errors.length > 0 ) {
-        					var $find = self.finds.call($form,attribute);
-
-        					$find.$field.addClass('has-error')
-        						.find('.help-block-error').empty().text(errors[0])
-
-        					$find.$input.on('change keydown',function(){
-        						$find.$field.removeClass('has-error').find('.help-block-error').empty()
-    						})
-	        			}
-	        		})
-        		return;
-        	}
-
-        	if ( error.hasOwnProperty('inputId') ) {
-        		var $input = $('#' + error.inputId)
-        		var $field = $input.closest('.field-' + error.inputId);
-        		
-    			$field.removeClass('has-success').addClass('has-error')
-    				.find('.help-block-error').empty().text(error.message)
-
-    			$input.on('change keydown',function(){
-        			$field.removeClass('has-error').find('.help-block-error').empty()
-    			})
-        	}
-        }, 
-
-        redirect:function(url){
-        	return window.location.href = url;
-        },
-
-        form:function($form){
-        	return {
-        		btnSubmit:function(){
-        			return $form.find('button[type="submit"]')
-        		},
-        		btnSubmitId:function(){
-        			return $form.find('button#submit')
-        		},        		
-        		disabled:function(){
-        			var _this = this;
-        			var o = {
-        				submit:function(){
-        					return _this.btnSubmit().attr({disabled:'disabled'})
-        				},
-        				input:function(){}
-        			}
-        			return o;
-        		},
-        		enabled:function(){
-        			var _this = this;
-        			var o = {
-        				submit:function(){
-        					return _this.btnSubmit().removeAttr('disabled')
-        				},
-
-        				input:function(){}
-        			}
-        			return o;
-        		},
-        	};
-        },
-
-        loader:function(){
-        	var $body = $('body')
-        	var $backdrop = $('<div/>').addClass('form-backdrop modal-backdrop fade show')
-        	var $loader = $('<div/>').addClass('d-flex justify-content-center flex-column align-items-center form-loader')
-        					.css({
-        						position:'absolute',
-        						top:'50%',
-        						left:'50%',
-        						zIndex:'1060',
-        						transform: 'translate(-50%, -50%)'
-        					})
-        					.append([
-        						$('<div/>').addClass('spinner-border text-secondary').attr({role:"status"})
-        						,$('<div/>').addClass('text-message text-white bold').text('Wait ...........')
-        					])
-        	var c = {
-        		message:function(message){
-        			$body.find('.form-loader .text-message').empty().text(message)
-        			return this;
-        		},
-			  	delay: function(ms) {
-			  		var self = this
-			  		return new Promise(resolve => setTimeout(resolve, ms));
-			    },		
-        		show:function(){
-        			$body.find('.form-backdrop').remove()
-        			$body.find('.form-loader').remove()
-        			$body.append($backdrop)
-        			$body.append($loader)
-        			return this;
-        		},
-        		hide:function(){
-        			$body.find('.form-backdrop').remove()
-        			$body.find('.form-loader').remove()
-        		},
-        	};
-        	return c;
-        },
-
-        //===== END AJUST FORM
 
         /**
          * Handles the action triggered by user.
@@ -546,7 +299,7 @@ window.yii = (function ($) {
             for (var i = 0, len = pairs.length; i < len; i++) {
                 var pair = pairs[i].split('=');
                 var name = decodeURIComponent(pair[0].replace(/\+/g, '%20'));
-                var value = decodeURIComponent(pair[1].replace(/\+/g, '%20'));
+                var value = pair.length > 1 ? decodeURIComponent(pair[1].replace(/\+/g, '%20')) : '';
                 if (!name.length) {
                     continue;
                 }
@@ -578,19 +331,10 @@ window.yii = (function ($) {
         },
 
         init: function () {
-        	var self = this;
             initCsrfHandler();
             initRedirectHandler();
             initAssetFilters();
             initDataMethods();
-
-            this.ajaxSubmitLoader();          
-            $(document).on('show.bs.modal',function(e) {
-            	setTimeout(function(){
-            	self.ajaxSubmitLoader();
-
-            	},1000)
-            });
         },
 
         /**
@@ -769,7 +513,7 @@ window.yii = (function ($) {
         return false;
     }
 
-    // http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+    // https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex/6969486#6969486
     function escapeRegExp(str) {
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }

@@ -1,10 +1,11 @@
 // @ts-nocheck
+
 /**
  * Yii JavaScript module.
  *
- * @link http://www.yiiframework.com/
+ * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license https://www.yiiframework.com/license/
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
@@ -42,7 +43,7 @@
  *
  * You must call "yii.initModule()" once for the root module of all your modules.
  */
-window.yii = (function ($) {
+ window.yii = (function ($) {
     var pub = {
         /**
          * List of JS or CSS URLs that can be loaded multiple times via AJAX requests.
@@ -115,254 +116,6 @@ window.yii = (function ($) {
                 !cancel || cancel();
             }
         },
-
-
-        //===== AJUST FORM
-        ajaxSubmitLoader:function(){
-        	var self = this;
-        	var $form = $('form[data-ajax-submit-loader]')
-        	var $body = $('body')
-
-        	$form
-        	.on('afterValidate',function(e){})
-        	.on('beforeSubmit',function(e){
-        		var loader = $form.closest('.modal-dialog').length > 0 ? 
-        			self.loaders().show({modal:'true'}).message('Wait ..........')
-        			: self.loaders().show().message('Wait ..........');
-
-        		var client = self.ajax($form).done(function(r){
-        			if (r.hasOwnProperty('error')) {
-        				self.addError($form,r.error)
-        				loader.delay(1000).then(() => {loader.message('Error .........').delay(1000).then(() => {loader.hide()})})
-        				return false;
-        			}
-        			if (r.hasOwnProperty('code')) {
-        				var code = r.code,d = r.data
-        				
-        				if ( code === 200 ) {
-        					loader.delay(1000).then(() => {
-        						loader.message('Success .........').delay(1000).then(() => {
-		        					if (d.hasOwnProperty('returnUrl')) {
-		        						return self.redirect(d.returnUrl)
-		        					}
-        							loader.hide();
-        						})
-        					})
-        				}
-
-        				if ( code === 201 ) { // SET ERRORS ALERT
-        					if ( d.hasOwnProperty('context')) {
-	        					loader.delay(1000).then(() => {
-	        						loader.message(r.message).delay(1000).then(() => {
-	        							loader.hide();
-        								$body.append($(d.context))
-	        						})
-	        					})
-        					}
-        				}
-        			}
-        			loader.delay(25000).then(() => {loader.hide()})
-        		})
-        		return false;
-        	})
-        },
-
-        loaders:function(){
-        	var $body = $('body')
-        	var c = {
-        		spinner:function(){
-        			return $('<div/>').addClass('form-loader centerXY w-100');
-        		},
-        		message:function(message){
-        			$body.find('.form-loader .text-message').empty().text(message)
-        			return this;
-        		},
-        		backdrop:function(){
-        			return $('<div/>').addClass('form-backdrop modal-backdrop fade show')
-        		},
-			  	delay: function(ms) {
-			  		return new Promise(resolve => setTimeout(resolve, ms));
-			    },
-        		$:function(){
-        			return this.spinner().addClass('d-flex justify-content-center flex-column align-items-center').css({zIndex:'1060'})
-	        					.append([
-	        						$('<div/>').addClass('spinner-border text-secondary').attr({role:"status"})
-	        						,$('<div/>').addClass('text-message text-white bold')
-	        					])
-	        				       					
-        		},			    
-        		show:function(option){
-        			var opt = typeof option === 'undefined' ? {} : option;
-        			if ( opt.hasOwnProperty('modal')) {
-        				$body.find('.modal.show .modal-dialog').append([
-        						this.$().css({background:'rgba(255,255,255,.7)',height:'100vh',width:'100%'})
-
-        					])
-        				$body.find('.text-message').addClass('text-secondary')
-        				return this;
-        			}
-        			$body.append([this.$(),this.backdrop()])
-        			return this;
-        		},
-        		hide:function(){
-        			$body.find('.form-loader').remove()
-        			$body.find('.form-backdrop').remove()
-        		},
-        	};
-        	return c;
-        },
-
-        ajax:function($form){
-		    var ajax = $.ajax({
-	            type: $form.attr('method'),
-	            url: $form.attr('action'),
-	            data: $form.serializeArray(),
-		    });
-		    return ajax;      	
-        },
-
-        ajaxs:function(url,data,method){
-        	var method = typeof method === 'undefined' ? 'POST' : method;
-        	var data = $.extend({},data,{_csrf : this.getCsrfToken()});
-		    var ajax = $.ajax({
-	            type: method,
-	            url: url,
-	            data: data,
-		    });
-		    return ajax;      	
-        },
-
-        finds:function(id){
-        	var $form = $(this);
-        	var $input = $form.find('input#' + id)
-        	var $field = $form.find('.field-' + id)
-        	return {$field:$field,$input:$input}
-        },
-        attributeArray:function(){
-        	var attributes = $(this).data('yiiActiveForm').attributes
-        	var result = []
-        	$.each(attributes,function(i,attr){
-        		result.push(attr.id)
-        	})
-        	return result;
-        },
-
-        addError:function($form,error){
-        	var self = this
-        	var attributes = $form.data('yiiActiveForm').attributes
-        	var arrAttribute = this.attributeArray.call($form);
-        	if ( error.hasOwnProperty('validation') ) {
-        		$form.yiiActiveForm('updateMessages', error.validation, true);
-
-	        		$.each(error.validation,function(attribute,errors){
-	        			if ( errors.length > 0 ) {
-        					$('#' + attribute ).on('change keydown focusin',function(e){
-        						$(this).closest('.field-' + attribute).removeClass('has-error').find('.help-block-error').empty()
-    						})
-	        			}
-	        			if ( $.inArray(attribute,arrAttribute) < 0 && errors.length > 0 ) {
-        					var $find = self.finds.call($form,attribute);
-
-        					$find.$field.addClass('has-error')
-        						.find('.help-block-error').empty().text(errors[0])
-
-        					$find.$input.on('change keydown',function(){
-        						$find.$field.removeClass('has-error').find('.help-block-error').empty()
-    						})
-	        			}
-	        		})
-        		return;
-        	}
-
-        	if ( error.hasOwnProperty('inputId') ) {
-        		var $input = $('#' + error.inputId)
-        		var $field = $input.closest('.field-' + error.inputId);
-        		
-    			$field.removeClass('has-success').addClass('has-error')
-    				.find('.help-block-error').empty().text(error.message)
-
-    			$input.on('change keydown',function(){
-        			$field.removeClass('has-error').find('.help-block-error').empty()
-    			})
-        	}
-        }, 
-
-        redirect:function(url){
-        	return window.location.href = url;
-        },
-
-        form:function($form){
-        	return {
-        		btnSubmit:function(){
-        			return $form.find('button[type="submit"]')
-        		},
-        		btnSubmitId:function(){
-        			return $form.find('button#submit')
-        		},        		
-        		disabled:function(){
-        			var _this = this;
-        			var o = {
-        				submit:function(){
-        					return _this.btnSubmit().attr({disabled:'disabled'})
-        				},
-        				input:function(){}
-        			}
-        			return o;
-        		},
-        		enabled:function(){
-        			var _this = this;
-        			var o = {
-        				submit:function(){
-        					return _this.btnSubmit().removeAttr('disabled')
-        				},
-
-        				input:function(){}
-        			}
-        			return o;
-        		},
-        	};
-        },
-
-        loader:function(){
-        	var $body = $('body')
-        	var $backdrop = $('<div/>').addClass('form-backdrop modal-backdrop fade show')
-        	var $loader = $('<div/>').addClass('d-flex justify-content-center flex-column align-items-center form-loader')
-        					.css({
-        						position:'absolute',
-        						top:'50%',
-        						left:'50%',
-        						zIndex:'1060',
-        						transform: 'translate(-50%, -50%)'
-        					})
-        					.append([
-        						$('<div/>').addClass('spinner-border text-secondary').attr({role:"status"})
-        						,$('<div/>').addClass('text-message text-white bold').text('Wait ...........')
-        					])
-        	var c = {
-        		message:function(message){
-        			$body.find('.form-loader .text-message').empty().text(message)
-        			return this;
-        		},
-			  	delay: function(ms) {
-			  		var self = this
-			  		return new Promise(resolve => setTimeout(resolve, ms));
-			    },		
-        		show:function(){
-        			$body.find('.form-backdrop').remove()
-        			$body.find('.form-loader').remove()
-        			$body.append($backdrop)
-        			$body.append($loader)
-        			return this;
-        		},
-        		hide:function(){
-        			$body.find('.form-backdrop').remove()
-        			$body.find('.form-loader').remove()
-        		},
-        	};
-        	return c;
-        },
-
-        //===== END AJUST FORM
 
         /**
          * Handles the action triggered by user.
@@ -546,7 +299,7 @@ window.yii = (function ($) {
             for (var i = 0, len = pairs.length; i < len; i++) {
                 var pair = pairs[i].split('=');
                 var name = decodeURIComponent(pair[0].replace(/\+/g, '%20'));
-                var value = decodeURIComponent(pair[1].replace(/\+/g, '%20'));
+                var value = pair.length > 1 ? decodeURIComponent(pair[1].replace(/\+/g, '%20')) : '';
                 if (!name.length) {
                     continue;
                 }
@@ -578,19 +331,10 @@ window.yii = (function ($) {
         },
 
         init: function () {
-        	var self = this;
             initCsrfHandler();
             initRedirectHandler();
             initAssetFilters();
             initDataMethods();
-
-            this.ajaxSubmitLoader();          
-            $(document).on('show.bs.modal',function(e) {
-            	setTimeout(function(){
-            	self.ajaxSubmitLoader();
-
-            	},1000)
-            });
         },
 
         /**
@@ -769,7 +513,7 @@ window.yii = (function ($) {
         return false;
     }
 
-    // http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
+    // https://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex/6969486#6969486
     function escapeRegExp(str) {
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
@@ -790,14 +534,16 @@ window.jQuery(function () {
     window.yii.initModule(window.yii);
 });
 
+// @ts-nocheck
+
 /**
  * Yii form widget.
  *
  * This is the JavaScript widget used by the yii\widgets\ActiveForm widget.
  *
- * @link http://www.yiiframework.com/
+ * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license https://www.yiiframework.com/license/
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
@@ -806,11 +552,13 @@ window.jQuery(function () {
     $.fn.yiiActiveForm = function (method) {
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        } else if (typeof method === 'object' || !method) {
-            return methods.init.apply(this, arguments);
         } else {
-            $.error('Method ' + method + ' does not exist on jQuery.yiiActiveForm');
-            return false;
+            if (typeof method === 'object' || !method) {
+                return methods.init.apply(this, arguments);
+            } else {
+                $.error('Method ' + method + ' does not exist on jQuery.yiiActiveForm');
+                return false;
+            }
         }
     };
 
@@ -970,19 +718,20 @@ window.jQuery(function () {
 
     var submitDefer;
 
-    var setSubmitFinalizeDefer = function($form) {
+    var setSubmitFinalizeDefer = function ($form) {
         submitDefer = $.Deferred();
         $form.data('yiiSubmitFinalizePromise', submitDefer.promise());
     };
 
     // finalize yii.js $form.submit
-    var submitFinalize = function($form) {
-        if(submitDefer) {
+    var submitFinalize = function ($form) {
+        if (submitDefer) {
             submitDefer.resolve();
             submitDefer = undefined;
             $form.removeData('yiiSubmitFinalizePromise');
         }
     };
+
 
     var methods = {
         init: function (attributes, options) {
@@ -1007,9 +756,9 @@ window.jQuery(function () {
                     attributes: attributes,
                     submitting: false,
                     validated: false,
+                    validate_only: false, // validate without auto submitting
                     options: getFormOptions($form)
                 });
-
 
                 /**
                  * Clean up error status when the form is reset.
@@ -1025,29 +774,7 @@ window.jQuery(function () {
                 }
                 var event = $.Event(events.afterInit);
                 $form.trigger(event);
-
-                if ( typeof $form.data('ajaxSubmit') !== 'undefined' && $form.data('ajaxSubmit')  ) {
-        			methods.ajaxSubmited($form);
-                }
-
             });
-
-        },
-
-        ajaxSubmited:function($form){
-        	$form
-        	.on('beforeSubmit',function(e){
-        		var client = yii.ajax($form);
-
-        		client.done(function(r){
-        			if (r.hasOwnProperty('error')) {
-        				yii.addError($form,r.error);
-        				return false;
-        			}
-        			return true;
-        		})
-        		return false;
-        	})
         },
 
         // add a new attribute to the form dynamically.
@@ -1141,15 +868,25 @@ window.jQuery(function () {
                 this.$form = $form;
                 var $input = findInput($form, this);
 
-                if ($input.is(":disabled")) {
+                var disabled = $input.toArray().reduce(function(result, next) {
+                    return result && $(next).is(':disabled');
+                }, true);
+                if (disabled) {
                     return true;
                 }
-                // pass SELECT without options
+                // validate markup for select input
                 if ($input.length && $input[0].tagName.toLowerCase() === 'select') {
-                    if (!$input[0].options.length) {
-                        return true;
-                    } else if (($input[0].options.length === 1) && ($input[0].options[0].value === '')) {
-                        return true;
+                    var opts = $input[0].options, isEmpty = !opts || !opts.length, isRequired = $input.attr('required'),
+                        isMultiple = $input.attr('multiple'), size = $input.attr('size') || 1;
+                    // check if valid HTML markup for select input, else return validation as `true`
+                    // https://w3c.github.io/html-reference/select.html
+                    if (isRequired && !isMultiple && parseInt(size, 10) === 1) { // invalid select markup condition
+                        if (isEmpty) { // empty option elements for the select
+                            return true;
+                        }
+                        if (opts[0] && (opts[0].value !== '' && opts[0].text !== '')) { // first option is not empty
+                            return true;
+                        }
                     }
                 }
                 this.cancelled = false;
@@ -1177,7 +914,7 @@ window.jQuery(function () {
             });
 
             // ajax validation
-            $.when.apply(this, deferreds).always(function() {
+            $.when.apply(this, deferreds).always(function () {
                 // Remove empty message arrays
                 for (var i in messages) {
                     if (0 === messages[i].length) {
@@ -1218,13 +955,15 @@ window.jQuery(function () {
                             submitFinalize($form);
                         }
                     });
-                } else if (data.submitting) {
-                    // delay callback so that the form can be submitted without problem
-                    window.setTimeout(function () {
-                        updateInputs($form, messages, submitting);
-                    }, 200);
                 } else {
-                    updateInputs($form, messages, submitting);
+                    if (data.submitting) {
+                        // delay callback so that the form can be submitted without problem
+                        window.setTimeout(function () {
+                            updateInputs($form, messages, submitting);
+                        }, 200);
+                    } else {
+                        updateInputs($form, messages, submitting);
+                    }
                 }
             });
         },
@@ -1232,7 +971,6 @@ window.jQuery(function () {
         submitForm: function () {
             var $form = $(this),
                 data = $form.data('yiiActiveForm');
-
             if (data.validated) {
                 // Second submit's call (from validate/updateInputs)
                 data.submitting = false;
@@ -1274,9 +1012,9 @@ window.jQuery(function () {
                         $errorElement = data.settings.validationStateOn === 'input' ? $input : $container;
 
                     $errorElement.removeClass(
-                      data.settings.validatingCssClass + ' ' +
-                      data.settings.errorCssClass + ' ' +
-                      data.settings.successCssClass
+                        data.settings.validatingCssClass + ' ' +
+                        data.settings.errorCssClass + ' ' +
+                        data.settings.successCssClass
                     );
                     $container.find(this.error).html('');
                 });
@@ -1307,7 +1045,7 @@ window.jQuery(function () {
          * @param id attribute ID
          * @param messages array with error messages
          */
-        updateAttribute: function(id, messages) {
+        updateAttribute: function (id, messages) {
             var attribute = methods.find.call(this, id);
             if (attribute != undefined) {
                 var msg = {};
@@ -1333,7 +1071,7 @@ window.jQuery(function () {
         }
         if (attribute.validateOnType) {
             $input.on('keyup.yiiActiveForm', function (e) {
-                if ($.inArray(e.which, [16, 17, 18, 37, 38, 39, 40]) !== -1 ) {
+                if ($.inArray(e.which, [16, 17, 18, 37, 38, 39, 40]) !== -1) {
                     return;
                 }
                 if (attribute.value !== getValue($form, attribute)) {
@@ -1373,7 +1111,13 @@ window.jQuery(function () {
             $.each(data.attributes, function () {
                 if (this.status === 2) {
                     this.status = 3;
-                    $form.find(this.container).addClass(data.settings.validatingCssClass);
+
+                    var $container = $form.find(this.container),
+                        $input = findInput($form, this);
+
+                    var $errorElement = data.settings.validationStateOn === 'input' ? $input : $container;
+
+                    $errorElement.addClass(data.settings.validatingCssClass);
                 }
             });
             methods.validate.call($form);
@@ -1386,7 +1130,7 @@ window.jQuery(function () {
      * @param val2
      * @returns boolean
      */
-    var isEqual = function(val1, val2) {
+    var isEqual = function (val1, val2) {
         // objects
         if (val1 instanceof Object) {
             return isObjectsEqual(val1, val2)
@@ -1407,7 +1151,7 @@ window.jQuery(function () {
      * @param obj2
      * @returns boolean
      */
-    var isObjectsEqual = function(obj1, obj2) {
+    var isObjectsEqual = function (obj1, obj2) {
         if (!(obj1 instanceof Object) || !(obj2 instanceof Object)) {
             return false;
         }
@@ -1436,7 +1180,7 @@ window.jQuery(function () {
      * @param arr2
      * @returns boolean
      */
-    var isArraysEqual = function(arr1, arr2) {
+    var isArraysEqual = function (arr1, arr2) {
         if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
             return false;
         }
@@ -1459,7 +1203,7 @@ window.jQuery(function () {
      */
     var deferredArray = function () {
         var array = [];
-        array.add = function(callback) {
+        array.add = function (callback) {
             this.push(new $.Deferred(callback));
         };
         return array;
@@ -1522,10 +1266,11 @@ window.jQuery(function () {
 
         var errorAttributes = [], $input;
         $.each(data.attributes, function () {
-            var hasError = (submitting && updateInput($form, this, messages)) || (!submitting && attrHasError($form, this, messages));
+            var hasError = (submitting && updateInput($form, this, messages)) || (!submitting && attrHasError($form,
+                this, messages));
             $input = findInput($form, this);
 
-            if (!$input.is(":disabled") && !this.cancelled && hasError) {
+            if (!$input.is(':disabled') && !this.cancelled && hasError) {
                 errorAttributes.push(this);
             }
         });
@@ -1536,14 +1281,10 @@ window.jQuery(function () {
             updateSummary($form, messages);
             if (errorAttributes.length) {
                 if (data.settings.scrollToError) {
-                    var top = $form.find($.map(errorAttributes, function(attribute) {
+                    var h = $(document).height(), top = $form.find($.map(errorAttributes, function (attribute) {
                         return attribute.input;
                     }).join(',')).first().closest(':visible').offset().top - data.settings.scrollToErrorOffset;
-                    if (top < 0) {
-                        top = 0;
-                    } else if (top > $(document).height()) {
-                        top = $(document).height();
-                    }
+                    top = top < 0 ? 0 : (top > h ? h : top);
                     var wtop = $(window).scrollTop();
                     if (top < wtop || top > wtop + $(window).height()) {
                         $(window).scrollTop(top);
@@ -1552,12 +1293,14 @@ window.jQuery(function () {
                 data.submitting = false;
             } else {
                 data.validated = true;
-                if (data.submitObject) {
-                    applyButtonOptions($form, data.submitObject);
-                }
-                $form.submit();
-                if (data.submitObject) {
-                    restoreButtonOptions($form);
+                if (!data.validate_only) {
+                    if (data.submitObject) {
+                        applyButtonOptions($form, data.submitObject);
+                    }
+                    $form.submit();
+                    if (data.submitObject) {
+                        restoreButtonOptions($form);
+                    }
                 }
             }
         } else {
@@ -1624,11 +1367,11 @@ window.jQuery(function () {
                     $error.html(messages[attribute.id][0]);
                 }
                 $errorElement.removeClass(data.settings.validatingCssClass + ' ' + data.settings.successCssClass)
-                  .addClass(data.settings.errorCssClass);
+                    .addClass(data.settings.errorCssClass);
             } else {
                 $error.empty();
                 $errorElement.removeClass(data.settings.validatingCssClass + ' ' + data.settings.errorCssClass + ' ')
-                  .addClass(data.settings.successCssClass);
+                    .addClass(data.settings.successCssClass);
             }
             attribute.value = getValue($form, attribute);
         }
@@ -1693,7 +1436,7 @@ window.jQuery(function () {
             var $realInput = $input.filter(':checked');
             if ($realInput.length > 1) {
                 var values = [];
-                $realInput.each(function(index) {
+                $realInput.each(function (index) {
                     values.push($($realInput.get(index)).val());
                 });
                 return values;
@@ -1726,14 +1469,16 @@ window.jQuery(function () {
     }
 })(jQuery);
 
+// @ts-nocheck
+
 /**
  * Yii Captcha widget.
  *
  * This is the JavaScript widget used by the yii\captcha\Captcha widget.
  *
- * @link http://www.yiiframework.com/
+ * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license https://www.yiiframework.com/license/
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
@@ -1796,14 +1541,16 @@ window.jQuery(function () {
     };
 })(jQuery);
 
+// @ts-nocheck
+
 /**
  * Yii GridView widget.
  *
  * This is the JavaScript widget used by the yii\grid\GridView widget.
  *
- * @link http://www.yiiframework.com/
+ * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license https://www.yiiframework.com/license/
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
@@ -2060,9 +1807,9 @@ window.jQuery(function () {
  *
  * This JavaScript module provides the validation methods for the built-in validators.
  *
- * @link http://www.yiiframework.com/
+ * @link https://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license https://www.yiiframework.com/license/
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
@@ -2081,7 +1828,7 @@ yii.validation = (function ($) {
             var valid = false;
             if (options.requiredValue === undefined) {
                 var isString = typeof value == 'string' || value instanceof String;
-                if (options.strict && value !== undefined || !options.strict && !pub.isEmpty(isString ? $.trim(value) : value)) {
+                if (options.strict && value !== undefined || !options.strict && !pub.isEmpty(isString ? trimString(value) : value)) {
                     valid = true;
                 }
             } else if (!options.strict && value == options.requiredValue || options.strict && value === options.requiredValue) {
@@ -2300,8 +2047,17 @@ yii.validation = (function ($) {
             }
 
             value = $input.val();
-            if (!options.skipOnEmpty || !pub.isEmpty(value)) {
-                value = $.trim(value);
+            if (
+                (!options.skipOnEmpty || !pub.isEmpty(value))
+                && (!options.skipOnArray || !Array.isArray(value))
+            ) {
+                if (Array.isArray(value)) {
+                    for (var i = 0; i < value.length; i++) {
+                        value[i] = trimString(value[i], options);
+                    }
+                } else {
+                    value = trimString(value, options);
+                }
                 $input.val(value);
             }
 
@@ -2318,7 +2074,7 @@ yii.validation = (function ($) {
             hash = hash == null ? options.hash : hash[options.caseSensitive ? 0 : 1];
             var v = options.caseSensitive ? value : value.toLowerCase();
             for (var i = v.length - 1, h = 0; i >= 0; --i) {
-                h += v.charCodeAt(i);
+                h += v.charCodeAt(i) << i;
             }
             if (h != hash) {
                 pub.addMessage(messages, options.message, value);
@@ -2465,10 +2221,18 @@ yii.validation = (function ($) {
 
     function validateFile(file, messages, options) {
         if (options.extensions && options.extensions.length > 0) {
-            var index = file.name.lastIndexOf('.');
-            var ext = !~index ? '' : file.name.substr(index + 1, file.name.length).toLowerCase();
+            var found = false;
+            var filename = file.name.toLowerCase();
 
-            if (!~options.extensions.indexOf(ext)) {
+            for (var index=0; index < options.extensions.length; index++) {
+                var ext = options.extensions[index].toLowerCase();
+                if ((ext === '' && filename.indexOf('.') === -1) || (filename.substr(filename.length - options.extensions[index].length - 1) === ('.' + ext))) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
                 messages.push(options.wrongExtension.replace(/\{file\}/g, file.name));
             }
         }
@@ -2514,6 +2278,26 @@ yii.validation = (function ($) {
         if (options.maxHeight && image.height > options.maxHeight) {
             messages.push(options.overHeight.replace(/\{file\}/g, file.name));
         }
+    }
+
+    /**
+     * PHP: `trim($path, ' /')`, JS: `yii.helpers.trim(path, {chars: ' /'})`
+     */
+    function trimString(value, options = {skipOnEmpty: true, chars: null}) {
+        if (options.skipOnEmpty !== false && pub.isEmpty(value)) {
+            return value;
+        }
+
+        value = new String(value);
+        if (options.chars || !String.prototype.trim) {
+            var chars = !options.chars
+                ? ' \\s\xA0'
+                : options.chars.replace(/([\[\]\(\)\.\?\/\*\{\}\+\$\^\:])/g, '\$1');
+
+            return value.replace(new RegExp('^[' + chars + ']+|[' + chars + ']+$', 'g'), '');
+        }
+
+        return value.trim();
     }
 
     return pub;

@@ -105,7 +105,7 @@ use yii\helpers\ArrayHelper;
  * @author Michael Härtl <haertl.mike@gmail.com>
  * @author Simon Karlen <simi.albi@outlook.com>
  */
-class ActiveField extends \yii\widgets\ActiveField
+class ActiveFieldBootstrap extends \yii\widgets\ActiveField
 {
     /**
      * @var bool whether to render [[checkboxList()]] and [[radioList()]] inline.
@@ -270,6 +270,137 @@ class ActiveField extends \yii\widgets\ActiveField
 
         return parent::render($content);
     }
+
+    /** @var Block Item Input */
+    private function begindInputGroupAppend(string $icons, array $options = []):string
+    {
+        $append = [
+            Html::beginTag('div',['class' => 'input-group-append']),
+                Html::beginTag('div',['class' => 'input-group-text']),
+                    Html::tag('i',$icons,['class' => 'material-icons']),
+                Html::endTag('div'),
+            Html::endTag('div'),
+        ];
+        return implode("\n",$append) . "\n";
+    }
+
+    private function begindInputGroupPrepend(string $icons, array $options = []):string
+    {
+        $prepend = [
+            Html::beginTag('div',['class' => 'input-group-prepend']),
+                Html::beginTag('div',['class' => 'input-group-text']),
+                    Html::tag('i',$icons,['class' => 'material-icons']),
+                Html::endTag('div'),
+            Html::endTag('div'),
+        ];
+        return implode("\n",$prepend) . "\n";
+    }
+
+    private function begindTextfieldOutline(array $options = []):string
+    {
+        $this->renderLabelParts();
+        $class = ArrayHelper::remove($options, 'class', null);
+        $outline = [
+            Html::beginTag('div',['class' => $class . 'textfield textfield-outline textfield-floating-label']),
+                Html::beginTag('div',['class' => 'textfield-outline-wrapper']),
+                    Html::beginTag('div',['class' => 'textfield-label-wrapper']),
+                        Html::tag('div',null,['class' => 'textfield-outline-left']),
+                        Html::beginTag('div',['class' => 'textfield-outline-middle']),
+                        $this->parts['{beginLabel}'] . $this->parts['{labelTitle}'] . $this->parts['{endLabel}'],
+                        Html::endTag('div'),
+                        Html::tag('div',null,['class' => 'textfield-outline-right']),
+                        Html::endTag('div'),
+                        '{input}',
+                Html::endTag('div'),
+            Html::endTag('div')
+        ];
+        return implode("\n",$outline) . "\n";
+    }
+
+    private function textfieldOutlineIconPrepend(string $icons):string
+    {
+        return $this->begindInputGroupPrepend($icons) . $this->begindTextfieldOutline();
+    }
+
+    private function textfieldOutlineIconAppend(string $icons):string
+    {
+        return $this->begindTextfieldOutline() . $this->begindInputGroupAppend($icons);
+    }
+
+    private function getIcon(array $options = []):string
+    {
+        $icon = isset($options['icon']) && is_string($options['icon']) ? $options['icon'] : 'visibility';
+        return $icon;
+
+    }
+    /** @var End Block Item Input */
+    
+    public function textfieldFloating():self
+    {
+        $this->wrapperOptions = ['class' => 'form-group textfield textfield-floating-label'];
+        $this->options = ['class' => 'form-group textfield textfield-floating-label'];
+        $this->inputTemplate = '{input}' . Html::tag('span',null,['class' => 'textfield-focused']);
+        return $this;
+    }
+    
+    /** @var Block Text Field */
+    public function floatingOutline():self
+    {
+        $this->label(false);
+        $this->inputTemplate = $this->begindTextfieldOutline(['class' => 'form-group ']);
+        return $this;
+    }
+
+    public function prepend(array $options = []):self
+    {
+        $this->options = ['class' => 'input-group input-group-outline input-group-icon'];
+        $this->label(false);
+        $this->inputTemplate = $this->textfieldOutlineIconPrepend($this->getIcon($options));
+        return $this;
+    }
+
+    public function append(array $options = []):self
+    {
+        $this->options = ['class' => 'input-group input-group-outline input-group-icon'];
+        $this->label(false);
+        $this->inputTemplate = $this->textfieldOutlineIconAppend($this->getIcon($options));
+        return $this;
+    }
+
+    public function user(array $options = []):self
+    {
+        $this->options = ['class' => 'input-group input-group-outline input-group-icon'];
+        $this->label(false);
+        $this->inputTemplate = $this->textfieldOutlineIconPrepend('perm_identity');
+        return $this;
+    }
+
+    public function email(array $options = []):self
+    {
+        $this->options = ['class' => 'input-group input-group-outline input-group-icon'];
+        $this->label(false);
+        $this->inputTemplate = $this->textfieldOutlineIconPrepend('mail_outline');
+        return $this;
+    }
+
+    public function password(array $options = []):self
+    {
+        $this->options = [ 'class' => 'input-group input-group-outline input-group-icon', ];
+        $this->inputOptions = ['type' => 'password','class' => 'form-control'];
+        $this->label(false);
+        $this->inputTemplate = $this->begindInputGroupPrepend('https') . $this->begindTextfieldOutline() . $this->begindInputGroupAppend('visibility');
+        return $this;
+    }
+    /** @var End Block Text Field */
+
+    /** @var Block Method Trait */
+    public function addClassOptions(string $className):self
+    {
+        $class = ArrayHelper::remove($this->options, 'class', null);
+        $this->options = ['class' => $class . ' ' . $className];
+        return $this;
+    }
+    /** @var End Block Method Trait */
 
     /**
      * {@inheritdoc}

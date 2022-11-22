@@ -1,178 +1,126 @@
-//======= variables
 //======= themes
-$themes-max-width : 600px !default;
-$getter                     : 16px !default;
-$footer-min-height          : 60px !default;
-
-// BODY
-// ===========================================================================
-
-$list-getter-size           : () !default;
-$list-getter-size           : map-merge(
-  (
-	"size-1" : 4px,
-	"size-2" : 8px,
-	"size-3" : 12px,
-	"size-4" : 16px,
-	"size-5" : 20px,
-	"size-6" : 24px,
-	"size-7" : 30px,
-	"size-8" : 34px,
-	"size-9" : 38px,
-  ),
-  $list-getter-size
+$themes-max-width: 600px !default;
+$getter: 16px !default;
+$footer-min-height: 60px !default;
+$list-getter-size: () !default;
+$list-getter-size: map-merge(
+	(
+		"size-1": 4px,
+		"size-2": 8px,
+		"size-3": 12px,
+		"size-4": 16px,
+		"size-5": 20px,
+		"size-6": 24px,
+		"size-7": 30px,
+		"size-8": 34px,
+		"size-9": 38px,
+	),
+	$list-getter-size
 );
 
-$list-img-size              : ('sm':24px,'md':32px,'lg':40px,'xl':48px) !default;
-$list-position              : ('top','left','right','bottom') !default;
-$list-vertical-align        : ('top','bottom','baseline','middle') !default;
+$list-img-size: (
+	"sm": 24px,
+	"md": 32px,
+	"lg": 40px,
+	"xl": 48px,
+) !default;
+$list-position: ("top", "left", "right", "bottom") !default;
+$list-vertical-align: ("top", "bottom", "baseline", "middle") !default;
+
+$body-color: #666;
 
 // Fonts
-$font-family-sans-serif     : Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
-$font-family-monospace      : "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base           : $font-family-sans-serif !default;
-$font-family-open-sans      : "Open Sans", Arial, sans-serif !default !default;
-$font-family-sourcesanspro  : Source Sans Pro, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;;
+$font-family-sans-serif: Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+	"Segoe UI Symbol" !default;
+$font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+$font-family-open-sans: "Open Sans", Arial, sans-serif !default !default;
+$font-family-sourcesanspro: Source Sans Pro, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+	"Segoe UI Symbol" !default;
 
-$font-family-roboto-thin    : "RobotoThin";
-$font-family-roboto-light   : "RobotoLight";
-$font-family-roboto-regular : "Roboto";
-$font-family-roboto-medium  : "RobotoMedium";
-$font-family-roboto-bold    : "RobotoBold";
-$font-family-roboto-black   : "RobotoBlack";
+$font-family-roboto-thin: "RobotoThin";
+$font-family-roboto-light: "RobotoLight";
+$font-family-roboto-regular: "Roboto";
+$font-family-roboto-medium: "RobotoMedium";
+$font-family-roboto-bold: "RobotoBold";
+$font-family-roboto-black: "RobotoBlack";
 
-$font-size-base             : .9rem;
-$font-size-lg               : ($font-size-base * 0.25);
-$font-size-sm               : ($font-size-base * .875);
+$font-size-base: 1rem;
+$font-size-lg: ($font-size-base * 0.25);
+$font-size-sm: ($font-size-base * 0.875);
 
-$font-weight-light          : 300;
-$font-weight-normal         : 400;
-$font-weight-medium         : 500;
-$font-weight-bolds          : 600;
-$font-weight-bold           : 700;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bolds: 600;
+$font-weight-bold: 700;
 
-$font-weight-base           : $font-weight-normal;
-$line-height-base           : 1.5;
+$font-weight-base: $font-weight-normal;
+$line-height-base: 1.5;
 
-$h1-font-size               : $font-size-base * 1.75;
-$h2-font-size               : $font-size-base * 1.5;
-$h3-font-size               : $font-size-base * 1;
-// $h3-font-size               : $font-size-base * 1.25;
-$h4-font-size               : $font-size-base * .8125;
-$h5-font-size               : $font-size-base * .8125;
-$h6-font-size               : $font-size-base * .8125;
+$h1-font-size: $font-size-base * 1.75;
+$h2-font-size: $font-size-base * 1.5;
+$h3-font-size: $font-size-base * 1;
+$h4-font-size: $font-size-base * 0.8125;
+$h5-font-size: $font-size-base * 0.8125;
+$h6-font-size: $font-size-base * 0.8125;
 
-$h1-font-weight             : $font-weight-normal;
-$h2-font-weight             : $font-weight-medium;
-$h3-font-weight             : $font-weight-normal;
-$h4-font-weight             : $font-weight-medium;
-$h5-font-weight             : $font-weight-normal;
-$h6-font-weight             : $font-weight-normal;
+$h1-font-weight: $font-weight-normal;
+$h2-font-weight: $font-weight-medium;
+$h3-font-weight: $font-weight-normal;
+$h4-font-weight: $font-weight-medium;
+$h5-font-weight: $font-weight-normal;
+$h6-font-weight: $font-weight-normal;
 
-// Buttons
-$btn-padding-y:                 0.625rem !default;
-$btn-padding-x:                 .75rem !default;
-$btn-line-height:               1.1 !default;
+// Textfield
+$form-state-theme-colors: map-remove(
+	$theme-colors,
+	"default",
+	"primary",
+	"secondary",
+	"info",
+	"danger",
+	"light",
+	"dark",
+	"inverse",
+	"information"
+);
+$textfield-font-size: $font-size-base !default;
+$textfield-border-height: $border-width !default;
+$textfield-padding-bottom: 0.375rem !default;
+$textfield-label-font-weight: normal !default;
+$textfield-label-line-height: 1.4 !default;
+$textfield-label-font-size: $font-size-sm !default;
+$textfield-label-color: rgba($black, 0.54) !default;
 
-$btn-padding-y-sm:              .25rem !default;
-$btn-padding-x-sm:              .75rem !default;
-$btn-line-height-sm:            $line-height-sm !default;
-$btn-font-size-sm:              0.75rem !default; // New created 
+$textfield-transition: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$textfield-transition-durasion: 0.2s !default;
+$textfield-focused-height: 2px !default;
+$textfield-focused-bg: $blue !default;
 
-$btn-padding-y-lg:              .625rem !default;
-$btn-padding-x-lg:              1rem !default;
-$btn-line-height-lg:            1.3 !default;
-$btn-font-size-lg:              1.125rem !default; //  New created
-$btn-border-width:              $border-width !default;
-$btn-font-weight:               $font-weight-normal !default;
+$textfield-height-sm: calc(1.5em + 1.2rem);
+$textfield-height-default: calc(1.5em + 1.75rem);
+$textfield-height-single: calc(1.5em + 0.375rem + 0.5rem + 1px);
+$textfield-height-lg: calc(1.5em + 1.75rem);
+$textfield-line-height: 1.375rem !default;
+$textfield-margin-bottom: 1.5rem !default;
 
-$btn-border-radius:             $border-radius !default;
-$btn-border-radius-lg:          $border-radius !default;
-$btn-border-radius-sm:          $border-radius !default;
-
-$btn-fab-size:                  56px !default; 
-$btn-fab-size-lg:               78px !default;
-$btn-fab-size-sm:               40px !default;
-$btn-fab-size-xs:               30px !default;
-
-$btn-transition:                color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
-
-// Chip
-
-$chip-bg            : 		#eee !default;
-$chip-padding       : 		0 0.5rem 0 0.75rem !default;
-$chip-border-color  : 		#eee !default;
-$chip-border-radius : 		1.5em !default;
-$chip-line-height   : 		34px !default;
-// Checkboxes and radios
-$themes-checked: $primary;
-$checkbox-width: 18px;
-$checkbox-height: 18px;
-$checkbox-border: .125rem solid rgba(0,0,0,.54);
-$checkbox-border-size: .125rem;
-$checkbox-border-style: solid;
-$checkbox-border-color: rgba(0,0,0,.54);
-$checkbox-border-radius: .125rem;
-$checkbox-transition: all .2s !default;
-$checkbox-transform-rotate: 45deg !default;
-
-$radio-border-radius: 18px;
-$radio-width: 8px;
-$radio-height: 8px;
-$radio-border-style: solid;
-$radio-border-color: rgba(0,0,0,.54);
-$radio-border-radius: 18px;
-$radio-border-radius-checked: 4px;
-$radio-transition: .2s ease-in-out !default;
-
-// Components
-//
-// Toggle Switch
-$transition-base:        	  all .2s ease-in-out !default;
-
-$toggle-switch-bar-bg:                  rgba($black,.54) !default;
-$toggle-switch-bar-height:              15px !default;
-$toggle-switch-bar-width:               30px !default;
-$toggle-switch-bar-border-radius:       $toggle-switch-bar-height !default;
-$toggle-switch-label-height:            20px !default;
-$toggle-switch-label-width:             $toggle-switch-label-height !default;
-$toggle-switch-overed-width:            48px;
-$toggle-switch-bg:                      $white !default;
-$toggle-switch-check-bg:                $primary !default;
-$toggle-switch-bar-check-bg:            rgba($toggle-switch-check-bg, .54) !default;
-$toggle-switch-disabled-bg:             rgba($black,.25) !default;
-
-// Checkbox
-$checkbox-gutter:						1.5625rem !default;	
-$checkbox-border-width:					0.125rem !default;
-$checkbox-border-radius:				0.125rem !default;
-$checkbox-border-color:					rgba($black,.54);
-$checkbox-check-size:					0.125rem !default;
-$checkbox-check-color:					#ffffff !default;
-$checkbox-checked-bg:					$primary !default;
-$checkbox-checked-border-bg:			$checkbox-checked-bg !default;
-$checkbox-disabled-color:				rgba($black,.26);		
-$checkbox-disabled-border-color:		$checkbox-disabled-color;
-
-$checkbox-inverse-border-color:			rgba($white,.54);
-$checkbox-inverse-checked-bg:			$primary !default;
-$checkbox-inverse-checked-border-bg:	$checkbox-inverse-checked-bg !default;
-$checkbox-inverse-disabled-color:		rgba($white,.54);
+$textfield-border-color: rgba(0, 0, 0, 0.12) !default;
+$textfield-border: 1px solid $textfield-border-color !default;
+$textfield-border-radius: 0.3rem !default;
+$textfield-floating-active-border-color: $textfield-focused-bg !default;
+$textfield-outline-border-defauld: $textfield-border;
+$textfield-outline-border-active: 2px solid $textfield-focused-bg !default;
+$textfield-outline-material-icons-color: $black !default;
 
 //==== SHADOW MATERIAL
-$dp1 : 0 1px 1px 0 rgba(0, 0, 0, .14), 0 2px 1px -1px rgba(0, 0, 0, .12), 0 1px 3px 0 rgba(0, 0, 0, .20);
-$dp2 : 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12), 0 1px 5px 0 rgba(0, 0, 0, .20);
-$dp3 : 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .12), 0 1px 8px 0 rgba(0, 0, 0, .20);
-$dp4 : 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .20);
-$dp5 : 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .20);
-$dp6 : 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .20);
-$dp7 : 0 9px 12px 1px rgba(0, 0, 0, .14), 0 3px 16px 2px rgba(0, 0, 0, .12), 0 5px 6px -3px rgba(0, 0, 0, .20);
-$dp8 : 0 12px 17px 2px rgba(0, 0, 0, .14), 0 5px 22px 4px rgba(0, 0, 0, .12), 0 7px 8px -4px rgba(0, 0, 0, .20);
-$dp9 : 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .20);
-$dp10 : 0 24px 38px 3px rgba(0, 0, 0, .14), 0 9px 46px 8px rgba(0, 0, 0, .12), 0 11px 15px -7px rgba(0, 0, 0, .20);
-
-// ======== Position
-$listPosition : top bottom left right;
-
-
-
+$dp1: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+$dp2: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+$dp3: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+$dp4: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+$dp5: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+$dp6: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+$dp7: 0 9px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12), 0 5px 6px -3px rgba(0, 0, 0, 0.2);
+$dp8: 0 12px 17px 2px rgba(0, 0, 0, 0.14), 0 5px 22px 4px rgba(0, 0, 0, 0.12), 0 7px 8px -4px rgba(0, 0, 0, 0.2);
+$dp9: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+$dp10: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);

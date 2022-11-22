@@ -1,10 +1,9 @@
 @use "sass:math";
 
-.cards{
-	display:block;
-	position:relative;
-	padding: $getter;
-	@include BoxShadow(2);
-	@include border-radius(math.div($getter, 2));
-	background-color:$white;
+.card{
+	&.card-dp2{
+		@include BoxShadow(2);
+		@include border-radius(8px);
+		border: none;
+	}
 }

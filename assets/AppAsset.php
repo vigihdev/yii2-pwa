@@ -53,4 +53,8 @@ class AppAsset extends AssetBundle
         JqueryAsset::class,
     ];
 
+    public $publishOptions = [
+        'forceCopy' => true,
+    ];
+
 }

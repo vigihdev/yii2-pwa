@@ -413,175 +413,65 @@ ModalStatics.instance();
 
 
 
-(function($){
-
-"use strict";
-
-var TAG = 'MoneyInput';
-var ELEMENT = $('.form-control.money-input');
-
-var delay = function(ms,cb){
-    var _ms = typeof ms === 'undefined' ? 700 : ms;
-    var fn = new Promise(resolve => setTimeout(resolve, _ms));
-    return fn.then(cb)
-};
-
-class Attribute{
-
-}
-
-Number.prototype.numberFormat = function(decimals, dec_point, thousands_sep) {
-    dec_point = typeof dec_point !== 'undefined' ? dec_point : '.';
-    thousands_sep = typeof thousands_sep !== 'undefined' ? thousands_sep : ',';
-
-    var parts = this.toFixed(decimals).split('.');
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousands_sep);
-
-    return parts.join(dec_point);
-}
-
-class Events{
-    constructor() {}
-
-    onCreate(){
-    	var self = this;
-        
-    	this.$element
-            .on('keydown',function(e){
-                delay(500,() => {
-                    var val1,val2,val3;
-                    val1 = $(this).val().replace(/[^\d]/g, "");
-                    val2 = isNaN(parseInt(val1)) ? '' : parseInt(val1).numberFormat(0)
-                    $(this).val(val2 );
-                    self.onComplete();
-
-                })                
-            })
-            .on('change',function(e){
-                delay(500,() => {
-                    self.onComplete();
-                })
-        	})
-            .on('completed',function(){
-        		self.onComplete();
-            });
-    }
-
-    onComplete(){
-    	var value,textfield,values;
-    	value = this.$element.val().replace(/[^0-9]/g, '');
-    	textfield = this.$element.closest('.textfield')
-    	textfield.find('input[type="hidden"][name]').val(value);
-    }
-}
-
-class MoneyInput extends Events {
-    constructor() {
-        super();
-        this.$element = $('.form-control.money-input');
-        super.onCreate();
-        this.runElement();
-        // console.log(TAG);
-    }
-
-    runElement(){
-    	var self = this;
-        if (this.$element.val().length > 0 ) {
-        	self.$element.trigger('keydown')
-        }
-    }
-
-    static validate(){
-        var exist = $(ELEMENT).length > 0;
-        var exist2 = $('body .form-control.money-input').length > 0;
-    	return exist || exist2;
-    }
-
-    static instance(){
-
-    	if (MoneyInput.validate()) {
-
-    		var self = new MoneyInput();
-    		return self;
-    	}
-    }
-}
-
-MoneyInput.instance();
-$(document).on('afterShow.bs.modal',function(e,data){
-    MoneyInput.instance();
-});
-
-})(window.jQuery); 
-
-
 (function ($) {
     'use strict';
 
 var TAG = 'PasswordVisibility';
+const VISIBILITY = 'visibility';
+const VISIBILITY_OFF = 'visibility_off';
+const INPUT_PASSWORD = 'input.form-control[type="password"]';
 
-class ModelPasswordVisibility {
-    constructor(){
+class PasswordVisibility{
+
+    constructor(element){
+        this.$element = $(element);
+        const self = this;
+        const icon = $(element).find('.input-group-append .material-icons').text();
+        $(element).find('.input-group-append .input-group-text').addClass('ripple-effect');
+
+        $(element).find('.input-group-append').addClass('ripple-effect').on('click',function(e){
+            if($(this).find('.material-icons').text() === VISIBILITY){
+                self.#runVisibility();
+                return;
+            }
+
+            if($(this).find('.material-icons').text() === VISIBILITY_OFF){
+                self.#runVisibilityOff();
+            }
+        });
 
     }
 
-    get $element(){
-        return $('input.form-control[type="password"]').closest('.input-group').find('.password-visibility')
+    #runVisibility(){
+        this.$element.find('input[id]').attr({type:'text'});
+        this.$element.find('.input-group-append .material-icons').text(VISIBILITY_OFF);
     }
 
-    onVisibility($element){
-    	$element.closest('.input-group').find('input.form-control[type="text"]')
-    		.attr({
-    			type:'password',
-    		})
-    	$element.find('.material-icons').text('visibility')
+    #runVisibilityOff(){
+        this.$element.find('input[id]').attr({type:'password'});
+        this.$element.find('.input-group-append .material-icons').text(VISIBILITY);
     }
 
-    onNoVisibility($element){
-    	$element.closest('.input-group').find('input.form-control[type="password"]')
-    		.attr({
-    			type:'text',
-    		})
-    	$element.find('.material-icons').text('visibility_off')    	
-    }
+	static validate(){
+		return $(INPUT_PASSWORD).length > 0;
+	}
 
-}
-
-class PasswordVisibility extends ModelPasswordVisibility {
-
-    constructor(){
-        super();
-        this.init();
-        var self = this;
-        $(document).on('afterShow.bs.modal',function(e){
-            self.init()
-        })
-        // console.log(TAG)
-    }
-
-    init(){
-    	var self = this;
-        this.$element.each(function(i,element){
-            var $element = $(element)
-            $element.on('click',function(e){
-                e.preventDefault();
-                e.stopImmediatePropagation();
-                $(this).toggleClass('visibility')
-
-            	if ($(this).hasClass('visibility')) {
-            		self.onVisibility($(this))
-
-            	}else {
-            		self.onNoVisibility($(this))
-            	}
-
+	static instance(){
+		if (PasswordVisibility.validate()) {
+            $(INPUT_PASSWORD).each((i,element) => {
+                const $append = $(element).closest('.input-group').find('.input-group-append');
+                if($append.length > 0){
+                    if($append.find('.material-icons').length > 0 ){
+                        new PasswordVisibility( $(element).closest('.input-group').get(0) )
+                    }
+                }
             });
-        })    	
-    }
+		}
+	}
 }
-var passwordvisibility = new PasswordVisibility();
+PasswordVisibility.instance();
 
-})(window.jQuery);
+})(jQuery);
 (function($){
     'use strict';
 
@@ -786,274 +676,52 @@ RadioCheckbox.intance();
 	$(document).on(Event.MOUSEDOWN+" "+Event.TOUCHSTART, Selector.RIPPLE_EFFECT,onMouseDown);
 })(jQuery, window, document);
 
-(function($){
-
-"use strict";
-
-var TAG = 'TextCustomPlaceholder';
-
-let $StopEvent = function(e){
-	e.preventDefault();
-	e.stopImmediatePropagation();
-}
-
-function delay(ms){
-    var _ms = typeof ms === 'undefined' ? 1000 : ms;
-    return new Promise((resolve, reject) => {setTimeout(() => {resolve(this); }, _ms); });
-}
-
-class TextCustomPlaceholder{
-
-    constructor($element){
-    	this.$element = $element;
-    	this.$textfield = this.$element.closest('.textfield');
-    	this.$input = this.$textfield.find('input[id][name]');
-    	this.init();
-    	// console.log(TAG)
-    }
-
-    init(){
-    	var self = this;
-
-    	this.$input
-    	.on('focusin',function(e){
-    		self.onfocus();
-    	})
-    	.on('keydown keypress',function(e){
-    		self.onkeydown();
-    	})    	
-    	.on('focusout',function(e){
-    		self.onfocusout();
-    	});    	
-    }
-
-    onfocus(){
-    	if (this.$input.val().length == 0 ) {
-    		this.$element.show()
-    	}
-    }
-
-    onfocusout(){
-    	this.$element.hide()
-    }
-
-    onkeydown(){
-		delay(300).then(() => {
-			if (this.$input.val().length > 0 ) {
-    			this.$element.hide()
-			}else{
-    			this.$element.show()
-			}
-		});    	
-    }
-
-    static instance(){
-   		var $textCustom = $('#text-custom-placeholder');
-    	$textCustom.each(function(i, element) {
-    		var textCustom = new TextCustomPlaceholder($(element));
-    	});
-    }
-
-}
-
-TextCustomPlaceholder.instance();
-
-$(document).on('afterShow.bs.modal',function(e){
-	TextCustomPlaceholder.instance();
-})
-
-})(jQuery); 
-
-
-
 // @ts-nocheck
 (function($){
-    'use strict';
-	var delay = function(ms){
-		var _ms = typeof ms === 'undefined' ? 700 : ms;
-		return new Promise(resolve => setTimeout(resolve, _ms));
-	};
+"use strict";
+const ELEMENT_INPUT = '.form-control'
+const TEXTFIELD_FLOATING = 'textfield-floating-label'
+const TEXTFIELD_FLOATING_ACTIVE = 'textfield-floating-label-active'
+const TEXTFIELD_FLOATING_COMPLETED = 'textfield-floating-label-completed'
 
-	var Textfields = function($element,option){
-		this.perfix = 'textfield-floating-label-';
-		this.$element = $element
-		this.option = option;
-		this.init()
-	}
+class Textfield{
 
-	var _proto = Textfields.prototype;
-
-	_proto.init = function(){
-		var self = this;
-
-		self.textfieldComplete().init();
-		this.$element.on('focus',function(){
-			self.textfieldMouseover().init()
-			self.textfieldActive().add()
-			self.textfieldComplete().add()
-		}).on('focusout',function(){
-			self.textfieldActive().remove()
-			self.textfieldComplete().init()
-		})
-
-		this.formGroup().on('mouseout',function(){
-			$(this).removeClass('mouseover')
-		}).on('mouseover',function(){
-			$(this).addClass('mouseover')
-		})
-
-		this.cleared()
-	}
-
-	_proto.textfieldMouseover = function(){
-		var self = this;
-		var options = {
-			init : function(){
-				self.formGroup().addClass('mouseover');
-				delay(500).then(() => {
-					self.formGroup().removeClass('mouseover')
-				})
-			},
-		}
-		return options;		
-	}
-
-	_proto.textfieldActive = function(){
-		var self = this;
-		var options = {
-			add : function(){
-				self.formGroup().addClass(self.perfix + 'active');
-				return this;
-			},
-			remove : function(){
-				self.formGroup().removeClass(self.perfix + 'active');
-				return this;
-			},
-		}
-		return options;
-	}
-
-	_proto.textfieldComplete = function(){
-		var self = this;
-		var options = {
-			add : function(){
-				self.formGroup().addClass(self.perfix + 'completed');
-				return this;
-			},
-			remove : function(){
-				self.formGroup().removeClass(self.perfix + 'completed');
-				return this;
-			},
-			init : function(){
-				var _this = this;
-				setTimeout(function(){
-					if ( self.$element.val().length > 0 ) {
-						_this.add();
-						return;
-					}
-					_this.remove();
-				},1000);
-				
-			},
-		}
-		return options;		
-	}
-
-	_proto.formGroup = function(){
-		return this.$element.closest('.form-group.textfield')
-	}
-
-	_proto.cleared = function(){
-		var self = this;
-		var cleared = this.formGroup().find('.textfield-cleared');
-
-		if ( cleared.length == 0) {
-			return;
-		}
-		var inputValue = function(){
-			return self.$element.val(); 
-		}
-
-		cleared.hide();
-
-		cleared.on('click',function(){
-			cleared.hide('slow');
-			self.$element.val(null)
-			self.$element.typeahead('val','')
-			self.$element.focus()
-		});
-
-		if ( this.formGroup().length > 0 ) {
-			this.formGroup()
-			.on('mouseover',function(e){
-				if ( inputValue().length > 2 ) {
-					cleared.show('slow');
-				}				
+	constructor($textfield) {
+		const $input = $textfield.find('input.form-control');
+		$input
+			.on('focus',(e) => {
+				$(e.target).closest('.' + TEXTFIELD_FLOATING)
+					.addClass(TEXTFIELD_FLOATING_ACTIVE)
+					.addClass(TEXTFIELD_FLOATING_COMPLETED)
 			})
-			.on('mouseout',function(e){
-				
+			.on('focusout',(e) => {
+				$(e.target).closest('.' + TEXTFIELD_FLOATING).removeClass(TEXTFIELD_FLOATING_ACTIVE);
+				let value = $(e.target).val();
+				if(value.length === 0){
+					$(e.target).closest('.' + TEXTFIELD_FLOATING).removeClass(TEXTFIELD_FLOATING_COMPLETED);
+				}
+			});
+		
+		if( $input.val().length > 0 ){
+			$input.closest('.' + TEXTFIELD_FLOATING).addClass(TEXTFIELD_FLOATING_COMPLETED)
+			
+		}
+	}
+
+	static validate(){
+		return true;
+	}
+
+	static instance(){
+		if (Textfield.validate()) {
+			$("." + TEXTFIELD_FLOATING).each((i,element) => {
+				new Textfield($(element));
 			});
 		}
-
-		this.$element.on('keydown change focus',function(e){
-			if ( inputValue().length > 2 ) {
-				cleared.show('slow');
-			}
-		})
-
-		this.$element.on('focusout',function(){
-			if ( self.$element.val().length > 0 ) {
-				cleared.show('slow');
-				delay(2000).then(() => cleared.hide('slow') );
-			}
-		})	
 	}
-
-	var initialize = function(){
-		var selector = $('input.form-control[name]')
-		var textArea = $('textarea.form-control[name]')
-
-		selector.each(function(i,element){
-			var $element = $(element);
-			new Textfields($element,$element.data())
-
-		});
-
-		textArea.each(function(i,element){
-			var $element = $(element);
-			new Textfields($element,$element.data())
-		});	
-				
-	}
-
-	var afterShowBsModal = function(options){
-
-		if (typeof options != 'object' || options.target == 'undefined' ) {
-			return;
-		}
-		var $form = $('#' + options.target).find('form')
-		var selector = $form.find('input.form-control[name]')
-		var textArea = $form.find('textarea.form-control[name]')
-
-		selector.each(function(i,element){
-			var $element = $(element);
-			new Textfields($element,$element.data())
-
-		});
-
-		textArea.each(function(i,element){
-			var $element = $(element);
-			new Textfields($element,$element.data())
-		});					
-	}
-
-	initialize();
-	$(document).on('afterShow.bs.modal',function(e,options){
-		afterShowBsModal(options);
-	})
-	
-})(window.jQuery);
-
+}
+Textfield.instance();
+})(jQuery); 
 
 
 

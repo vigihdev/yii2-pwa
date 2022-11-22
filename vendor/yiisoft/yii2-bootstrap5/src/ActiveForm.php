@@ -86,7 +86,7 @@ class ActiveForm extends \yii\widgets\ActiveForm
      * @var string the default field class name when calling [[field()]] to create a new field.
      * @see fieldConfig
      */
-    public $fieldClass = ActiveField::class;
+    public $fieldClass = ActiveFieldBootstrap::class;
     /**
      * @var array HTML attributes for the form tag. Default is `[]`.
      */
@@ -102,11 +102,11 @@ class ActiveForm extends \yii\widgets\ActiveForm
     /**
      * @var string the CSS class that is added to a field container when the associated attribute has validation error.
      */
-    public $errorCssClass = 'is-invalid';
+    public $errorCssClass = 'is-invalids';
     /**
      * {@inheritdoc}
      */
-    public $successCssClass = 'is-valid';
+    public $successCssClass = 'is-valids';
     /**
      * {@inheritdoc}
      */
@@ -135,9 +135,9 @@ class ActiveForm extends \yii\widgets\ActiveForm
 
     /**
      * {@inheritDoc}
-     * @return ActiveField|\yii\widgets\ActiveField
+     * @return ActiveFieldBootstrap|\yii\widgets\ActiveField
      */
-    public function field($model, $attribute, $options = []): ActiveField
+    public function field($model, $attribute, $options = []): ActiveFieldBootstrap
     {
         return parent::field($model, $attribute, $options);
     }

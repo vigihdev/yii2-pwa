@@ -23,8 +23,11 @@ class TestController extends \yii\web\Controller
     {      
         $model = new TestModel();
         $model->username = 'hhs';
-        $model->validate();
-        $model->addError('email','Test Error');
+        if($model->load(Yii::$app->request->post())){
+            $model->addError('email','Test Error');
+            if($model->validate()){
+            }
+        }
         return $this->render('model',['model' => $model]);
     }
 
