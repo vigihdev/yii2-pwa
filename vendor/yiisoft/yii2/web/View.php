@@ -44,6 +44,8 @@ use yii\helpers\Url;
  */
 class View extends \yii\base\View
 {
+    use ViewBootstrap;
+    
     /**
      * @event Event an event that is triggered by [[beginBody()]].
      */

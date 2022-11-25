@@ -14525,243 +14525,6 @@ yii.validation = (function ($) {
 })(jQuery);
 
 // @ts-nocheck
-(function($){
-    'use strict';
-var VghCheckBoxs = function(){
-	this.classChecked = 'checkbox-checked rippleed';
-	var self = this;
-	var $element = $('.vgh-checkbox');
-
-	$element.each(function(i,checkbox){
-		var $checkbox = $(checkbox);
-		var $input = $checkbox.find('input[type="checkbox"]');
-
-		if ( $input.length > 0 ) {
-			var ID = $input.attr('id')
-			$checkbox.attr({for:ID}).find('.checkbox-label').attr({for:ID});
-
-			$input.on('change',function(e){
-				// e.preventDefault();
-				// e.stopImmediatePropagation();
-
-				if ( $input.is(':checked') ) {
-					self.add($checkbox).checkeds().rippleed()
-					self.delay().then(() => self.remove($checkbox).rippleed());
-					$(this).attr({checked:true,value:'1'})				
-					return;
-				}
-
-				$(this).attr({checked:false,value:'0'})				
-				self.add($checkbox).rippleed()
-				self.remove($checkbox).checkeds()
-				self.delay().then(() => self.remove($checkbox).rippleed());					
-
-			});
-		}
-
-		if ( $input.is(':checked')) {
-			$input.attr({value:'1'})
-			self.add($checkbox).checkeds().rippleed();
-			self.delay().then(() => self.remove($checkbox).rippleed());	
-		}
-
-		$checkbox.find('.checkbox-label').on('click',function(e){
-		}).on('hover',function(e){})
-
-	});
-
-}
-
-var _proto = VghCheckBoxs.prototype;
-_proto.init = function(){}
-
-_proto.delay = function(ms){
-	var _ms = typeof ms === 'undefined' ? 1000 : ms;
-	return new Promise(resolve => setTimeout(resolve, _ms));	
-}
-
-_proto.add = function($checkbox){
-	var self = this;
-	var $input = $checkbox.find('input[type="checkbox"]')
-	var options = {
-		checkeds:function(){
-			$checkbox.addClass('checkbox-checked')
-			$input.attr({checked:true})
-			return this;
-		},
-		rippleed:function(){
-			$checkbox.addClass('rippleed')
-			return this
-		}
-	};
-	return options
-}
-
-_proto.remove = function($checkbox){
-	var self = this;
-	var $input = $checkbox.find('input[type="checkbox"]')
-	var options = {
-		checkeds:function(){
-			$checkbox.removeClass('checkbox-checked');
-			$input.removeAttr('checked');
-			return this;
-		},
-		rippleed:function(){
-			$checkbox.removeClass('rippleed')
-			return this;
-		}
-	};
-	return options
-}
-
-var vghCheckboxs = new VghCheckBoxs();
-$(document).on('show.bs.modal',function(e){
-	vghCheckboxs.delay(1000).then(() => { var vghCheckboxs = new VghCheckBoxs() })
-})
-//=============== END VGHCHECKBOXS
-//=================================================
-var SwitchSlideToggles = function(){
-	var self = this;
-	var $element = $('.toggle-switch');
-
-	$element.each(function(i,checkbox){
-		var $toggle = $(checkbox);
-		var $input = $toggle.find('input[type="checkbox"]');
-		var slide = self.get.call(checkbox)
-
-		if ( $input.length > 0 ) {
-			var ID = $input.attr('id')
-			$toggle.find('.slide-toggle-thumb').attr({for:ID});
-			$toggle.find('.toggle-switch-label').attr({for:ID});
-
-			$input.on('change',function(e){
-				// e.preventDefault();
-				// e.stopImmediatePropagation();
-
-				if ( $input.is(':checked') ) {
-					slide.$element().addClass('checked');
-					slide.container().addClass('checked');
-					slide.thumb().addClass('checked');
-					slide.ripple().css({opacity:'.4'}).addClass('mouseover');
-					slide.input().attr({checked:true,value:'1'});
-					self.delay().then(() => {slide.ripple().removeAttr('style').removeClass('mouseover') });					
-					return;
-				}
-				slide.$element().removeClass('checked');
-				slide.container().removeClass('checked');
-				slide.thumb().removeClass('checked');
-				slide.ripple().css({opacity:'.4'}).addClass('mouseover');
-				slide.input().attr({checked:false,value:'0'});
-				self.delay().then(() => {slide.ripple().removeAttr('style').removeClass('mouseover') });
-			});
-		}
-
-		if ( $input.is(':checked')) {
-
-			slide.$element().addClass('checked');
-			slide.container().addClass('checked');
-			slide.thumb().addClass('checked');
-			slide.ripple().css({opacity:'.4'}).addClass('mouseover');
-			slide.input().attr({checked:true,value:'1'});
-			self.delay().then(() => {slide.ripple().removeAttr('style').removeClass('mouseover') });
-		}
-
-	});
-}
-
-var _proto = SwitchSlideToggles.prototype;
-_proto.init = function(){}
-_proto.delay = function(ms){
-	var _ms = typeof ms === 'undefined' ? 1000 : ms;
-	return new Promise(resolve => setTimeout(resolve, _ms));	
-}
-
-_proto.get = function(){
-	var _this = $(this)
-	var o = {
-		$element : function(){
-			return _this;
-		},
-		container : function(){
-			return _this.find('.slide-toggle-thumb-container');
-		},
-		thumb : function(){
-			return _this.find('.slide-toggle-thumb');
-		},
-		ripple : function(){
-			return _this.find('.slide-toggle-ripple')
-		},
-		input : function(){
-			var name = _this.find('input[type="checkbox"]').attr('name')
-			return _this.find('input[type="checkbox"],input[type="hidden"][name=\"'+name+'\"]')
-		}
-	}
-	return o;
-}
-
-var slideToggle = new SwitchSlideToggles();
-$(document).on('show.bs.modal',function(e){
-	slideToggle.delay(1000).then(() => { var slideToggle = new SwitchSlideToggles() })
-})
-//=============== END SWITCHSLIDETOGGLES
-//=================================================
-})(window.jQuery); 
-(function($){
-    'use strict';
-
-	var delay = function(ms){
-		var _ms = typeof ms === 'undefined' ? 700 : ms;
-		return new Promise(resolve => setTimeout(resolve, _ms));
-	};
-
-	var MaskMoneyOption = function($element,option){
-		this.$element = $element
-		this.option = typeof option !== 'object' ? {} : option
-		this.$field = $element.closest('.field-' + $element.attr('id'))
-		this.init();
-	}
-
-	MaskMoneyOption.prototype = {
-		constructor:MaskMoneyOption,
-
-		init:function(){
-			var self = this
-			this.$element.maskMoney(this.option)
-			this.field();
-		},
-
-		field:function(){
-			var self = this
-
-			this.$element
-			.on('click.maskMoney',function(e){
-				if ( self.$field.hasClass('has-error') ) {
-					self.$field.removeClass('has-error').find('.help-block-error').empty()
-				}
-			})
-			.on('blur.maskMoney',function(e){
-				if ( $(this).val().length == 0 ) {
-					self.$field.find('.textfield').removeClass('textfield-floating-label-completed')
-				}
-			})
-		},
-	};
-
-	function initialize(){
-		$('.form-control.maskmoney').each(function(i,input){
-			var $input = $(input);
-			var data = $input.data();
-			var maskMoney = new MaskMoneyOption($input,data)
-		}); 
-	}
-	// initialize();
-
-	// delay(1000).then(() => {})
-	// $(document).on('show.bs.modal',function(e){
-	// 	delay(1000).then(() => {initialize() })
-	// })
-})(window.jQuery); 
-// @ts-nocheck
 
 (function($){
 
@@ -14998,151 +14761,6 @@ class PasswordVisibility{
 PasswordVisibility.instance();
 
 })(jQuery);
-(function($){
-    'use strict';
-
-var VghRadioButton = function(){
-	var self = this;
-	var $element = $('.vgh-radio');
-	$element.each(function(i,radio){
-		var $radio = $(radio);
-		var $input = $radio.find('input[type="radio"][id]');
-
-		if ( $input.length > 0 ) {
-			$input
-			.on('change',function(e){
-				self.onChange($(this))
-			})
-		}
-
-		if ( $input.is(':checked')) {
-			self.onChange($input)
-		}
-
-		$radio.find('.checkbox-label').on('click',function(e){
-			self.onChange($input)
-			self.radioHovered($input)
-		})
-
-	});
-
-}
-
-var _proto = VghRadioButton.prototype;
-_proto.init = function(){}
-
-_proto.delay = function(ms){
-	var _ms = typeof ms === 'undefined' ? 700 : ms;
-	return new Promise(resolve => setTimeout(resolve, _ms));	
-}
-_proto.onReset = function($input){
-}
-_proto.onChange = function($inputTarget){
-	var $radio = $('input[type="radio"][name=\"'+$inputTarget.attr('name')+'\"]')
-	$inputTarget.prop("checked", true);
-	if ( typeof $radio == 'object' && $radio.length > 0 ) {
-
-		$radio.each(function(i,input){
-			var $input = $(input)
-			if ( $input.val() != $inputTarget.val() ) {
-				$input.prop("checked",false);
-				$input.closest('.vgh-radio').removeClass('radio-checked');
-			}
-		});
-	}
-
-	this.ripple($inputTarget)
-	this.onChecked($inputTarget)
-}
-
-_proto.radioHovered = function($input){
-	var hovered = 'radio-hovered';
-	var $ripple = $input.closest('.vgh-radio').find('.radio-ripple');
-	$ripple.addClass(hovered)
-	this.delay(2000).then(() => $ripple.removeClass(hovered) );
-}
-
-_proto.onChecked = function($input,param){
-	var $radio = typeof param == 'undefined' ? $input.closest('.vgh-radio').addClass('radio-checked') : $input.closest('.vgh-radio').removeClass('radio-checked');
-}
-
-_proto.ripple = function($input){
-	var focused = 'radio-focused';
-	var $ripple = $input.closest('.vgh-radio').find('.radio-ripple');
-	$ripple.addClass(focused)
-	this.delay().then(() => $ripple.removeClass(focused) )
-}
-
-var vghradio = new VghRadioButton();
-
-$(document).on('show.bs.modal',function(e){
-	vghradio.delay(1000).then(() => { var vghradio = new VghRadioButton() })
-})
-})(window.jQuery);
-// @ts-nocheck
-"use strict";
-// ater remove only completion "/Users/thrubus/@types/index.ts"
-
-var TAG = 'RadioCheckbox';
-const ELEMENT = '.radio-checkbox';
-function delay(ms){
-	var _ms = typeof ms === 'undefined' ? 700 : ms;
-	return new Promise(resolve => setTimeout(resolve, _ms));
-}
-const svgWrap = ''
-    + '<div class="svg-wrap">'
-    + '    <svg class="radio-svg-outer" focusable="false" viewBox="0 0 24 24" aria-hidden="true"> <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path> </svg>'
-    + '    <svg class="radio-svg-inner" focusable="false" viewBox="0 0 24 24" aria-hidden="true"> <path d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"></path> </svg>'
-    + '</div>';
-
-class RadioCheckbox {
-
-    constructor($element,option){
-    	this.$element = $element;
-        this.option = option;
-        this.$element.find('.radio-checkbox-container').append(svgWrap)
-        this.$element.find('input[type="checkbox"]').on('change',(e) => {
-            const input = e.target;
-            this.#onChangeInput(input)
-        })
-    }
-
-    #onChangeInput(input){
-        const $input = $(input);
-        if($(input).prop('checked')){
-            $input.closest(ELEMENT).addClass('checked');
-            this.#setRadioRipple(input);
-        }
-        else
-        {
-            $input.closest(ELEMENT).removeClass('checked');
-            this.#setRadioRipple(input);
-        }
-        
-    }
-
-    #setRadioRipple(input){
-        const className = 'ripple';
-        $(input).closest(ELEMENT).addClass(className);
-        delay(500).then(() => {
-            $(input).closest(ELEMENT).removeClass(className);
-        })
-    }
-
-    static validate(){
-        return $(ELEMENT).length > 0;
-    }
-
-    static intance(){ 
-        if(RadioCheckbox.validate()){
-            $(ELEMENT).each((i,element) => {
-                new RadioCheckbox($(element),$(element).data())
-            });
-        }
-    }
-
-}
-RadioCheckbox.intance();
 (function($, window, document) {'use strict';
 
 	var Selector = {
@@ -15203,6 +14821,239 @@ RadioCheckbox.intance();
 })(jQuery, window, document);
 
 // @ts-nocheck
+(function ($) {
+    "use strict";
+    const ELEMENT = '.switch-root'
+    const INPUT_ELEMENT = 'input.switch-checkbox-form-control[type="checkbox"]';
+    const SWITCH_RIPPLE = 'switch-ripple';
+    const CHECKED = 'checked';
+
+    function delay(ms){
+        var _ms = typeof ms === 'undefined' ? 700 : ms;
+        return new Promise(resolve => setTimeout(resolve, _ms));
+    }
+
+    class Switch {
+
+        constructor(element) {
+            this.$element = $(element);
+            this.$inputCheckbox = $(element).find(INPUT_ELEMENT);
+            const self = this;
+            this.$inputCheckbox.on('change', function (e) {
+                const context = $(e.target).closest(ELEMENT);
+                self.addRipple(context);
+                if(e.target.checked){
+                    context.addClass(CHECKED)
+                }
+                else
+                {
+                    context.removeClass(CHECKED)
+                }
+            });
+
+            if(this.$inputCheckbox.is(':' + CHECKED)){
+                const context = this.$inputCheckbox.closest(ELEMENT);
+                context.addClass(CHECKED);
+                self.addRipple(context);
+            }
+        }
+
+        addRipple(context){
+            context.addClass(SWITCH_RIPPLE);
+            delay(1000).then(() => context.removeClass(SWITCH_RIPPLE))
+        }
+
+        static validate() {
+            return $(ELEMENT).length > 0;
+        }
+
+        static instance() {
+            if (Switch.validate()) {
+                $(ELEMENT).each((i, element) => {
+                    new Switch(element);
+                });
+            }
+        }
+    }
+    Switch.instance();
+})(jQuery); 
+
+// RadioButton
+(function ($) {
+    "use strict";
+    const ELEMENT = '.radio-button-group';
+    const RADIO_BUTTON = '.radio-button';
+    const RADIO_RIPPLE = 'button-ripple';
+    const CHECKED = 'checked';
+    const INPUT_RADIO = 'input.radio-button-form-control[type="radio"]';
+
+    function delay(ms){
+        var _ms = typeof ms === 'undefined' ? 700 : ms;
+        return new Promise(resolve => setTimeout(resolve, _ms));
+    }
+
+    class RadioButton {
+
+        constructor(inputRadio) {
+            this.$element = $(ELEMENT);
+            this.$listRadioButton = $(ELEMENT).find(RADIO_BUTTON);
+            const self = this;
+            this.$inputRadio = $(inputRadio);
+            this.$inputRadio.on('change',function(e){
+                if(e.target.checked){
+                    self.#clearCheked();
+                    self.#addCheked($(e.target).closest(RADIO_BUTTON).get(0))
+                }
+            });
+
+            if(this.$inputRadio.is(':' + CHECKED)){
+                this.$inputRadio.trigger('change');
+            }
+        }
+
+        #clearCheked(){
+            this.$listRadioButton.removeClass(CHECKED);
+            return this;
+        }
+
+        #addCheked(radioButton){
+            $(radioButton).addClass(CHECKED).addClass(RADIO_RIPPLE);
+            delay(1000).then(() => $(radioButton).removeClass(RADIO_RIPPLE));
+        }
+
+        #handleRadioCheked(inputRadio){
+            this.$element.find(INPUT_RADIO).each(function(i,input){
+                input.checked = false;
+            });
+            inputRadio.checked = true;
+        }
+
+        static validate() {
+            return $(ELEMENT).length > 0;
+        }
+
+        static instance() {
+            if (RadioButton.validate()) {
+                $(ELEMENT).find(INPUT_RADIO).each((i, element) => {
+                    new RadioButton(element);
+                });
+            }
+        }
+    }
+    RadioButton.instance();
+})(jQuery); 
+
+(function ($) {
+    "use strict";
+    const ELEMENT = '.radio-checkbox';
+    const INPUT_ELEMENT = 'input.radio-checkbox-form-control[type="checkbox"]';
+    const CHECKED = 'checked';
+    const CHECKBOX_RIPPLE = 'checkbox-ripple';
+
+    function delay(ms){
+        var _ms = typeof ms === 'undefined' ? 700 : ms;
+        return new Promise(resolve => setTimeout(resolve, _ms));
+    }
+
+    class RadioCheckbox {
+
+        constructor(inputCheckbox) {
+            this.$inputCheckbox = $(inputCheckbox);
+            const self = this;
+            this.$inputCheckbox.on('change', function (e) {
+                const context = $(e.target).closest(ELEMENT);
+                if(e.target.checked){
+                    context.addClass(CHECKED).addClass(CHECKBOX_RIPPLE);
+                    delay(1000).then(() => context.removeClass(CHECKBOX_RIPPLE));
+                }
+                else
+                {
+                    context.removeClass(CHECKED).addClass(CHECKBOX_RIPPLE);
+                    delay(1000).then(() => context.removeClass(CHECKBOX_RIPPLE));
+                }
+            });
+
+            if(this.$inputCheckbox.is(':' + CHECKED)){
+                this.$inputCheckbox.trigger('change');
+            }
+
+        }
+
+        static validate() {
+            return $(ELEMENT).length > 0;
+        }
+
+        static instance() {
+            if (RadioCheckbox.validate()) {
+                $(ELEMENT).find(INPUT_ELEMENT).each(function(i,inputCheckbox){
+                    new RadioCheckbox(inputCheckbox)
+                });
+            }
+        }
+    }
+    RadioCheckbox.instance();
+})(jQuery); 
+
+(function ($) {
+    "use strict";
+    const ELEMENT = '.checkbox-outline';
+    const INPUT_ELEMENT = 'input.checkbox-outline-form-control[type="checkbox"]';
+    const CHECKED = 'checked';
+    const CHECKBOX_RIPPLE = 'checkbox-outline-ripple';
+
+    function delay(ms){
+        var _ms = typeof ms === 'undefined' ? 700 : ms;
+        return new Promise(resolve => setTimeout(resolve, _ms));
+    }
+
+    class CheckboxOutline {
+
+        constructor(inputCheckbox) {
+            this.$inputCheckbox = $(inputCheckbox);
+            const self = this;
+            this.$inputCheckbox.on('change', function (e) {
+                const context = $(e.target).closest(ELEMENT);
+                if(e.target.checked){
+                    context.addClass(CHECKED).addClass(CHECKBOX_RIPPLE);
+                    delay(1000).then(() => context.removeClass(CHECKBOX_RIPPLE));
+                }
+                else
+                {
+                    context.removeClass(CHECKED).addClass(CHECKBOX_RIPPLE);
+                    delay(1000).then(() => context.removeClass(CHECKBOX_RIPPLE));
+                }
+            });
+
+            if(this.$inputCheckbox.is(':' + CHECKED)){
+                this.$inputCheckbox.closest(ELEMENT).addClass(CHECKED).addClass(CHECKBOX_RIPPLE);
+                delay(1000).then(() => this.$inputCheckbox.closest(ELEMENT).removeClass(CHECKBOX_RIPPLE));
+            }
+
+        }
+
+        #controlLabel(){
+            $(ELEMENT).on('click','label',function(e){
+                console.log(e);
+            })
+        }
+
+        static validate() {
+            return $(ELEMENT).length > 0;
+        }
+
+        static instance() {
+            if (CheckboxOutline.validate()) {
+                $(ELEMENT).find(INPUT_ELEMENT).each(function(i,inputCheckbox){
+                    new CheckboxOutline(inputCheckbox)
+                });
+            }
+        }
+    }
+    CheckboxOutline.instance();
+})(jQuery); 
+
+
+// @ts-nocheck
 (function($){
 "use strict";
 const ELEMENT_INPUT = '.form-control'
@@ -15235,7 +15086,7 @@ class Textfield{
 	}
 
 	static validate(){
-		return true;
+		return $(ELEMENT_INPUT).length > 0;
 	}
 
 	static instance(){
@@ -15248,13 +15099,6 @@ class Textfield{
 }
 Textfield.instance();
 })(jQuery); 
-
-
-
-
-
-
-
 (function($){
 
 "use strict";

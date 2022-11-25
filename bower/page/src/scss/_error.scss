@@ -1,0 +1,23 @@
+@use "sass:math";
+
+body.error{
+    background-color: $white;
+}
+.error500,
+.error404{
+	padding: $getter;
+    @include centerFlex;
+    flex-direction: column;
+
+	.error500-media, .error500-titile,.error500-content,
+	.error404-media, .error404-titile,.error404-content{
+        margin-bottom: $getter * 2;
+    }
+	.error500-media,
+	.error404-media{
+		img{
+			width: 280px;
+			height: auto;
+		}
+	}
+}

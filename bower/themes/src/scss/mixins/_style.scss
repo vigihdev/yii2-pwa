@@ -1,3 +1,7 @@
+@mixin size($size){
+	width: $size;
+	height: $size;
+}
 
 @function color-lighten($color, $lighten: 10%){
 	@return lighten($color,$lighten);

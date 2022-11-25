@@ -1,0 +1,13 @@
+body.auth-login{
+    background-color: $white-100;
+}
+
+.section-auth-login{
+    img{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        @include BoxShadow(2);
+        margin: $getter;
+    }
+}

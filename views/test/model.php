@@ -21,6 +21,7 @@ $this->title = 'Test Model';
                     <?= $form->field($model, 'email')->email() ?>
                     <?= $form->field($model, 'nama_depan')->user() ?>
                     <?= $form->field($model, 'password')->password(['icon' => 'visibility']) ?>
+                    <?= Html::submitButton('Submit', ['class' => 'btn btn-info btn-block']) ?>
                     <?php ActiveForm::end(); ?>
                 </div>
             </div>
@@ -28,12 +29,28 @@ $this->title = 'Test Model';
         <div class="col-md-6">
             <div class="card card-dp2">
                 <div class="card-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <?php $form = ActiveForm::begin() ?>
+                        <?= $form->field($model, 'family')->checkboxSwitch(['theme' => 'danger','checked' => 'true']) ?>
+                        <?= $form->field($model, 'sava')->checkboxSwitch(['theme' => 'indigo','labelSwitch' => 'append']) ?>
+                        <?= $form->field($model, 'ririn')->checkboxSwitch(['theme' => 'primary','labelSwitch' => 'append']) ?>
+                        <div>
+                            <?= $form->field($model, 'rama')->radioCheckbox(['theme' => 'indigo']) ?>
+                            <?= $form->field($model, 'putra')->radioCheckbox(['theme' => 'info']) ?>
+                        </div>
+                        <div class="radioFm">
+                            <?= $form->field($model, 'nama')->radioButtonList([
+                                'rama' => 'Rama',
+                                'dinda' => 'Dinda',
+                                'alib' => 'Alib',
+                                'ririn' => 'Ririn',
+                            ],['theme' => 'indigo']) ?>
+                        </div>
+                        
+                        <div class="CheckboxOutline">
+                            <?= $form->field($model, 'dinda')->checkboxOutline(['theme' => 'primary','labelCheckbox' => 'prepend']) ?>
+                            <?= $form->field($model, 'alib')->checkboxOutline(['theme' => 'primary','labelCheckbox' => 'prepend']) ?>
+                        </div>
+                    <?php ActiveForm::end(); ?>
                 </div>
             </div>
         </div>

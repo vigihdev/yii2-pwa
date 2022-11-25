@@ -7,11 +7,12 @@ use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use app\models\test\TestModel;
+use app\models\test\TestBootstrap;
 use yii\base\Model;
 
 class TestController extends \yii\web\Controller
 {
-    public $layout = 'main-blank';
+    public $layout = 'main';
 
     public function actionIndex()
     {      
@@ -43,7 +44,8 @@ class TestController extends \yii\web\Controller
 
     public function actionBootstrap()
     {      
-        return $this->render('bootstrap');
+        $model = new TestBootstrap();
+        return $this->render('bootstrap',['model' => $model]);
     }
 }
 

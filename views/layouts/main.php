@@ -22,7 +22,7 @@ ViewHeader::addTagMeta();
     <?php $this->head() ?>
     <?= ViewHeader::addStyleMaterialIcons() ?>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="<?= $this->bodyClass() ?> d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
     <?= $this->render('header/index') ?>

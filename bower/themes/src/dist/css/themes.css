@@ -225,10 +225,6 @@ h6, .h6 {
   font-weight: 400;
 }
 
-body.user-login section {
-  margin-bottom: 100px;
-}
-
 #wrapper, #header, #main, section, #footer {
   display: block;
   position: relative;
@@ -248,9 +244,10 @@ section.section {
   margin-bottom: 100px;
 }
 
-.rows {
-  display: flex;
-  flex-wrap: wrap;
+body.main-blank #main {
+  -ms-transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%);
 }
 
 /** 

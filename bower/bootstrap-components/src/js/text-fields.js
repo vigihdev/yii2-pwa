@@ -31,7 +31,7 @@ class Textfield{
 	}
 
 	static validate(){
-		return true;
+		return $(ELEMENT_INPUT).length > 0;
 	}
 
 	static instance(){
@@ -44,9 +44,3 @@ class Textfield{
 }
 Textfield.instance();
 })(jQuery); 
-
-
-
-
-
-

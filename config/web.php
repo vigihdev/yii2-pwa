@@ -1,5 +1,6 @@
 <?php
 
+use Yii;
 use yii\web\Request;
 use yii\db\Expression;
 use yii\db\Query;
@@ -42,6 +43,10 @@ $config = [
         'dateNow' => function(){
             $expression = new Expression('NOW()'); 
             return (new Query())->select($expression)->scalar(); 
+        },
+
+        'imgAssets' => function(){
+            return Yii::$app->assetManager->getPublishedUrl('@bower/app/dist') . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR; 
         },
 
         'i18n' => [

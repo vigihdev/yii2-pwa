@@ -19,6 +19,11 @@ class Login extends User
 
     public $rememberMe;
 
-    private $_user;
-
+    public function attributeLabels()
+    {
+        return [
+            'users' => 'Username / Email / Nomor HP',
+            'password' => 'Kata Sandi',
+        ];
+    }
 }

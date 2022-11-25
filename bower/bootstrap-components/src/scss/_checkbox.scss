@@ -1,160 +1,303 @@
-.vgh-checkbox{
-	cursor: pointer;
-	align-items: baseline;
-	vertical-align: middle;
-	display: inline-flex;
-	white-space: nowrap;
-	margin-bottom: 0;
-	margin-right: $getter;
+/** 
+ * 
+ * views/test/bootstrap
+ */
 
+ @mixin checkboxContainer() {
+    display: inline-flex;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-pack: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    background-color: transparent;
+    outline: 0px;
+    border: 0px none;
+    margin: 0px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    text-decoration: none;
+    padding: 9px;
+    border-radius: 50%;
 }
 
-.vgh-checkbox .checkbox-inner-container{
-	display: inline-block;
-	height: 16px;
-	line-height: 0;
-	margin: auto;
-	margin-right: auto;
-	margin-right: 8px;
-	order: 0;
-	position: relative;
-	vertical-align: middle;
-	white-space: nowrap;
-	width: 16px;
-	flex-shrink: 0;	
-}
-.vgh-checkbox .checkbox-inner-container{
-	input[type="checkbox"]{
-		border: 0;
-		clip: rect(0 0 0 0);
-		height: 1px;
-		margin: -1px;
-		overflow: hidden;
-		padding: 0;
-		position: absolute;
-		width: 1px;
-		white-space: nowrap;
-		outline: 0;
-		-webkit-appearance: none;
-		-moz-appearance: none;		
-	}
-
-	.checkbox-ripple{
-		position: absolute;
-		left: calc(50% - 20px);
-		top: calc(50% - 20px);
-		height: 40px;
-		width: 40px;
-		z-index: 1;
-		pointer-events: none;			
-	}
-	.checkbox-frame,
-	.checkbox-background{
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		position: absolute;
-		border-radius: 2px;
-		box-sizing: border-box;
-		pointer-events: none;
-		
-	}
-	.checkbox-frame{
-		background-color: transparent;
-		@include transition($transition-base);
-		border-width: 2px;
-		border-style: solid;
-	}
-	.checkbox-background {
-	    align-items: center;
-	    display: inline-flex;
-	    justify-content: center;
-	    @include transition($transition-base);
-	    -webkit-print-color-adjust: exact;
-	    color-adjust: exact;
-	}
-
-	.checkbox-checkmark {
-	    top: 0;
-	    left: 0;
-	    right: 0;
-	    bottom: 0;
-	    position: absolute;
-	    width: 100%;
-	}
-
-	.checkbox-checkmark-path {
-	    stroke-dashoffset: 22.910259;
-	    stroke-dasharray: 22.910259;
-	    stroke-width: 2.1333333333px;
-	}
-	.checkbox-checkmark {
-	    fill: #fafafa;
-	}
-
-	.checkbox-mixedmark {
-	    width: calc(100% - 6px);
-	    height: 2px;
-	    opacity: 0;
-	    transform: scaleX(0) rotate(0deg);
-	    border-radius: 2px;
-	}
-	.checkbox-mixedmark {
-	    background-color: #fafafa;
-	}	
+@mixin checkboxInput() {
+    cursor: inherit;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
 }
 
-.vgh-checkbox.checkbox-checked{
-	.checkbox-background{
-		background-color: $primary;
-	}
-	.checkbox-checkmark-path {
-		stroke-dashoffset: 0;
-	}
-	.checkbox-mixedmark {
-	    transform: scaleX(1) rotate(-45deg);
-	}	
+@mixin svgIcon(){
+    @include user-select-none();
+    @include size(1em);
+    font-size: 1.5rem;
+    display: inline-block;
+    fill: currentColor;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
 }
-.vgh-checkbox .checkbox-inner-container.focused{}
 
-
-@media (hover: hover) {
-    .vgh-checkbox:hover {
-		.checkbox-ripple{
-			@include transition($transition-base);
-			opacity: .2;
-			border-radius: 50%;
-			background: $primary;
-		}
-    }
-    .vgh-checkbox.rippleed:hover {
-		.checkbox-ripple{
-			@include transition($transition-base);
-			background: $primary;
-			opacity: .4;
-		}    	
+.form-group-checkbox, 
+.form-group-switch,
+.radio-checkbox,
+.radio-button{
+    label{
+        @include user-select-none();
+        margin-bottom: 0;
+        font-weight: $font-weight-bolds;
     }
 }
 
-//============= THEME COLOR SLIDE TOGGLE
-//===========================================
-
-@each $name, $value in $theme-colors {
-	.vgh-checkbox.vgh-checkbox-#{$name},
-	.vgh-checkbox.#{$name}{
-		&.checkbox-checked .checkbox-background{
-			background-color: $value;
-		}
-
-		&.focused .checkbox-ripple,
-		&.rippleed .checkbox-ripple{
-			@include transition($transition-base);
-			opacity: .2;
-			border-radius: 50%;
-			background: $value;
-
-		}		
-	}
+.form-group-checkbox label {
+    margin-right: 8px;
 }
-//============= END SLIDE TOGGLE
+.form-group-checkbox, .form-group-switch {
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+}
+
+.switch-root {
+    display: inline-flex;
+    width: 58px;
+    height: 38px;
+    overflow: hidden;
+    padding: 12px;
+    box-sizing: border-box;
+    position: relative;
+    flex-shrink: 0;
+    z-index: 0;
+    vertical-align: middle;
+
+    .switch-container {
+        @include checkboxContainer();
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1;
+        color: $switch-currentcolor;
+
+        input {
+            @include checkboxInput();
+        }
+
+        .switch-thumb {
+            @include BoxShadow(3);
+            @include transform-translateX(0px);
+            @include transition($checkbox-transition-transform);
+            transition-duration: 140ms;
+            background-color: currentcolor;
+            @include size($switch-thumb-width);
+            border-radius: 50%;
+        }
+    }
+    .switch-thumb-ripple {
+        @include size($switch-thumb-ripple-width);
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    .switch-track {
+        height: 100%;
+        width: 100%;
+        border-radius: 7px;
+        z-index: -1;
+        @include transition($checkbox-transition-background-color);
+        background-color: #939393;
+        opacity: 0.6;
+        @include BoxShadow(1);
+    }
+
+    &.checked{
+        .switch-container {
+            .switch-thumb, .switch-thumb-ripple {
+                @include transform-translateX(20px);
+            }
+        }
+    }
+}
+
+// switch colors
+@each $color, $value in $theme-colors {
+    .switch-root.switch-#{$color}{
+        &.checked{
+            .switch-track {
+                background-color: $value;
+            }
+            .switch-container {
+                .switch-thumb {
+                    background-color: $value;
+                }
+            }
+        }
+        &.switch-ripple{
+            .switch-container {
+                .switch-thumb-ripple {
+                    background: rgba($value, 0.2);
+                }
+            }
+        }
+        @include hover-focus-active {
+            .switch-thumb{
+                box-shadow: rgba($value, 0.2) $switch-shadow;
+            }
+        }
+    }
+}
+
+// RadioCheckbox
+// RadioButton
+.radio-button-group {
+    @include center0Flex();
+    flex-wrap: wrap;
+    label {
+        margin-bottom: 0;
+    }
+}
+.radio-checkbox-group {
+    @include center0Flex();
+    flex-wrap: wrap;
+}
+
+.radio-checkbox, .radio-button {
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    -moz-box-align: center;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: -11px;
+    margin-right: 16px;
+
+    .radio-checkbox-container, .radio-button-container {
+        @include checkboxContainer();
+
+        input{
+            @include checkboxInput();
+        }
+
+        .radio-checkbox-thumb, .radio-button-thumb {
+            display: inline-flex;
+            position: relative;
+            svg.radio-checkbox-unchecked-icon, svg.radio-checkbox-checked-icon, svg.radio-button-unchecked-icon, svg.radio-button-checked-icon {
+                @include svgIcon();
+            }
+            svg.radio-checkbox-unchecked-icon, svg.radio-button-unchecked-icon {
+                @include transition($checkbox-transition-fill);
+                @include transform-scale(1);
+                cursor: pointer;
+            }
+
+            svg.radio-checkbox-checked-icon, svg.radio-button-checked-icon {
+                left: 0px;
+                position: absolute;
+                @include transform-scale(0);
+                @include transition($checkbox-transition-transform);
+            }
+        }
+    }
+}
+
+// radio button colors
+@mixin radioThemeColors($name, $theme, $value) {
+    .radio-#{$name}.radio-#{$name}-#{$theme} {
+        .radio-#{$name}-container {
+            @include transition($checkbox-transition-background-color);
+            @include hover-focus-active {
+                background-color: rgba($value, 0.1);
+            }
+        }
+        &.checked {
+            .radio-#{$name}-container {
+                color: rgba($value, 0.7);
+                .radio-#{$name}-thumb {
+                    svg.radio-#{$name}-checked-icon {
+                        @include transform-scale(1);
+                        color: $value;
+                    }
+                }
+            }
+            label {
+                color: $value;
+            }
+        }
+        &.#{$name}-ripple {
+            .radio-#{$name}-container {
+                @include transition($checkbox-transition-background-color);
+                background-color: rgba($value, 0.2);
+            }
+        }
+    }
+}
+
+@each $theme, $value in $theme-colors {
+    @include radioThemeColors("button", $theme, $value);
+    @include radioThemeColors("checkbox", $theme, $value);
+}
+
+// Checkbox Outline
+.checkbox-outline {
+    display: inline-flex;
+    align-content: center;
+    align-items: center;
+
+    .checkbox-outline-container {
+        @include checkboxContainer();
+        @include size($checkbox-width);
+        @include transition($checkbox-transition-background-color);
+        input {
+            @include checkboxInput();
+        }
+        svg.checkbox-outline-checked-icon, svg.checkbox-outline-unchecked-icon {
+            @include svgIcon();
+            position: absolute;
+        }
+        .checkbox-outline-checked-icon {
+            @include transition($checkbox-transition-transform);
+            @include transform(0);
+        }
+        .checkbox-outline-unchecked-icon {
+            @include transition($checkbox-transition-fillAndColor);
+            color: #939393;
+        }
+    }
+
+    label{
+        margin-bottom: 0;
+        @include user-select-none();
+    }
+}
+// Checkbox colors
+@each $color, $value in $theme-colors {
+    .checkbox-outline.checkbox-outline-#{$color} {
+        .checkbox-outline-container{
+            @include hover-focus-active {
+                background-color: rgba($value, 0.2);
+            }
+        }
+        &.checked {
+            .checkbox-outline-checked-icon,
+            .checkbox-outline-unchecked-icon {
+                @include transform(1);
+                color: $value;
+            }
+            label{
+                color: $value;
+            }
+        }
+        &.checkbox-outline-ripple .checkbox-outline-container{
+            background-color: rgba($value, 0.1);
+        }
+    }
+}

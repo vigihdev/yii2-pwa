@@ -1,9 +1,3 @@
-body.user-login{
-	section{
-		margin-bottom: 100px;
-	}
-}
-
 #wrapper, #header, #main, section,#footer{
 	display: block;
 	position: relative;
@@ -23,7 +17,6 @@ section.section{
 	margin-bottom: 100px;
 }
 
-.rows{
-	display: flex;
-	flex-wrap: wrap;
+body.main-blank #main{
+	@include transform-translateY(50%);
 }

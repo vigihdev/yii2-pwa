@@ -16,6 +16,15 @@ class TestModel extends \yii\base\Model
     public $alamat;
     public $no_hp;
 
+    public $nama;
+    public $family;
+    public $sava;
+    public $ririn;
+    public $rama;
+    public $dinda;
+    public $alib;
+    public $putra;
+
     public function rules()
     {
         return [

@@ -8,22 +8,7 @@
 namespace yii\bootstrap5;
 
 use yii\helpers\ArrayHelper;
-/** 
- * ActiveFieldBootstrap
- * <div class="form-group pmd-textfield pmd-textfield-floating-label pmd-textfield-outline">
- * <div class="pmd-textfield-outline-wrapper"> 
- * <div class="pmd-textfield-label-wrapper">
- * <div class="pmd-textfield-outline-left">
- * </div>
- * <div class="pmd-textfield-outline-middle">
- * <label for="twitterURL" class="">Twitter URL</label>
- * </div>
- * <div class="pmd-textfield-outline-right"></div>
- * </div><input type="text" class="form-control" id="twitterURL" name="twitterURL" value=""></div> </div>
- * 
- * @param 
- * @return 
- */
+use yii\helpers\Inflector;
 
 /**
  * A Bootstrap 5 enhanced version of [[\yii\widgets\ActiveField]].
@@ -221,6 +206,8 @@ class ActiveFieldBootstrap extends \yii\widgets\ActiveField
      */
     public $enableLabel = true;
 
+    public $labelAppend = null;
+    public $labelPrepend = null;
 
     /**
      * {@inheritdoc}
@@ -331,8 +318,58 @@ class ActiveFieldBootstrap extends \yii\widgets\ActiveField
     {
         $icon = isset($options['icon']) && is_string($options['icon']) ? $options['icon'] : 'visibility';
         return $icon;
-
     }
+
+    private function getDefaultTheme(array $options = []):string
+    {
+        $icon = isset($options['theme']) && is_string($options['theme']) ? $options['theme'] : 'primary';
+        return $icon;
+    }
+
+    private function svgRadio(string $name):string
+    {
+        $outline = [
+            Html::beginTag('svg',['class' => $name . '-unchecked-icon']),
+                '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path>',
+            Html::endTag('svg'),
+
+            Html::beginTag('svg',['class' => $name . '-checked-icon']),
+                '<path d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"></path>',
+            Html::endTag('svg')
+        ];
+        return implode("\n",$outline) . "\n";
+    }
+
+    private function svgChecbox():string
+    {
+        $outline = [
+            Html::beginTag('svg',['class' => 'checkbox-outline-checked-icon','viewbox' => '0 0 24 24']),
+            '<path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"> </path>',
+            Html::endTag('svg'),
+            
+            Html::beginTag('svg',['class' => 'checkbox-outline-unchecked-icon','viewbox' => '0 0 24 24']),
+                '<path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path>',
+            Html::endTag('svg')
+        ];
+        return implode("\n",$outline) . "\n";
+    }
+
+    private function getRenderLabelOption(string $labelOption):void
+    {
+        if($labelOption === 'false'){
+            $this->label(false);
+        }
+
+        if($labelOption === 'prepend'){
+            $this->label(false)->renderLabelParts();
+            $this->labelPrepend = $this->parts['{beginLabel}'] . $this->parts['{labelTitle}'] . $this->parts['{endLabel}'];
+        }
+        if($labelOption === 'append'){
+            $this->label(false)->renderLabelParts();
+            $this->labelAppend = $this->parts['{beginLabel}'] . $this->parts['{labelTitle}'] . $this->parts['{endLabel}'];
+        }
+    }
+    
     /** @var End Block Item Input */
     
     public function textfieldFloating():self
@@ -390,6 +427,137 @@ class ActiveFieldBootstrap extends \yii\widgets\ActiveField
         $this->label(false);
         $this->inputTemplate = $this->begindInputGroupPrepend('https') . $this->begindTextfieldOutline() . $this->begindInputGroupAppend('visibility');
         return $this;
+    }
+
+    public function checkboxSwitch($options = []):self
+    {
+        
+        $theme = $this->getDefaultTheme($options);
+        $this->options = [ 'class' => 'form-group-switch'];
+        $inputId = Html::getInputId($this->model, $this->attribute);
+
+        $labelOption = isset($options['labelSwitch']) && is_string($options['labelSwitch']) ? $options['labelSwitch'] : '';
+        $this->getRenderLabelOption($labelOption);
+
+        $context = [
+            $this->labelAppend,
+            Html::beginTag('div',['class' => 'switch-root switch-' . $theme]),
+                Html::beginTag('div',['class' => 'switch-container','for' => $inputId]),
+                    '{input}',
+                    Html::tag('div',null,['class' => 'switch-thumb']),
+                    Html::tag('div',null,['class' => 'switch-thumb-ripple']),
+                Html::endTag('div'),
+                Html::tag('div',null,['class' => 'switch-track']),
+            Html::endTag('div'),
+            $this->labelPrepend,
+        ];
+        $this->inputTemplate = implode("\n",$context) . "\n";
+        $options = ArrayHelper::merge($options,['type' => 'checkbox','class' => 'switch-checkbox-form-control']);
+        
+        return parent::checkbox($options, false);
+    }
+
+    public function radioCheckbox($options = []):self
+    {
+        $theme = $this->getDefaultTheme($options);
+        $this->options = [ 'class' => 'form-group-checkbox'];
+        $inputId = Html::getInputId($this->model, $this->attribute);
+
+        $labelOption = isset($options['labelCheckbox']) && is_string($options['labelCheckbox']) ? $options['labelCheckbox'] : '';
+        $this->getRenderLabelOption($labelOption);
+
+        $context = [
+            $this->labelAppend,
+            Html::beginTag('div',['class' => 'radio-checkbox radio-checkbox-' . $theme]),
+                Html::beginTag('div',['class' => 'radio-checkbox-container']),
+                    '{input}',
+                    Html::beginTag('div',['class' => 'radio-checkbox-thumb']),
+                        $this->svgRadio('radio-checkbox'),
+                    Html::endTag('div'),
+                Html::endTag('div'),
+            Html::endTag('div'),
+            $this->labelPrepend,
+        ];
+        $this->inputTemplate = implode("\n",$context) . "\n";
+        $options = ArrayHelper::merge($options,['type' => 'checkbox','class' => 'radio-checkbox-form-control']);
+        
+        return parent::checkbox($options, false);
+    }
+
+    public function radioButtonList(array $items,array $options = []):self
+    {
+        $theme = $this->getDefaultTheme($options);
+        $inputId = Html::getInputId($this->model, $this->attribute);
+
+        if (!isset($options['item'])) {
+            $this->template = str_replace("\n{error}", '', $this->template);
+            $itemOptions = $options['itemOptions'] ?? [];
+            $encode = ArrayHelper::getValue($options, 'encode', true);
+            $itemCount = count($items) - 1;
+            $error = $this->error()->parts['{error}'];
+            $options['item'] = function ($i, $label, $name, $checked, $value) use (
+                $itemOptions,
+                $encode,
+                $itemCount,
+                &$theme,
+                $error
+            ) {
+                $options = array_merge($this->radioOptions, [
+                    'labelOptions' => false,
+                    'id' => Inflector::camel2id($value . $i),
+                    'class' => 'radio-button-form-control',
+                    'value' => $value,
+                ], $itemOptions);
+                $radioLabel = Html::label($label,Inflector::camel2id($value . $i),['class' => 'form-label']);
+
+                if ($this->inline) {
+                }
+
+               $context = [
+                    Html::beginTag('div',['class' => 'radio-button radio-button-' . $theme]),
+                        Html::beginTag('div',['class' => 'radio-button-container']),
+                            Html::radio($name, $checked, $options),
+                            Html::beginTag('div',['class' => 'radio-button-thumb ripple-effect']),
+                                $this->svgRadio('radio-button'),
+                            Html::endTag('div'),
+                        Html::endTag('div'),
+                        $radioLabel,
+                    Html::endTag('div'),
+                ];
+                return implode("\n",$context) . "\n";
+            };
+        }
+
+        $options = ArrayHelper::merge($options,[
+            'class' => [
+                'widget' => 'radio-button-group'
+            ],
+        ]);
+
+        parent::radioList($items, $options);
+        return $this;
+    }
+
+    public function checkboxOutline($options = [], $enclosedByLabel = false)
+    {
+        $theme = $this->getDefaultTheme($options);
+        $inputId = Html::getInputId($this->model, $this->attribute);
+        $this->options = [ 'class' => 'checkbox-outline checkbox-outline-' . $theme];
+        $labelOption = isset($options['labelCheckbox']) && is_string($options['labelCheckbox']) ? $options['labelCheckbox'] : '';
+        $this->getRenderLabelOption($labelOption);
+
+        $context = [
+            $this->labelAppend,
+            Html::beginTag('div',['class' => 'checkbox-outline-container']),
+                '{input}',
+                $this->svgChecbox(),
+            Html::endTag('div'),
+            $this->labelPrepend,
+        ];
+        $this->inputTemplate = implode("\n",$context) . "\n";
+        $options = ArrayHelper::merge($options,['type' => 'checkbox','class' => 'checkbox-outline-form-control']);
+
+        return parent::checkbox($options, false);
     }
     /** @var End Block Text Field */
 

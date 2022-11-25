@@ -1,0 +1,44 @@
+body.error {
+  background-color: #fff;
+}
+
+.error500,
+.error404 {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+.error500 .error500-media, .error500 .error500-titile, .error500 .error500-content,
+.error500 .error404-media, .error500 .error404-titile, .error500 .error404-content,
+.error404 .error500-media,
+.error404 .error500-titile,
+.error404 .error500-content,
+.error404 .error404-media,
+.error404 .error404-titile,
+.error404 .error404-content {
+  margin-bottom: 32px;
+}
+.error500 .error500-media img,
+.error500 .error404-media img,
+.error404 .error500-media img,
+.error404 .error404-media img {
+  width: 280px;
+  height: auto;
+}
+
+body.auth-login {
+  background-color: #eaeaea;
+}
+
+.section-auth-login img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  margin: 16px;
+}
+
+/*# sourceMappingURL=page.css.map */

@@ -22,7 +22,8 @@ ViewHeader::addTagMeta();
     <?php $this->head() ?>
     <?= ViewHeader::addStyleMaterialIcons() ?>
 </head>
-<body class="d-flex flex-column h-100">
+
+<body class="main-blank <?= $this->bodyClass() ?> d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
     <main id="main" class="flex-shrink-0" role="main">
