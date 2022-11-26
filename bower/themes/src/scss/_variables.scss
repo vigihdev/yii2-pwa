@@ -27,6 +27,7 @@ $list-position: ("top", "left", "right", "bottom") !default;
 $list-vertical-align: ("top", "bottom", "baseline", "middle") !default;
 
 $body-color: #666;
+// color exstra
 
 // Fonts
 $font-family-sans-serif: Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -113,7 +114,8 @@ $textfield-outline-border-active: 2px solid $textfield-focused-bg !default;
 $textfield-outline-material-icons-color: $black !default;
 
 // Badges
-$badge-theme-colors: map-remove($theme-colors, "default", "primary", "secondary", "danger", "light", "dark");
+$badge-theme-colors: $theme-colors;
+// $badge-theme-colors: map-remove($theme-colors, "default", "primary", "secondary", "danger", "light", "dark");
 $badge-bg: #777777 !default;
 $badge-color: $white !default;
 
@@ -194,3 +196,20 @@ $dp7: 0 9px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12), 0 
 $dp8: 0 12px 17px 2px rgba(0, 0, 0, 0.14), 0 5px 22px 4px rgba(0, 0, 0, 0.12), 0 7px 8px -4px rgba(0, 0, 0, 0.2);
 $dp9: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 $dp10: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
+
+$elevation : () !default;
+$elevation: map-merge(
+	(
+		"elevation1": $dp1,
+		"elevation2": $dp2,
+		"elevation3": $dp3,
+		"elevation4": $dp4,
+		"elevation5": $dp5,
+		"elevation6": $dp5,
+		"elevation7": $dp7,
+		"elevation8": $dp8,
+		"elevation9": $dp9,
+		"elevation10": $dp10,
+	),
+	$elevation
+);

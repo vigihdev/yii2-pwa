@@ -1,22 +1,3 @@
-#wrapper, #header, #main, section,#footer{
-	display: block;
-	position: relative;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-}
-
-#wrapper{
-	margin: auto;
-	max-width: 600px;
-	height: 100vh;
-	overflow: auto;
-}
-
-section.section{
-	margin-bottom: 100px;
-}
-
 body.main-blank #main{
 	@include transform-translateY(50%);
 }

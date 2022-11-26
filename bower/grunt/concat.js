@@ -54,7 +54,11 @@ const isFileExtname = (pathStr, extension) => !!path.extname(pathStr) && path.ex
 
 function cssDistFiles() {
     const result = new Array();
-    const parent = [dirs.BOWER_POSIX + '/bootstrap/dist/css/bootstrap.css', dirs.BOWER_POSIX + '/themes/src/dist/css/themes.css'];
+    const parent = [
+        dirs.BOWER_POSIX + '/bootstrap/dist/css/bootstrap.css', 
+        dirs.BOWER_POSIX + '/themes/src/dist/css/themes.css',
+        dirs.BOWER_POSIX + '/themes-test/src/dist/css/themes-test.css'
+    ];
     const _dist = '/dist/css';
 
     TreeJs(dirs.BOWER_POSIX,{exclude:paternExclude})?.children.forEach(t => {

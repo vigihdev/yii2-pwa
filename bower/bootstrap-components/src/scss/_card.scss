@@ -1,9 +1,41 @@
 @use "sass:math";
+$paper-grey-50: #fafafa !default;
+$paper-grey-100: #f5f5f5 !default;
+$paper-grey-200: #eeeeee !default;
+$paper-grey-300: #e0e0e0 !default;
+$paper-grey-400: #bdbdbd !default;
+$paper-grey-500: #9e9e9e !default;
+$paper-grey-600: #757575 !default;
+$paper-grey-700: #616161 !default;
+$paper-grey-800: #424242 !default;
+$paper-grey-900: #212121 !default;
 
+$card-border-radius : 8px;
 .card{
 	&.card-dp2{
 		@include BoxShadow(2);
+		@include border-radius($card-border-radius);
+		border: none;
+	}
+
+	&.card-dp3{
+		@include BoxShadow(3);
 		@include border-radius(8px);
 		border: none;
+	}
+
+	.card-media{
+		.img-media{
+			@include border-top-radius($card-border-radius);
+		}
+	}
+}
+
+.card-dark{
+	@extend .card;
+	background: $paper-grey-800;
+	color: tint-color($paper-grey-800,65%);
+	.card-footer{
+		background-color: $paper-grey-800;
 	}
 }

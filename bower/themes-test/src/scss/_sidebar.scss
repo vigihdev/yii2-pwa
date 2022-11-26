@@ -1,0 +1,36 @@
+
+
+$sidebar-background : #2d2c2c !default;
+$sidebar-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+  box-shadow 0.15s ease-in-out !default;
+
+.sidebar-test-bootstrap{
+    ul.sidebar-nav{
+        @include BoxShadow(2);
+        height: 100vh;
+        background-color: $sidebar-background;
+        color: tint-color($sidebar-background,65%);
+        border-right: 1px solid tint-color($sidebar-background,20%);
+        position: relative;
+        flex-wrap: nowrap;
+        li.nav-item{
+            @include center0Flex();
+            padding-left: $getter;
+            padding-right: $getter;
+            border-bottom: 1px solid tint-color($sidebar-background,5%);
+            .nav-link{
+                color: tint-color($sidebar-background,65%);
+                flex: auto;
+            }
+        }
+
+        .collapse{ 
+            li.nav-item{
+                @include transition($sidebar-transition);
+                @include hover-focus(){
+                    background-color: tint-color($sidebar-background,5%);
+                }
+            }
+        }
+    }
+}

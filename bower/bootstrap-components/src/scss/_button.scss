@@ -58,6 +58,7 @@
 	}
 	.btn-default.btn-flat.btn-#{$color}{
 		color: $value;
+		@include BoxShadow(1);
 	}
 }
 .btn-default {

@@ -42,3 +42,9 @@
 .pointer-events-none{
 	pointer-events: none;
 }
+
+@each $name, $value in $elevation {
+	.#{$name}{
+		box-shadow: $value;
+	}
+}

@@ -110,6 +110,7 @@
 
 .btn-default.btn-flat.btn-default {
   color: #fff;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary {
@@ -155,6 +156,7 @@
 
 .btn-default.btn-flat.btn-primary {
   color: #0d6efd;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
@@ -200,6 +202,7 @@
 
 .btn-default.btn-flat.btn-secondary {
   color: #6c757d;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-success {
@@ -245,6 +248,7 @@
 
 .btn-default.btn-flat.btn-success {
   color: #198754;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-info {
@@ -290,6 +294,7 @@
 
 .btn-default.btn-flat.btn-info {
   color: #0dcaf0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-warning {
@@ -335,6 +340,7 @@
 
 .btn-default.btn-flat.btn-warning {
   color: #ffc107;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-danger {
@@ -380,6 +386,7 @@
 
 .btn-default.btn-flat.btn-danger {
   color: #dc3545;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-light {
@@ -425,25 +432,26 @@
 
 .btn-default.btn-flat.btn-light {
   color: #f8f9fa;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-dark {
   color: #fff;
-  background-color: #212529;
+  background-color: #333;
 }
 .btn-dark:hover {
   color: #fff;
-  background-color: #101214;
+  background-color: #202020;
 }
 .btn-dark:focus, .btn-dark.focus, .btn-dark:active, .btn-dark.active, .btn-dark.active.focus, .btn-dark.active:focus, .btn-dark:active.focus, .btn-dark:active:focus {
   color: #fff;
-  background-color: #101214;
+  background-color: #202020;
 }
 .btn-dark .ink {
-  background-color: #0a0c0d;
+  background-color: #1a1a1a;
 }
 .btn-dark.btn-flat {
-  color: #212529;
+  color: #333;
   background-color: transparent;
   border-color: transparent;
 }
@@ -451,25 +459,26 @@
   background-color: #e5e5e5;
 }
 .btn-dark.btn-flat:active, .btn-dark.btn-flat.active, .btn-dark.btn-flat:focus {
-  color: #212529;
+  color: #333;
   background-color: #cccccc;
 }
 .btn-dark.btn-flat .ink {
   background-color: #808080;
 }
 .btn-dark.btn-outline {
-  border-color: #212529;
+  border-color: #333;
   background-color: transparent;
-  color: #212529;
+  color: #333;
 }
 .btn-dark.btn-outline:hover, .btn-dark.btn-outline:focus {
-  border-color: #0a0c0d;
-  background-color: #101214;
+  border-color: #1a1a1a;
+  background-color: #202020;
   color: #fff;
 }
 
 .btn-default.btn-flat.btn-dark {
-  color: #212529;
+  color: #333;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-error {
@@ -515,96 +524,7 @@
 
 .btn-default.btn-flat.btn-error {
   color: #dc3545;
-}
-
-.btn-inverse {
-  color: #fff;
-  background-color: #212529;
-}
-.btn-inverse:hover {
-  color: #fff;
-  background-color: #101214;
-}
-.btn-inverse:focus, .btn-inverse.focus, .btn-inverse:active, .btn-inverse.active, .btn-inverse.active.focus, .btn-inverse.active:focus, .btn-inverse:active.focus, .btn-inverse:active:focus {
-  color: #fff;
-  background-color: #101214;
-}
-.btn-inverse .ink {
-  background-color: #0a0c0d;
-}
-.btn-inverse.btn-flat {
-  color: #212529;
-  background-color: transparent;
-  border-color: transparent;
-}
-.btn-inverse.btn-flat:hover {
-  background-color: #e5e5e5;
-}
-.btn-inverse.btn-flat:active, .btn-inverse.btn-flat.active, .btn-inverse.btn-flat:focus {
-  color: #212529;
-  background-color: #cccccc;
-}
-.btn-inverse.btn-flat .ink {
-  background-color: #808080;
-}
-.btn-inverse.btn-outline {
-  border-color: #212529;
-  background-color: transparent;
-  color: #212529;
-}
-.btn-inverse.btn-outline:hover, .btn-inverse.btn-outline:focus {
-  border-color: #0a0c0d;
-  background-color: #101214;
-  color: #fff;
-}
-
-.btn-default.btn-flat.btn-inverse {
-  color: #212529;
-}
-
-.btn-information {
-  color: #fff;
-  background-color: #0dcaf0;
-}
-.btn-information:hover {
-  color: #fff;
-  background-color: #0babcc;
-}
-.btn-information:focus, .btn-information.focus, .btn-information:active, .btn-information.active, .btn-information.active.focus, .btn-information.active:focus, .btn-information:active.focus, .btn-information:active:focus {
-  color: #fff;
-  background-color: #0babcc;
-}
-.btn-information .ink {
-  background-color: #0aa1c0;
-}
-.btn-information.btn-flat {
-  color: #0dcaf0;
-  background-color: transparent;
-  border-color: transparent;
-}
-.btn-information.btn-flat:hover {
-  background-color: #e5e5e5;
-}
-.btn-information.btn-flat:active, .btn-information.btn-flat.active, .btn-information.btn-flat:focus {
-  color: #0dcaf0;
-  background-color: #cccccc;
-}
-.btn-information.btn-flat .ink {
-  background-color: #808080;
-}
-.btn-information.btn-outline {
-  border-color: #0dcaf0;
-  background-color: transparent;
-  color: #0dcaf0;
-}
-.btn-information.btn-outline:hover, .btn-information.btn-outline:focus {
-  border-color: #0aa1c0;
-  background-color: #0babcc;
-  color: #fff;
-}
-
-.btn-default.btn-flat.btn-information {
-  color: #0dcaf0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-indigo {
@@ -650,6 +570,99 @@
 
 .btn-default.btn-flat.btn-indigo {
   color: #6610f2;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-inverse {
+  color: #fff;
+  background-color: #333;
+}
+.btn-inverse:hover {
+  color: #fff;
+  background-color: #202020;
+}
+.btn-inverse:focus, .btn-inverse.focus, .btn-inverse:active, .btn-inverse.active, .btn-inverse.active.focus, .btn-inverse.active:focus, .btn-inverse:active.focus, .btn-inverse:active:focus {
+  color: #fff;
+  background-color: #202020;
+}
+.btn-inverse .ink {
+  background-color: #1a1a1a;
+}
+.btn-inverse.btn-flat {
+  color: #333;
+  background-color: transparent;
+  border-color: transparent;
+}
+.btn-inverse.btn-flat:hover {
+  background-color: #e5e5e5;
+}
+.btn-inverse.btn-flat:active, .btn-inverse.btn-flat.active, .btn-inverse.btn-flat:focus {
+  color: #333;
+  background-color: #cccccc;
+}
+.btn-inverse.btn-flat .ink {
+  background-color: #808080;
+}
+.btn-inverse.btn-outline {
+  border-color: #333;
+  background-color: transparent;
+  color: #333;
+}
+.btn-inverse.btn-outline:hover, .btn-inverse.btn-outline:focus {
+  border-color: #1a1a1a;
+  background-color: #202020;
+  color: #fff;
+}
+
+.btn-default.btn-flat.btn-inverse {
+  color: #333;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-information {
+  color: #fff;
+  background-color: #0dcaf0;
+}
+.btn-information:hover {
+  color: #fff;
+  background-color: #0babcc;
+}
+.btn-information:focus, .btn-information.focus, .btn-information:active, .btn-information.active, .btn-information.active.focus, .btn-information.active:focus, .btn-information:active.focus, .btn-information:active:focus {
+  color: #fff;
+  background-color: #0babcc;
+}
+.btn-information .ink {
+  background-color: #0aa1c0;
+}
+.btn-information.btn-flat {
+  color: #0dcaf0;
+  background-color: transparent;
+  border-color: transparent;
+}
+.btn-information.btn-flat:hover {
+  background-color: #e5e5e5;
+}
+.btn-information.btn-flat:active, .btn-information.btn-flat.active, .btn-information.btn-flat:focus {
+  color: #0dcaf0;
+  background-color: #cccccc;
+}
+.btn-information.btn-flat .ink {
+  background-color: #808080;
+}
+.btn-information.btn-outline {
+  border-color: #0dcaf0;
+  background-color: transparent;
+  color: #0dcaf0;
+}
+.btn-information.btn-outline:hover, .btn-information.btn-outline:focus {
+  border-color: #0aa1c0;
+  background-color: #0babcc;
+  color: #fff;
+}
+
+.btn-default.btn-flat.btn-information {
+  color: #0dcaf0;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .btn-default.btn-flat {
@@ -972,10 +985,27 @@
   flex: 1 1 auto;
 }
 
-.card.card-dp2 {
+.card.card-dp2, .card-dp2.card-dark {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   border: none;
+}
+.card.card-dp3, .card-dp3.card-dark {
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: none;
+}
+.card .card-media .img-media, .card-dark .card-media .img-media {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-dark {
+  background: #424242;
+  color: #bdbdbd;
+}
+.card-dark .card-footer {
+  background-color: #424242;
 }
 
 .badge {
@@ -991,6 +1021,33 @@
   color: #fff;
   text-decoration: none;
   cursor: pointer;
+}
+
+.badge-default {
+  color: #212529;
+  background-color: #fff;
+}
+.badge-default:hover, .badge-default:focus {
+  color: #212529;
+  background-color: #e6e6e6;
+}
+
+.badge-primary {
+  color: #fff;
+  background-color: #0d6efd;
+}
+.badge-primary:hover, .badge-primary:focus {
+  color: #fff;
+  background-color: #0257d5;
+}
+
+.badge-secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+.badge-secondary:hover, .badge-secondary:focus {
+  color: #fff;
+  background-color: #545b62;
 }
 
 .badge-success {
@@ -1020,6 +1077,33 @@
   background-color: #d39e00;
 }
 
+.badge-danger {
+  color: #fff;
+  background-color: #dc3545;
+}
+.badge-danger:hover, .badge-danger:focus {
+  color: #fff;
+  background-color: #bd2130;
+}
+
+.badge-light {
+  color: #212529;
+  background-color: #f8f9fa;
+}
+.badge-light:hover, .badge-light:focus {
+  color: #212529;
+  background-color: #dae0e5;
+}
+
+.badge-dark {
+  color: #fff;
+  background-color: #333;
+}
+.badge-dark:hover, .badge-dark:focus {
+  color: #fff;
+  background-color: #1a1a1a;
+}
+
 .badge-error {
   color: #fff;
   background-color: #dc3545;
@@ -1029,13 +1113,22 @@
   background-color: #bd2130;
 }
 
+.badge-indigo {
+  color: #fff;
+  background-color: #6610f2;
+}
+.badge-indigo:hover, .badge-indigo:focus {
+  color: #fff;
+  background-color: #510bc4;
+}
+
 .badge-inverse {
   color: #fff;
-  background-color: #212529;
+  background-color: #333;
 }
 .badge-inverse:hover, .badge-inverse:focus {
   color: #fff;
-  background-color: #0a0c0d;
+  background-color: #1a1a1a;
 }
 
 .badge-information {
@@ -1045,15 +1138,6 @@
 .badge-information:hover, .badge-information:focus {
   color: #fff;
   background-color: #0aa1c0;
-}
-
-.badge-indigo {
-  color: #fff;
-  background-color: #6610f2;
-}
-.badge-indigo:hover, .badge-indigo:focus {
-  color: #fff;
-  background-color: #510bc4;
 }
 
 .badge {
@@ -1380,39 +1464,39 @@
 
 .chip.chip-dark {
   color: #fff;
-  background-color: #212529;
+  background-color: #333;
 }
 .chip.chip-dark:hover, .chip.chip-dark:focus {
   color: #fff;
-  background-color: #0a0c0d;
+  background-color: #1a1a1a;
 }
 
 .chip.chip-outline-dark {
-  color: #212529;
-  border-color: #212529;
+  color: #333;
+  border-color: #333;
   border: 1px solid;
   background-color: transparent;
   background: transparent;
 }
 .chip.chip-outline-dark:hover {
   color: #fff;
-  background-color: #212529;
-  border-color: #212529;
+  background-color: #333;
+  border-color: #333;
 }
 .chip.chip-outline-dark:focus, .chip.chip-outline-dark.focus {
-  box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(51, 51, 51, 0.5);
 }
 .chip.chip-outline-dark.disabled, .chip.chip-outline-dark:disabled {
-  color: #212529;
+  color: #333;
   background-color: transparent;
 }
 .chip.chip-outline-dark:not(:disabled):not(.disabled):active, .chip.chip-outline-dark:not(:disabled):not(.disabled).active, .show > .chip.chip-outline-dark.dropdown-toggle {
   color: #fff;
-  background-color: #212529;
-  border-color: #212529;
+  background-color: #333;
+  border-color: #333;
 }
 .chip.chip-outline-dark:not(:disabled):not(.disabled):active:focus, .chip.chip-outline-dark:not(:disabled):not(.disabled).active:focus, .show > .chip.chip-outline-dark.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(51, 51, 51, 0.5);
 }
 
 .chip.chip-error {
@@ -1452,41 +1536,78 @@
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
 }
 
+.chip.chip-indigo {
+  color: #fff;
+  background-color: #6610f2;
+}
+.chip.chip-indigo:hover, .chip.chip-indigo:focus {
+  color: #fff;
+  background-color: #510bc4;
+}
+
+.chip.chip-outline-indigo {
+  color: #6610f2;
+  border-color: #6610f2;
+  border: 1px solid;
+  background-color: transparent;
+  background: transparent;
+}
+.chip.chip-outline-indigo:hover {
+  color: #fff;
+  background-color: #6610f2;
+  border-color: #6610f2;
+}
+.chip.chip-outline-indigo:focus, .chip.chip-outline-indigo.focus {
+  box-shadow: 0 0 0 0.2rem rgba(102, 16, 242, 0.5);
+}
+.chip.chip-outline-indigo.disabled, .chip.chip-outline-indigo:disabled {
+  color: #6610f2;
+  background-color: transparent;
+}
+.chip.chip-outline-indigo:not(:disabled):not(.disabled):active, .chip.chip-outline-indigo:not(:disabled):not(.disabled).active, .show > .chip.chip-outline-indigo.dropdown-toggle {
+  color: #fff;
+  background-color: #6610f2;
+  border-color: #6610f2;
+}
+.chip.chip-outline-indigo:not(:disabled):not(.disabled):active:focus, .chip.chip-outline-indigo:not(:disabled):not(.disabled).active:focus, .show > .chip.chip-outline-indigo.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(102, 16, 242, 0.5);
+}
+
 .chip.chip-inverse {
   color: #fff;
-  background-color: #212529;
+  background-color: #333;
 }
 .chip.chip-inverse:hover, .chip.chip-inverse:focus {
   color: #fff;
-  background-color: #0a0c0d;
+  background-color: #1a1a1a;
 }
 
 .chip.chip-outline-inverse {
-  color: #212529;
-  border-color: #212529;
+  color: #333;
+  border-color: #333;
   border: 1px solid;
   background-color: transparent;
   background: transparent;
 }
 .chip.chip-outline-inverse:hover {
   color: #fff;
-  background-color: #212529;
-  border-color: #212529;
+  background-color: #333;
+  border-color: #333;
 }
 .chip.chip-outline-inverse:focus, .chip.chip-outline-inverse.focus {
-  box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(51, 51, 51, 0.5);
 }
 .chip.chip-outline-inverse.disabled, .chip.chip-outline-inverse:disabled {
-  color: #212529;
+  color: #333;
   background-color: transparent;
 }
 .chip.chip-outline-inverse:not(:disabled):not(.disabled):active, .chip.chip-outline-inverse:not(:disabled):not(.disabled).active, .show > .chip.chip-outline-inverse.dropdown-toggle {
   color: #fff;
-  background-color: #212529;
-  border-color: #212529;
+  background-color: #333;
+  border-color: #333;
 }
 .chip.chip-outline-inverse:not(:disabled):not(.disabled):active:focus, .chip.chip-outline-inverse:not(:disabled):not(.disabled).active:focus, .show > .chip.chip-outline-inverse.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(51, 51, 51, 0.5);
 }
 
 .chip.chip-information {
@@ -1524,43 +1645,6 @@
 }
 .chip.chip-outline-information:not(:disabled):not(.disabled):active:focus, .chip.chip-outline-information:not(:disabled):not(.disabled).active:focus, .show > .chip.chip-outline-information.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(13, 202, 240, 0.5);
-}
-
-.chip.chip-indigo {
-  color: #fff;
-  background-color: #6610f2;
-}
-.chip.chip-indigo:hover, .chip.chip-indigo:focus {
-  color: #fff;
-  background-color: #510bc4;
-}
-
-.chip.chip-outline-indigo {
-  color: #6610f2;
-  border-color: #6610f2;
-  border: 1px solid;
-  background-color: transparent;
-  background: transparent;
-}
-.chip.chip-outline-indigo:hover {
-  color: #fff;
-  background-color: #6610f2;
-  border-color: #6610f2;
-}
-.chip.chip-outline-indigo:focus, .chip.chip-outline-indigo.focus {
-  box-shadow: 0 0 0 0.2rem rgba(102, 16, 242, 0.5);
-}
-.chip.chip-outline-indigo.disabled, .chip.chip-outline-indigo:disabled {
-  color: #6610f2;
-  background-color: transparent;
-}
-.chip.chip-outline-indigo:not(:disabled):not(.disabled):active, .chip.chip-outline-indigo:not(:disabled):not(.disabled).active, .show > .chip.chip-outline-indigo.dropdown-toggle {
-  color: #fff;
-  background-color: #6610f2;
-  border-color: #6610f2;
-}
-.chip.chip-outline-indigo:not(:disabled):not(.disabled):active:focus, .chip.chip-outline-indigo:not(:disabled):not(.disabled).active:focus, .show > .chip.chip-outline-indigo.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(102, 16, 242, 0.5);
 }
 
 .chip {
@@ -1879,16 +1963,16 @@
 }
 
 .switch-root.switch-dark.checked .switch-track {
-  background-color: #212529;
+  background-color: #333;
 }
 .switch-root.switch-dark.checked .switch-container .switch-thumb {
-  background-color: #212529;
+  background-color: #333;
 }
 .switch-root.switch-dark.switch-ripple .switch-container .switch-thumb-ripple {
-  background: rgba(33, 37, 41, 0.2);
+  background: rgba(51, 51, 51, 0.2);
 }
 .switch-root.switch-dark:hover .switch-thumb, .switch-root.switch-dark:focus .switch-thumb, .switch-root.switch-dark:active .switch-thumb {
-  box-shadow: rgba(33, 37, 41, 0.2) 0px 0px 0px 8px;
+  box-shadow: rgba(51, 51, 51, 0.2) 0px 0px 0px 8px;
 }
 
 .switch-root.switch-error.checked .switch-track {
@@ -1904,17 +1988,30 @@
   box-shadow: rgba(220, 53, 69, 0.2) 0px 0px 0px 8px;
 }
 
+.switch-root.switch-indigo.checked .switch-track {
+  background-color: #6610f2;
+}
+.switch-root.switch-indigo.checked .switch-container .switch-thumb {
+  background-color: #6610f2;
+}
+.switch-root.switch-indigo.switch-ripple .switch-container .switch-thumb-ripple {
+  background: rgba(102, 16, 242, 0.2);
+}
+.switch-root.switch-indigo:hover .switch-thumb, .switch-root.switch-indigo:focus .switch-thumb, .switch-root.switch-indigo:active .switch-thumb {
+  box-shadow: rgba(102, 16, 242, 0.2) 0px 0px 0px 8px;
+}
+
 .switch-root.switch-inverse.checked .switch-track {
-  background-color: #212529;
+  background-color: #333;
 }
 .switch-root.switch-inverse.checked .switch-container .switch-thumb {
-  background-color: #212529;
+  background-color: #333;
 }
 .switch-root.switch-inverse.switch-ripple .switch-container .switch-thumb-ripple {
-  background: rgba(33, 37, 41, 0.2);
+  background: rgba(51, 51, 51, 0.2);
 }
 .switch-root.switch-inverse:hover .switch-thumb, .switch-root.switch-inverse:focus .switch-thumb, .switch-root.switch-inverse:active .switch-thumb {
-  box-shadow: rgba(33, 37, 41, 0.2) 0px 0px 0px 8px;
+  box-shadow: rgba(51, 51, 51, 0.2) 0px 0px 0px 8px;
 }
 
 .switch-root.switch-information.checked .switch-track {
@@ -1928,19 +2025,6 @@
 }
 .switch-root.switch-information:hover .switch-thumb, .switch-root.switch-information:focus .switch-thumb, .switch-root.switch-information:active .switch-thumb {
   box-shadow: rgba(13, 202, 240, 0.2) 0px 0px 0px 8px;
-}
-
-.switch-root.switch-indigo.checked .switch-track {
-  background-color: #6610f2;
-}
-.switch-root.switch-indigo.checked .switch-container .switch-thumb {
-  background-color: #6610f2;
-}
-.switch-root.switch-indigo.switch-ripple .switch-container .switch-thumb-ripple {
-  background: rgba(102, 16, 242, 0.2);
-}
-.switch-root.switch-indigo:hover .switch-thumb, .switch-root.switch-indigo:focus .switch-thumb, .switch-root.switch-indigo:active .switch-thumb {
-  box-shadow: rgba(102, 16, 242, 0.2) 0px 0px 0px 8px;
 }
 
 .radio-button-group {
@@ -2528,26 +2612,26 @@
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 .radio-button.radio-button-dark .radio-button-container:hover, .radio-button.radio-button-dark .radio-button-container:focus, .radio-button.radio-button-dark .radio-button-container:active {
-  background-color: rgba(33, 37, 41, 0.1);
+  background-color: rgba(51, 51, 51, 0.1);
 }
 .radio-button.radio-button-dark.checked .radio-button-container {
-  color: rgba(33, 37, 41, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 .radio-button.radio-button-dark.checked .radio-button-container .radio-button-thumb svg.radio-button-checked-icon {
   -ms-transform: scale(1);
   -webkit-transform: scale(1);
   transform: scale(1);
-  color: #212529;
+  color: #333;
 }
 .radio-button.radio-button-dark.checked label {
-  color: #212529;
+  color: #333;
 }
 .radio-button.radio-button-dark.button-ripple .radio-button-container {
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  background-color: rgba(33, 37, 41, 0.2);
+  background-color: rgba(51, 51, 51, 0.2);
 }
 
 .radio-checkbox.radio-checkbox-dark .radio-checkbox-container {
@@ -2557,26 +2641,26 @@
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 .radio-checkbox.radio-checkbox-dark .radio-checkbox-container:hover, .radio-checkbox.radio-checkbox-dark .radio-checkbox-container:focus, .radio-checkbox.radio-checkbox-dark .radio-checkbox-container:active {
-  background-color: rgba(33, 37, 41, 0.1);
+  background-color: rgba(51, 51, 51, 0.1);
 }
 .radio-checkbox.radio-checkbox-dark.checked .radio-checkbox-container {
-  color: rgba(33, 37, 41, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 .radio-checkbox.radio-checkbox-dark.checked .radio-checkbox-container .radio-checkbox-thumb svg.radio-checkbox-checked-icon {
   -ms-transform: scale(1);
   -webkit-transform: scale(1);
   transform: scale(1);
-  color: #212529;
+  color: #333;
 }
 .radio-checkbox.radio-checkbox-dark.checked label {
-  color: #212529;
+  color: #333;
 }
 .radio-checkbox.radio-checkbox-dark.checkbox-ripple .radio-checkbox-container {
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  background-color: rgba(33, 37, 41, 0.2);
+  background-color: rgba(51, 51, 51, 0.2);
 }
 
 .radio-button.radio-button-error .radio-button-container {
@@ -2637,6 +2721,64 @@
   background-color: rgba(220, 53, 69, 0.2);
 }
 
+.radio-button.radio-button-indigo .radio-button-container {
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.radio-button.radio-button-indigo .radio-button-container:hover, .radio-button.radio-button-indigo .radio-button-container:focus, .radio-button.radio-button-indigo .radio-button-container:active {
+  background-color: rgba(102, 16, 242, 0.1);
+}
+.radio-button.radio-button-indigo.checked .radio-button-container {
+  color: rgba(102, 16, 242, 0.7);
+}
+.radio-button.radio-button-indigo.checked .radio-button-container .radio-button-thumb svg.radio-button-checked-icon {
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  color: #6610f2;
+}
+.radio-button.radio-button-indigo.checked label {
+  color: #6610f2;
+}
+.radio-button.radio-button-indigo.button-ripple .radio-button-container {
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: rgba(102, 16, 242, 0.2);
+}
+
+.radio-checkbox.radio-checkbox-indigo .radio-checkbox-container {
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.radio-checkbox.radio-checkbox-indigo .radio-checkbox-container:hover, .radio-checkbox.radio-checkbox-indigo .radio-checkbox-container:focus, .radio-checkbox.radio-checkbox-indigo .radio-checkbox-container:active {
+  background-color: rgba(102, 16, 242, 0.1);
+}
+.radio-checkbox.radio-checkbox-indigo.checked .radio-checkbox-container {
+  color: rgba(102, 16, 242, 0.7);
+}
+.radio-checkbox.radio-checkbox-indigo.checked .radio-checkbox-container .radio-checkbox-thumb svg.radio-checkbox-checked-icon {
+  -ms-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  color: #6610f2;
+}
+.radio-checkbox.radio-checkbox-indigo.checked label {
+  color: #6610f2;
+}
+.radio-checkbox.radio-checkbox-indigo.checkbox-ripple .radio-checkbox-container {
+  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: rgba(102, 16, 242, 0.2);
+}
+
 .radio-button.radio-button-inverse .radio-button-container {
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -2644,26 +2786,26 @@
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 .radio-button.radio-button-inverse .radio-button-container:hover, .radio-button.radio-button-inverse .radio-button-container:focus, .radio-button.radio-button-inverse .radio-button-container:active {
-  background-color: rgba(33, 37, 41, 0.1);
+  background-color: rgba(51, 51, 51, 0.1);
 }
 .radio-button.radio-button-inverse.checked .radio-button-container {
-  color: rgba(33, 37, 41, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 .radio-button.radio-button-inverse.checked .radio-button-container .radio-button-thumb svg.radio-button-checked-icon {
   -ms-transform: scale(1);
   -webkit-transform: scale(1);
   transform: scale(1);
-  color: #212529;
+  color: #333;
 }
 .radio-button.radio-button-inverse.checked label {
-  color: #212529;
+  color: #333;
 }
 .radio-button.radio-button-inverse.button-ripple .radio-button-container {
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  background-color: rgba(33, 37, 41, 0.2);
+  background-color: rgba(51, 51, 51, 0.2);
 }
 
 .radio-checkbox.radio-checkbox-inverse .radio-checkbox-container {
@@ -2673,26 +2815,26 @@
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 .radio-checkbox.radio-checkbox-inverse .radio-checkbox-container:hover, .radio-checkbox.radio-checkbox-inverse .radio-checkbox-container:focus, .radio-checkbox.radio-checkbox-inverse .radio-checkbox-container:active {
-  background-color: rgba(33, 37, 41, 0.1);
+  background-color: rgba(51, 51, 51, 0.1);
 }
 .radio-checkbox.radio-checkbox-inverse.checked .radio-checkbox-container {
-  color: rgba(33, 37, 41, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 .radio-checkbox.radio-checkbox-inverse.checked .radio-checkbox-container .radio-checkbox-thumb svg.radio-checkbox-checked-icon {
   -ms-transform: scale(1);
   -webkit-transform: scale(1);
   transform: scale(1);
-  color: #212529;
+  color: #333;
 }
 .radio-checkbox.radio-checkbox-inverse.checked label {
-  color: #212529;
+  color: #333;
 }
 .radio-checkbox.radio-checkbox-inverse.checkbox-ripple .radio-checkbox-container {
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  background-color: rgba(33, 37, 41, 0.2);
+  background-color: rgba(51, 51, 51, 0.2);
 }
 
 .radio-button.radio-button-information .radio-button-container {
@@ -2751,64 +2893,6 @@
   -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   background-color: rgba(13, 202, 240, 0.2);
-}
-
-.radio-button.radio-button-indigo .radio-button-container {
-  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
-.radio-button.radio-button-indigo .radio-button-container:hover, .radio-button.radio-button-indigo .radio-button-container:focus, .radio-button.radio-button-indigo .radio-button-container:active {
-  background-color: rgba(102, 16, 242, 0.1);
-}
-.radio-button.radio-button-indigo.checked .radio-button-container {
-  color: rgba(102, 16, 242, 0.7);
-}
-.radio-button.radio-button-indigo.checked .radio-button-container .radio-button-thumb svg.radio-button-checked-icon {
-  -ms-transform: scale(1);
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  color: #6610f2;
-}
-.radio-button.radio-button-indigo.checked label {
-  color: #6610f2;
-}
-.radio-button.radio-button-indigo.button-ripple .radio-button-container {
-  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  background-color: rgba(102, 16, 242, 0.2);
-}
-
-.radio-checkbox.radio-checkbox-indigo .radio-checkbox-container {
-  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
-.radio-checkbox.radio-checkbox-indigo .radio-checkbox-container:hover, .radio-checkbox.radio-checkbox-indigo .radio-checkbox-container:focus, .radio-checkbox.radio-checkbox-indigo .radio-checkbox-container:active {
-  background-color: rgba(102, 16, 242, 0.1);
-}
-.radio-checkbox.radio-checkbox-indigo.checked .radio-checkbox-container {
-  color: rgba(102, 16, 242, 0.7);
-}
-.radio-checkbox.radio-checkbox-indigo.checked .radio-checkbox-container .radio-checkbox-thumb svg.radio-checkbox-checked-icon {
-  -ms-transform: scale(1);
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  color: #6610f2;
-}
-.radio-checkbox.radio-checkbox-indigo.checked label {
-  color: #6610f2;
-}
-.radio-checkbox.radio-checkbox-indigo.checkbox-ripple .radio-checkbox-container {
-  -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -moz-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  -o-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  background-color: rgba(102, 16, 242, 0.2);
 }
 
 .checkbox-outline {
@@ -3060,20 +3144,20 @@
 }
 
 .checkbox-outline.checkbox-outline-dark .checkbox-outline-container:hover, .checkbox-outline.checkbox-outline-dark .checkbox-outline-container:focus, .checkbox-outline.checkbox-outline-dark .checkbox-outline-container:active {
-  background-color: rgba(33, 37, 41, 0.2);
+  background-color: rgba(51, 51, 51, 0.2);
 }
 .checkbox-outline.checkbox-outline-dark.checked .checkbox-outline-checked-icon,
 .checkbox-outline.checkbox-outline-dark.checked .checkbox-outline-unchecked-icon {
   -moz-transform: scale(1);
   -webkit-transform: scale(1);
   transform: scale(1);
-  color: #212529;
+  color: #333;
 }
 .checkbox-outline.checkbox-outline-dark.checked label {
-  color: #212529;
+  color: #333;
 }
 .checkbox-outline.checkbox-outline-dark.checkbox-outline-ripple .checkbox-outline-container {
-  background-color: rgba(33, 37, 41, 0.1);
+  background-color: rgba(51, 51, 51, 0.1);
 }
 
 .checkbox-outline.checkbox-outline-error .checkbox-outline-container:hover, .checkbox-outline.checkbox-outline-error .checkbox-outline-container:focus, .checkbox-outline.checkbox-outline-error .checkbox-outline-container:active {
@@ -3093,21 +3177,38 @@
   background-color: rgba(220, 53, 69, 0.1);
 }
 
+.checkbox-outline.checkbox-outline-indigo .checkbox-outline-container:hover, .checkbox-outline.checkbox-outline-indigo .checkbox-outline-container:focus, .checkbox-outline.checkbox-outline-indigo .checkbox-outline-container:active {
+  background-color: rgba(102, 16, 242, 0.2);
+}
+.checkbox-outline.checkbox-outline-indigo.checked .checkbox-outline-checked-icon,
+.checkbox-outline.checkbox-outline-indigo.checked .checkbox-outline-unchecked-icon {
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  color: #6610f2;
+}
+.checkbox-outline.checkbox-outline-indigo.checked label {
+  color: #6610f2;
+}
+.checkbox-outline.checkbox-outline-indigo.checkbox-outline-ripple .checkbox-outline-container {
+  background-color: rgba(102, 16, 242, 0.1);
+}
+
 .checkbox-outline.checkbox-outline-inverse .checkbox-outline-container:hover, .checkbox-outline.checkbox-outline-inverse .checkbox-outline-container:focus, .checkbox-outline.checkbox-outline-inverse .checkbox-outline-container:active {
-  background-color: rgba(33, 37, 41, 0.2);
+  background-color: rgba(51, 51, 51, 0.2);
 }
 .checkbox-outline.checkbox-outline-inverse.checked .checkbox-outline-checked-icon,
 .checkbox-outline.checkbox-outline-inverse.checked .checkbox-outline-unchecked-icon {
   -moz-transform: scale(1);
   -webkit-transform: scale(1);
   transform: scale(1);
-  color: #212529;
+  color: #333;
 }
 .checkbox-outline.checkbox-outline-inverse.checked label {
-  color: #212529;
+  color: #333;
 }
 .checkbox-outline.checkbox-outline-inverse.checkbox-outline-ripple .checkbox-outline-container {
-  background-color: rgba(33, 37, 41, 0.1);
+  background-color: rgba(51, 51, 51, 0.1);
 }
 
 .checkbox-outline.checkbox-outline-information .checkbox-outline-container:hover, .checkbox-outline.checkbox-outline-information .checkbox-outline-container:focus, .checkbox-outline.checkbox-outline-information .checkbox-outline-container:active {
@@ -3125,23 +3226,6 @@
 }
 .checkbox-outline.checkbox-outline-information.checkbox-outline-ripple .checkbox-outline-container {
   background-color: rgba(13, 202, 240, 0.1);
-}
-
-.checkbox-outline.checkbox-outline-indigo .checkbox-outline-container:hover, .checkbox-outline.checkbox-outline-indigo .checkbox-outline-container:focus, .checkbox-outline.checkbox-outline-indigo .checkbox-outline-container:active {
-  background-color: rgba(102, 16, 242, 0.2);
-}
-.checkbox-outline.checkbox-outline-indigo.checked .checkbox-outline-checked-icon,
-.checkbox-outline.checkbox-outline-indigo.checked .checkbox-outline-unchecked-icon {
-  -moz-transform: scale(1);
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  color: #6610f2;
-}
-.checkbox-outline.checkbox-outline-indigo.checked label {
-  color: #6610f2;
-}
-.checkbox-outline.checkbox-outline-indigo.checkbox-outline-ripple .checkbox-outline-container {
-  background-color: rgba(102, 16, 242, 0.1);
 }
 
 /*# sourceMappingURL=bootstrap-components.css.map */
