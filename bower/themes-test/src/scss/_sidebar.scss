@@ -1,10 +1,29 @@
-
-
-$sidebar-background : #2d2c2c !default;
-$sidebar-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-  box-shadow 0.15s ease-in-out !default;
+@use "sass:math";
 
 .sidebar-test-bootstrap{
+    .sidebar-brand .link-brand{
+        background-color: $sidebar-background;
+        color: tint-color($sidebar-background,65%);
+        border-right: 1px solid tint-color($sidebar-background,20%);
+        padding: math.div($getter,2);
+        @include BoxShadow(2);
+        @include center0Flex();
+        .brand{
+            .img-brand{
+                @include size(50px);
+                @include border-radius(50%);
+                @include BoxShadow(2);
+            }
+        }
+        .brand-text{
+            font-size: 1.5em;
+            color: color-yig($sidebar-background);
+            font-family: $font-family-roboto-bold;
+            padding-left: $getter;
+            flex: auto;
+        }  
+    }
+
     ul.sidebar-nav{
         @include BoxShadow(2);
         height: 100vh;
@@ -17,16 +36,36 @@ $sidebar-transition: background-color 0.15s ease-in-out, border-color 0.15s ease
             @include center0Flex();
             padding-left: $getter;
             padding-right: $getter;
+            padding-top: 6px;
+            padding-bottom: 6px;
             border-bottom: 1px solid tint-color($sidebar-background,5%);
             .nav-link{
                 color: tint-color($sidebar-background,65%);
                 flex: auto;
             }
+            .spacer-nav{
+                width: 20px;
+                height: auto;
+            }
+            &.active{
+                background-color: tint-color($sidebar-background,5%);
+                .nav-link{
+                    color: color-yiq($sidebar-background);
+                }
+            }
+            &.current{
+                background-color: #333;
+                @include BoxShadow(2);
+                .nav-link,
+                .material-icons {
+                    color: color-yiq($sidebar-background);
+                }
+            }
         }
 
-        .collapse{ 
+        ul.collapse{ 
             li.nav-item{
-                @include transition($sidebar-transition);
+                @include transition($sidebar-transition-background-color);
                 @include hover-focus(){
                     background-color: tint-color($sidebar-background,5%);
                 }

@@ -10,10 +10,13 @@ use Yii;
 use app\models\test\bootstrap\Button;
 use app\models\test\bootstrap\Card;
 use app\models\test\bootstrap\Checkbox;
+use app\models\test\bootstrap\Color;
+use app\models\test\bootstrap\components\Rating;
 use app\models\test\bootstrap\Form;
 use app\models\test\bootstrap\Lists;
 use app\models\test\bootstrap\MaterialIcons;
 use app\models\test\bootstrap\RadioButton;
+use app\models\test\bootstrap\Shadow;
 use app\models\test\bootstrap\TextFields;
 use app\models\test\bootstrap\Typography;
 
@@ -106,6 +109,18 @@ class TestBootstrapController extends \yii\web\Controller
         return $this->render('lists',['model' => $model]); 
     }
 
+    public function actionShadow()
+    {
+        $model = new Shadow();
+        return $this->render('shadow',['model' => $model]); 
+    }
+
+    public function actionColor()
+    {
+        $model = new Color();
+        return $this->render('color',['model' => $model]); 
+    }
+
     public function actionAccordion(){}
     public function actionDropdown(){}
     public function actionPagination(){}
@@ -126,5 +141,20 @@ class TestBootstrapController extends \yii\web\Controller
     public function actionTooltip(){}
     public function actionNavbar(){}
     public function actionSpinner(){}
+
+    /** @var Block Component */
+    public function actionDataTable(){}
+    public function actionDatetimepicker(){}
+    public function actionRangeSlider(){}
+    public function actionSelect2(){}
+    public function actionCarousel(){}
+    
+    public function actionRating()
+    {
+        $model = new Rating();
+        return $this->render('components/rating',['model' => $model]); 
+    }
+    /** @var End Block Component */
+
 }
 

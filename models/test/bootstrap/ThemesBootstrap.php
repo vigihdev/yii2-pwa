@@ -34,4 +34,9 @@ class ThemesBootstrap extends \yii\base\Model
     {
         return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
     }
+
+    public function lorem30():string
+    {
+        return 'Lorem ipsum dolor sit amet, consectetur';
+    }
 }

@@ -1,0 +1,7 @@
+
+@function dark-tine($key: "1") {
+    @if ( type-of($key) == "number" ) {
+        @return map-get($darkTints, #{$key});
+    }
+    @return map-get($darkTints, $key);
+}

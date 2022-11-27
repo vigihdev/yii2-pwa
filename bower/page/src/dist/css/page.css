@@ -29,10 +29,6 @@ body.error {
   height: auto;
 }
 
-body.auth-login {
-  background-color: #eaeaea;
-}
-
 .section-auth-login img {
   width: 100px;
   height: 100px;

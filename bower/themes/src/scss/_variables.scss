@@ -213,3 +213,42 @@ $elevation: map-merge(
 	),
 	$elevation
 );
+
+// Size Height width Variant
+$sizes40 : 40px !default;
+$sizes80 : 80px !default;
+$sizes120 : 120px !default;
+$sizes160 : 160px !default;
+$list-sizes: () !default;
+$list-sizes: map-merge(
+	(
+		"40": $sizes40,
+		"80": $sizes80,
+		"120": $sizes120,
+		"160": $sizes160,
+	),
+	$list-sizes
+);
+
+// color Exstra darkTint
+$darkTint: #393939 !default;
+$darkTint-100: tint-color($darkTint, 10%) !default;
+$darkTint-200: tint-color($darkTint, 20%) !default;
+$darkTint-400: tint-color($darkTint, 40%) !default;
+$darkTint-600: tint-color($darkTint, 60%) !default;
+$darkTint-800: tint-color($darkTint, 80%) !default;
+$darkTint-900: tint-color($darkTint, 100%) !default;
+
+$darkTints: () !default;
+$darkTints: map-merge(
+	(
+		"0": $darkTint,
+		"1": $darkTint-100,
+		"2": $darkTint-200,
+		"3": $darkTint-400,
+		"4": $darkTint-600,
+		"5": $darkTint-800,
+		"6": $darkTint-900,
+	),
+	$darkTints
+);
