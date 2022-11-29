@@ -1,0 +1,14 @@
+
+@each $name,$value in $dark-tints {
+    .bg-dark-tint-#{$name}{
+        background-color: $value !important;
+    }
+    .text-dark-tint-#{$name}{
+        color: $value !important;
+    }
+    @each $position in $list-position {
+        .border-#{$position}-dark-tint-#{$name}{
+            border-#{$position}: 1px solid $value !important;
+        }
+    }
+}

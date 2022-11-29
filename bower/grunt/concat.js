@@ -57,7 +57,8 @@ function cssDistFiles() {
     const parent = [
         dirs.BOWER_POSIX + '/bootstrap/dist/css/bootstrap.css', 
         dirs.BOWER_POSIX + '/themes/src/dist/css/themes.css',
-        dirs.BOWER_POSIX + '/themes-test/src/dist/css/themes-test.css'
+        dirs.BOWER_POSIX + '/themes-test/src/dist/css/themes-test.css',
+        dirs.BOWER_POSIX + '/themes-dark-tint/src/dist/css/themes-dark-tint.css'
     ];
     const _dist = '/dist/css';
 

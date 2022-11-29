@@ -1,3 +1,4 @@
+@use "sass:math";
 
 body.-test-bootstrap {
     .wrapper {
@@ -6,26 +7,9 @@ body.-test-bootstrap {
         margin: 0;
         position: relative;
         .navbar {
-            height: $navbar-height;
+            height: $sidebar-navbar-brand-height;
             @include BoxShadow(2);
             @include centerBetween();
-            .sidebar-open {
-                @include centerFlex();
-                @include size(40px);
-                @include border-radius(50%);
-                background-color: tint-color($sidebar-background, 100%);
-                @include BoxShadow(2);
-                .matrial-icons {
-                    color: color-yiq(tint-color($sidebar-background, 100%));
-                    font-weight: $font-weight-bolds;
-                }
-            }
-
-            .navbar-container{
-                flex:auto;
-                @include center0Flex();
-                justify-content: end;
-            }
         }
         .sidebar {
             flex: 0 1 $sidebar-width;
@@ -39,22 +23,18 @@ body.-test-bootstrap {
             @include transform-translate3d(0px, 0px, 0px);
             @include transitionTimingFunction($sidebar-transition);
             transition-duration: 1s;
+            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+            background-color: $sidebar-background;
+            border-right: $sidebar-border-width solid $sidebar-border-color;
         }
 
         .content {
             margin-left: $sidebar-width;
-            padding: $navbar-height 0 0 0;
+            padding: $sidebar-navbar-brand-height 0 0 0;
             flex: auto;
             position: relative;
             background-color: $dark;
             font-family: $font-family-roboto-regular;
-            section {
-                padding-left: $getter;
-                padding-right: $getter;
-                padding-top: $getter;
-                padding-bottom: $getter;
-                min-height: 100vh;
-            }
         }
 
         .sidebar-overlay {
@@ -95,7 +75,7 @@ body.-test-bootstrap {
 
 @include media-breakpoint-up(md) {
     body.-test-bootstrap .wrapper {
-        .navbar .sidebar-open{
+        .navbar .sidebar-open {
             display: none;
         }
     }

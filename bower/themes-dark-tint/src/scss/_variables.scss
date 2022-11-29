@@ -1,0 +1,22 @@
+// color Exstra dark-tint
+$dark-tint: #393939 !default;
+$dark-tint-100: tint-color($dark-tint, 10%) !default;
+$dark-tint-200: tint-color($dark-tint, 20%) !default;
+$dark-tint-400: tint-color($dark-tint, 40%) !default;
+$dark-tint-600: tint-color($dark-tint, 60%) !default;
+$dark-tint-800: tint-color($dark-tint, 80%) !default;
+$dark-tint-900: tint-color($dark-tint, 100%) !default;
+
+$dark-tints: () !default;
+$dark-tints: map-merge(
+	(
+		"0": $dark-tint,
+		"1": $dark-tint-100,
+		"2": $dark-tint-200,
+		"3": $dark-tint-400,
+		"4": $dark-tint-600,
+		"5": $dark-tint-800,
+		"6": $dark-tint-900,
+	),
+	$dark-tints
+);

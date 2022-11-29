@@ -43,36 +43,22 @@
 	pointer-events: none;
 }
 
-// Shadow elevation class
-@each $name, $value in $elevation {
-	.#{$name}{
-		box-shadow: $value;
+// Size Width Height Use Rem 
+@for $i from 1 to 20 {
+	.h-#{$i}{
+		height: #{$i}rem;
+	}
+	.w-#{$i}{
+		width: #{$i}rem;
+	}
+	.size-#{$i}{
+		@include size(#{$i}rem);
 	}
 }
 
 // Shadow Material
-@for $i from 0 to 9 {
-	.zdepth#{$i}{
+@for $i from 1 to 10 {
+	.zdepth-#{$i}{
 		@include BoxShadow($i);
-	}
-}
-
-// Size Height Default
-@each $name, $value in $list-sizes {
-	.w--#{$name}{
-		width: $value;
-	}
-	.h--#{$name}{
-		height: $value;
-	}
-}
-
-// Dark Tint Color
-@each $name, $value in $darkTints {
-	.text-dark-tint#{$name}{
-		color: $value;
-	}
-	.bg-dark-tint#{$name}{
-		background-color: $value;
 	}
 }

@@ -1,25 +1,26 @@
-// Ripple effect 
-.ripple-effect { 
-	position: relative; 
-	overflow: hidden; 
-	-webkit-transform: translate3d(0, 0, 0);
+
+// Ripple effect
+.ripple-effect {
+	position: relative;
+	overflow: hidden;
+	@include transform-translate3d(0,0,0);
 }
-.ink { 
-	display: block; 
-	position: absolute; 
-	pointer-events: none; 
-	border-radius: 50%; 
-	-ms-transform: scale(0); 
-	transform: scale(0); 
-	background: #fff; 
+.ink {
+	display: block;
+	position: absolute;
+	pointer-events: none;
+	border-radius: 50%;
+	-ms-transform: scale(0);
+	transform: scale(0);
+	background: #fff;
 	opacity: 1;
-	&.animate { 
-		animation: ripple .5s linear;
+	&.animate {
+		animation: ripple 0.5s linear;
 	}
 }
 @keyframes ripple {
-	100% { 
-		opacity: 0; 
+	100% {
+		opacity: 0;
 		transform: scale(2.5);
 	}
 }

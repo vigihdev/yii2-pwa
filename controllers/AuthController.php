@@ -22,4 +22,16 @@ class AuthController extends \yii\web\Controller
         $model = new RequestPassword();
         return $this->render('request-password',['model' => $model]);
     }
+
+    public function actionKonfirmasiPassword()
+    {
+        $model = new RequestPassword();
+        return $this->render('konfirmasi-password',['model' => $model]);
+    }
+
+    public function actionSignup()
+    {
+        $model = new RequestPassword();
+        return $this->render('signup',['model' => $model]);
+    }
 }      

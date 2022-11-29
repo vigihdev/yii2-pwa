@@ -1,0 +1,26 @@
+@use "sass:math";
+
+body.-test-bootstrap .wrapper .sidebar-test-bootstrap .sidebar-search {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: $sidebar-navbar-brand-height;
+    z-index: $sidebar-navbar-zindex;
+    height: $sidebar-search-height;
+    background-color: $sidebar-background;
+    border-bottom: $sidebar-border-width solid $sidebar-border-color;
+    .form-group {
+        margin-bottom: 0;
+        .form-control{
+            line-height: 50px;
+            color: color-yiq($sidebar-background);
+        }
+    }
+    .btn-sidebar-search {
+        right: 0;
+        @include absoluteCenterY();
+        .material-icons{
+            color: color-yiq($sidebar-background);
+        }
+    }
+}

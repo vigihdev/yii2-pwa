@@ -1,6 +1,12 @@
 @import "../../../mixins/variables";
+@import "../../../themes-dark-tint/src/scss/functions";
 
 @import "variables";
 @import "layout";
 @import "sidebar";
+@import "sidebar-brand";
+@import "sidebar-search";
+@import "content";
+@import "navbar";
+@import "footer";
 @import "test-custom";

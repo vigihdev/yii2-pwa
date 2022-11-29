@@ -3,6 +3,11 @@
 	height: $size;
 }
 
+@mixin scrollY(){
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
 @function color-lighten($color, $lighten: 10%){
 	@return lighten($color,$lighten);
 }
@@ -69,14 +74,14 @@
 	@include transform-translateY(-50%);
 }
 
-@mixin centerXY(){
+@mixin absoluteCenterXY(){
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	@include transform-translate(-50%,-50%);
 }
 
-@mixin centerY(){
+@mixin absoluteCenterY(){
 	position: absolute;
 	top: 50%;
 	@include transform-translateY(-50%);

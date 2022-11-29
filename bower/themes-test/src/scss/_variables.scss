@@ -1,5 +1,20 @@
+
 $sidebar-width: 250px !default;
 $sidebar-transition: cubic-bezier(0.55, 0, 0.1, 1) !default;
-$navbar-height: 60px !default;
+$sidebar-navbar-brand-height: 70px !default;
+$sidebar-navbar-padding: 16px !default;
+$sidebar-navbar-zindex: 1060 !default;
+$sidebar-search-height: 40px !default;
+
 $sidebar-background : #373737 !default;
 $sidebar-transition-background-color: background-color 0.15s ease-in-out;
+$sidebar-color : tint-color($sidebar-background,65%) !default;
+$sidebar-brand-background-color : #333 !default;
+
+$sidebar-border-color : tint-color($sidebar-background,20%) !default;
+$sidebar-nav-item-hover : tint-color($sidebar-background,5%);
+$sidebar-nav-item-active : tint-color($sidebar-background,5%);
+$sidebar-nav-link-color : tint-color($sidebar-background,65%);
+$sidebar-nav-link-border-color : tint-color($sidebar-background,5%);
+$sidebar-nav-item-current : #333;
+$sidebar-border-width : 1px !default;

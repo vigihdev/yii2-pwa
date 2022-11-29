@@ -39,12 +39,12 @@ class SiteController extends Controller
     public function actionIndex()
     {
         Yii::$app->request->getBaseUrl();
-       echo "<pre>";
-        var_dump($this->session);
-        var_dump($this->request);
-        var_dump($this->response);
-       echo "</pre>";
-       die();
+    //    echo "<pre>";
+    //     var_dump($this->session);
+    //     var_dump($this->request);
+    //     var_dump($this->response);
+    //    echo "</pre>";
+    //    die();
         return $this->render('index');
     }
 

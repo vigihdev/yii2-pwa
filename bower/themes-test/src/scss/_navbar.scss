@@ -1,0 +1,19 @@
+body.-test-bootstrap .wrapper .navbar{
+    .sidebar-open {
+        @include centerFlex();
+        @include size(40px);
+        @include border-radius(50%);
+        background-color: tint-color($sidebar-background, 100%);
+        @include BoxShadow(2);
+        .matrial-icons {
+            color: color-yiq(tint-color($sidebar-background, 100%));
+            font-weight: $font-weight-bolds;
+        }
+    }
+
+    .navbar-container {
+        flex: auto;
+        @include center0Flex();
+        justify-content: end;
+    }
+}

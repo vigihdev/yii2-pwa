@@ -8,15 +8,18 @@ use app\models\test\bootstrap\Badge;
 use app\models\test\bootstrap\Chip;
 use Yii;
 use app\models\test\bootstrap\Button;
+use app\models\test\bootstrap\ButtonGroup;
 use app\models\test\bootstrap\Card;
 use app\models\test\bootstrap\Checkbox;
 use app\models\test\bootstrap\Color;
 use app\models\test\bootstrap\components\Rating;
+use app\models\test\bootstrap\FloatingActionButton;
 use app\models\test\bootstrap\Form;
 use app\models\test\bootstrap\Lists;
 use app\models\test\bootstrap\MaterialIcons;
 use app\models\test\bootstrap\RadioButton;
 use app\models\test\bootstrap\Shadow;
+use app\models\test\bootstrap\Spinner;
 use app\models\test\bootstrap\TextFields;
 use app\models\test\bootstrap\Typography;
 
@@ -101,7 +104,10 @@ class TestBootstrapController extends \yii\web\Controller
         return $this->render('text-fields',['model' => $model]);        
     }
 
-    public function actionInputGroup(){}
+    public function actionInputGroup()
+    {
+         
+    }
 
     public function actionLists()
     {
@@ -121,6 +127,41 @@ class TestBootstrapController extends \yii\web\Controller
         return $this->render('color',['model' => $model]); 
     }
 
+    public function actionSpinner()
+    {
+        $model = new Spinner();
+        return $this->render('spinner',['model' => $model]);        
+    }
+
+    public function actionAlerts(){}
+    public function actionButtons(){}
+
+    public function actionButtonGroup()
+    {
+        $model = new ButtonGroup();
+        return $this->render('button-group',['model' => $model]);  
+    }
+
+    public function actionFloatingActionButton()
+    {
+        $model = new FloatingActionButton();
+        return $this->render('floating-action-button',['model' => $model]);         
+    }
+
+    public function actionCollapse(){}
+    public function actionDropdowns(){}
+    public function actionForms(){}
+    public function actionJumbotron(){}
+    public function actionListGroup(){}
+    public function actionMediaObject(){}
+    public function actionNavs(){}
+    public function actionPopovers(){}
+    public function actionProgress(){}
+    public function actionScrollspy(){}
+    public function actionSpinners(){}
+    public function actionToasts(){}
+    public function actionTooltips(){}
+
     public function actionAccordion(){}
     public function actionDropdown(){}
     public function actionPagination(){}
@@ -128,7 +169,6 @@ class TestBootstrapController extends \yii\web\Controller
     public function actionFileInput(){}
     public function actionPopover(){}
     public function actionTab(){}
-    public function actionFloatingActionButton(){}
     public function actionProgressbar(){}
     public function actionTable(){}
     public function actionBreadcrumb(){}
@@ -140,7 +180,6 @@ class TestBootstrapController extends \yii\web\Controller
     public function actionSlider(){}
     public function actionTooltip(){}
     public function actionNavbar(){}
-    public function actionSpinner(){}
 
     /** @var Block Component */
     public function actionDataTable(){}
@@ -155,6 +194,12 @@ class TestBootstrapController extends \yii\web\Controller
         return $this->render('components/rating',['model' => $model]); 
     }
     /** @var End Block Component */
+
+    /** @var End Block UI Sections */
+    public function actionIntroSection(){}
+    public function actionFooterSection(){}
+    public function actionContactSection(){}
+    /** @var End Block UI Sections */
 
 }
 

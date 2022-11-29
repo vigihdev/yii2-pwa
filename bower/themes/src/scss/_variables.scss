@@ -1,33 +1,22 @@
-$themes-max-width: 600px !default;
-$getter: 16px !default;
-$footer-min-height: 60px !default;
-$list-getter-size: () !default;
-$list-getter-size: map-merge(
-	(
-		"size-1": 4px,
-		"size-2": 8px,
-		"size-3": 12px,
-		"size-4": 16px,
-		"size-5": 20px,
-		"size-6": 24px,
-		"size-7": 30px,
-		"size-8": 34px,
-		"size-9": 38px,
-	),
-	$list-getter-size
-);
+$pwa-max-width : 600px !default;
 
-$list-img-size: (
-	"sm": 24px,
-	"md": 32px,
-	"lg": 40px,
-	"xl": 48px,
-) !default;
+$getter: 16px !default;
+
 $list-position: ("top", "left", "right", "bottom") !default;
 $list-vertical-align: ("top", "bottom", "baseline", "middle") !default;
 
 $body-color: #666;
 // color exstra
+// Icons
+$material-icons-xs: 			18px !default;
+$material-icons-sm: 			24px !default;
+$material-icons-md: 			36px !default;
+$material-icons-lg: 			48px !default;
+
+$material-icons-dark-color:				$gray-900 !default;
+$material-icons-dark-inactive-color: 	rgba($gray-900, .25) !default;
+$material-icons-light-color:			$white !default;
+$material-icons-light-inactive-color:	rgba($white, .25)!default;
 
 // Fonts
 $font-family-sans-serif: Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -184,71 +173,3 @@ $switch-shadow: 0px 0px 0px 8px !default;
 $switch-thumb-width: 20px !default;
 $switch-thumb-transition-duration: 150ms !default;
 $switch-thumb-ripple-width: 36px !default;
-
-//==== SHADOW MATERIAL
-$dp1: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-$dp2: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-$dp3: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
-$dp4: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-$dp5: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
-$dp6: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
-$dp7: 0 9px 12px 1px rgba(0, 0, 0, 0.14), 0 3px 16px 2px rgba(0, 0, 0, 0.12), 0 5px 6px -3px rgba(0, 0, 0, 0.2);
-$dp8: 0 12px 17px 2px rgba(0, 0, 0, 0.14), 0 5px 22px 4px rgba(0, 0, 0, 0.12), 0 7px 8px -4px rgba(0, 0, 0, 0.2);
-$dp9: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-$dp10: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
-
-$elevation : () !default;
-$elevation: map-merge(
-	(
-		"elevation1": $dp1,
-		"elevation2": $dp2,
-		"elevation3": $dp3,
-		"elevation4": $dp4,
-		"elevation5": $dp5,
-		"elevation6": $dp5,
-		"elevation7": $dp7,
-		"elevation8": $dp8,
-		"elevation9": $dp9,
-		"elevation10": $dp10,
-	),
-	$elevation
-);
-
-// Size Height width Variant
-$sizes40 : 40px !default;
-$sizes80 : 80px !default;
-$sizes120 : 120px !default;
-$sizes160 : 160px !default;
-$list-sizes: () !default;
-$list-sizes: map-merge(
-	(
-		"40": $sizes40,
-		"80": $sizes80,
-		"120": $sizes120,
-		"160": $sizes160,
-	),
-	$list-sizes
-);
-
-// color Exstra darkTint
-$darkTint: #393939 !default;
-$darkTint-100: tint-color($darkTint, 10%) !default;
-$darkTint-200: tint-color($darkTint, 20%) !default;
-$darkTint-400: tint-color($darkTint, 40%) !default;
-$darkTint-600: tint-color($darkTint, 60%) !default;
-$darkTint-800: tint-color($darkTint, 80%) !default;
-$darkTint-900: tint-color($darkTint, 100%) !default;
-
-$darkTints: () !default;
-$darkTints: map-merge(
-	(
-		"0": $darkTint,
-		"1": $darkTint-100,
-		"2": $darkTint-200,
-		"3": $darkTint-400,
-		"4": $darkTint-600,
-		"5": $darkTint-800,
-		"6": $darkTint-900,
-	),
-	$darkTints
-);

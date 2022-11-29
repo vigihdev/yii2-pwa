@@ -1,0 +1,12 @@
+@use "sass:math";
+
+body.-test-bootstrap .wrapper .content{
+    section {
+        padding-left: $getter;
+        padding-right: $getter;
+        padding-top: $getter;
+        padding-bottom: $getter;
+        min-height: 100vh;
+    }
+}
+

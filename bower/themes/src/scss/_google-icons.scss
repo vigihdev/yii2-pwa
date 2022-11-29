@@ -1,0 +1,36 @@
+
+// Rules for sizing the icon
+.material-icons.xs, .material-icons.md-18 {
+	font-size: $material-icons-xs;
+}
+.material-icons.sm, .material-icons.md-24 {
+	font-size: $material-icons-sm;
+}
+.material-icons.md,.material-icons.md-36 {
+	font-size: $material-icons-md;
+}
+.material-icons.lg,.material-icons.md-48 {
+	font-size: $material-icons-lg;
+}
+.material-icons.list-icon {
+	width: 40px;
+}
+.material-icons.icon-circle {
+    border-radius: 50%;
+}
+
+// Rules for using icons as black on a light background.
+.material-icons.md-dark {
+	color: $material-icons-dark-color;
+}
+.material-icons.md-dark.md-inactive {
+	color: $material-icons-dark-inactive-color;
+}
+
+// Rules for using icons as white on a dark background.
+.material-icons.md-light {
+	color: $material-icons-light-color;
+}
+.material-icons.md-light.md-inactive {
+	color: $material-icons-light-inactive-color;
+}

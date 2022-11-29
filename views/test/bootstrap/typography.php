@@ -16,7 +16,7 @@ $this->title = 'Test Bootstrap Typography';
 <section class="section test-custom">
     <div class="row">
         <div class="col-lg-6">
-            <div class="card elevation2 bg-dark-tint0 mb-3">
+            <div class="card elevation-1 bg-dark-tint-0 mb-3">
                 <div class="card-body">
                     <h1>h1. Bootstrap heading</h1>
                     <h2>h2. Bootstrap heading</h2>
@@ -28,7 +28,7 @@ $this->title = 'Test Bootstrap Typography';
             </div>
         </div>
         <div class="col-lg-6">
-            <div class="card elevation2 bg-dark-tint0 mb-3">
+            <div class="card elevation-1 bg-dark-tint-0 mb-3">
                 <div class="card-body">
                     <p class="h1">h1. Bootstrap heading</p>
                     <p class="h2">h2. Bootstrap heading</p>
@@ -44,14 +44,14 @@ $this->title = 'Test Bootstrap Typography';
 
     <div class="row">
         <div class="col-lg-12">
-            <div class="card elevation2 bg-dark-tint0 mb-3">
+            <div class="card elevation-1 bg-dark-tint-0 mb-3">
                 <div class="card-body">
-                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint1']) ?>
-                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint2']) ?>
-                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint3']) ?>
-                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint4']) ?>
-                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint5']) ?>
-                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint6']) ?>
+                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint-1']) ?>
+                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint-2']) ?>
+                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint-3']) ?>
+                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint-4']) ?>
+                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint-5']) ?>
+                    <?= Html::tag('div', $model->lorem100(), ['class' => 'text-dark-tint-6']) ?>
                 </div>
             </div>
         </div>

@@ -1,73 +1,52 @@
 @use "sass:math";
 
-.sidebar-test-bootstrap{
-    .sidebar-brand .link-brand{
-        background-color: $sidebar-background;
-        color: tint-color($sidebar-background,65%);
-        border-right: 1px solid tint-color($sidebar-background,20%);
-        padding: math.div($getter,2);
-        @include BoxShadow(2);
-        @include center0Flex();
-        .brand{
-            .img-brand{
-                @include size(50px);
-                @include border-radius(50%);
-                @include BoxShadow(2);
-            }
-        }
-        .brand-text{
-            font-size: 1.5em;
-            color: color-yig($sidebar-background);
-            font-family: $font-family-roboto-bold;
-            padding-left: $getter;
-            flex: auto;
-        }  
-    }
+body.-test-bootstrap .wrapper .sidebar-test-bootstrap {
 
-    ul.sidebar-nav{
-        @include BoxShadow(2);
+    ul.sidebar-nav {
         height: 100vh;
         background-color: $sidebar-background;
-        color: tint-color($sidebar-background,65%);
-        border-right: 1px solid tint-color($sidebar-background,20%);
+        color: tint-color($sidebar-background, 65%);
+        padding-top: $sidebar-search-height + $sidebar-navbar-brand-height;
         position: relative;
         flex-wrap: nowrap;
-        li.nav-item{
-            @include center0Flex();
-            padding-left: $getter;
-            padding-right: $getter;
-            padding-top: 6px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid tint-color($sidebar-background,5%);
-            .nav-link{
-                color: tint-color($sidebar-background,65%);
-                flex: auto;
-            }
-            .spacer-nav{
-                width: 20px;
-                height: auto;
-            }
-            &.active{
-                background-color: tint-color($sidebar-background,5%);
-                .nav-link{
-                    color: color-yiq($sidebar-background);
-                }
-            }
-            &.current{
-                background-color: #333;
-                @include BoxShadow(2);
-                .nav-link,
+        @include scrollY();
+        li.nav-item {
+            .nav-link {
+                border-bottom: $sidebar-border-width solid $sidebar-nav-link-border-color;
+                color: $sidebar-nav-link-color;
+                @include center0Flex();
+                padding-top: $getter;
+                padding-bottom: $getter;
                 .material-icons {
+                    padding-right: 8px;
+                }
+                // .spacer-nav,.nav-text{}
+                // &[data-toggle="collapse"]{ }
+                &:not([data-toggle="collapse"]){
+                    .material-icons {
+                        font-size: 18px;
+                    }
+                }
+                @include hover-focus() {
+                    background-color: $sidebar-nav-item-hover;
+                }
+            }
+            &.nav-item-collapse {
+                .nav-link {
+                    padding-left: $getter * 1.5;
+                }
+            }
+            &.active {
+                .nav-link[data-toggle="collapse"] {
+                    background-color: $sidebar-nav-item-active;
                     color: color-yiq($sidebar-background);
                 }
             }
-        }
-
-        ul.collapse{ 
-            li.nav-item{
-                @include transition($sidebar-transition-background-color);
-                @include hover-focus(){
-                    background-color: tint-color($sidebar-background,5%);
+            &.current {
+                background-color: $sidebar-nav-item-current;
+                @include BoxShadow(2);
+                .nav-link {
+                    color: color-yiq($sidebar-background);
                 }
             }
         }

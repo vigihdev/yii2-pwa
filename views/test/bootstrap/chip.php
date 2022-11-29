@@ -18,7 +18,7 @@ $this->title = Inflector::titleize($this->actionId());
 <section class="section">
     <div class="row mb-3">
         <div class="col-lg-6">
-            <div class="card elevation1 bg-dark-tint0">
+            <div class="card elevation-1 bg-dark-tint-0">
                 <div class="card-body">
                     <?php foreach($model->listActiveTheme() as $i => $value ) : ?>
                         <div class="mb-3 chip chip-<?= $value ?>">
@@ -31,7 +31,7 @@ $this->title = Inflector::titleize($this->actionId());
         </div>
 
         <div class="col-lg-6">
-            <div class="card elevation1 bg-dark-tint0">
+            <div class="card elevation-1 bg-dark-tint-0">
                 <div class="card-body">
                     <?php foreach($model->listActiveTheme() as $i => $value ) : ?>
                         <div class="mb-3 chip chip-<?= $value ?>">
@@ -48,7 +48,7 @@ $this->title = Inflector::titleize($this->actionId());
 
     <div class="row mb-3">
         <div class="col-lg-6">
-            <div class="card elevation1 bg-dark-tint0">
+            <div class="card elevation-1 bg-dark-tint-0">
                 <div class="card-body">
                     <?php foreach($model->listActiveTheme() as $i => $value ) : ?>
                         <div class="mb-3 chip chip-outline-<?= $value ?>">
@@ -61,7 +61,7 @@ $this->title = Inflector::titleize($this->actionId());
         </div>
 
         <div class="col-lg-6">
-            <div class="card elevation1 bg-dark-tint0">
+            <div class="card elevation-1 bg-dark-tint-0">
                 <div class="card-body">
                     <?php foreach($model->listActiveTheme() as $i => $value ) : ?>
                         <div class="mb-3 chip chip-outline-<?= $value ?>">

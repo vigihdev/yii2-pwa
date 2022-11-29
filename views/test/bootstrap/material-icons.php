@@ -19,7 +19,7 @@ $this->title = Inflector::titleize($this->actionId());
             $icons = explode(' ',$icon);
             ?>
             <div class="mb-3 col-md-2 col-sm-3 col-6 text-center">
-                <div class="text-center elevation1 p-3 m-2 bg-white rounded">
+                <div class="text-center elevation-1 p-3 m-2 bg-white rounded">
                     <?= Html::tag('i',current($icons),['class' => 'material-icons text-whites']) ?>
                     <br>
                     <div class="text-body"><?= current($icons) ?> </div>

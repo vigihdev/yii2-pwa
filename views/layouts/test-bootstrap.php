@@ -28,15 +28,20 @@ ViewHeader::addTagMeta();
     <?php $this->beginBody() ?>
     <div class="wrapper">
         <div class="sidebar-overlay"></div>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top elevation-4">
             <?= $this->render('header/test-bootstrap-header') ?>
         </nav>
         <!-- /navbar -->
-        <div class="sidebar sidebar-test-bootstrap" id="sidebar">
+        <div class="sidebar sidebar-test-bootstrap elevation-4" id="sidebar">
             <?= $this->render('sidebar/test-bootstrap-sidebar') ?>
         </div>
         <!-- /sidebar -->
-        <div class="content"> <?= $content ?> </div>
+        <div class="content"> 
+            <?= $content ?> 
+            <footer id="footer" class="footer">
+                <?= $this->render('footer/test-bootstrap-footer') ?>
+            </footer>
+        </div>
         <!-- /content -->
     </div>
     <?php $this->endBody() ?>

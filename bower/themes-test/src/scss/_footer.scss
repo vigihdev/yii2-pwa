@@ -1,0 +1,18 @@
+@use "sass:math";
+
+body.-test-bootstrap .wrapper .content #footer{
+    padding-left: $getter;
+    padding-right: $getter;
+    padding-top: $getter + 4;
+    padding-bottom: $getter + 4;
+    @include BoxShadow(2);
+    background-color: #2d2c2c;
+    color: color-yiq(#2d2c2c);
+    .container {
+        .powered,
+        .suport {
+            font-size: 0.7em;
+        }
+    }
+}
+

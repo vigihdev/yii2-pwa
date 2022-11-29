@@ -1,0 +1,32 @@
+@use "sass:math";
+
+body.-test-bootstrap .wrapper .sidebar-test-bootstrap .sidebar-brand {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    background-color: $sidebar-background;
+    height: $sidebar-navbar-brand-height;
+    z-index: $sidebar-navbar-zindex;
+    border-bottom: $sidebar-border-width solid $sidebar-border-color;
+    @include BoxShadow(2);
+    .link-brand {
+        background-color: $sidebar-brand-background-color;
+        color: $sidebar-color;
+        padding: math.div($getter, 2);
+        @include center0Flex();
+        .brand {
+            .img-brand {
+                @include size(50px);
+                @include border-radius(50%);
+                @include BoxShadow(3);
+            }
+        }
+        .brand-text {
+            font-size: 1.5em;
+            color: color-yiq($sidebar-background);
+            font-family: $font-family-roboto-bold;
+            padding-left: $getter;
+            flex: auto;
+        }
+    }
+}

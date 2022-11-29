@@ -70,7 +70,7 @@ fieldset:disabled a.btn {
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
     @include button-variant($value, $value);
-    box-shadow: 2px 2px 0px desaturate($value,50%); //== ajust thrubus
+    // box-shadow: 2px 2px 0px desaturate($value,50%); //== ajust thrubus
   }
 }
 

@@ -16,22 +16,32 @@ ViewHeader::addTagMeta();
 
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>" class="h-100">
+<html lang="<?= Yii::$app->language ?>">
 <head>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <?= ViewHeader::addStyleMaterialIcons() ?>
 </head>
-<body class="<?= $this->bodyClass() ?> d-flex flex-column h-100">
+<body class="-main <?= $this->bodyClass() ?>">
 <?php $this->beginBody() ?>
+    <div class="wrapper">
+        <header class="header" id="header" role="header">
+            <?= $this->render('header/index') ?>
+        </header>
+        <!-- /header -->
 
-    <?= $this->render('header/index') ?>
+        <main id="main" class="main" role="main">
+            <?= $content ?>
+        </main>
+        <!-- /main -->
 
-    <main id="main" class="flex-shrink-0" role="main">
-        <?= $content ?>
-    </main>
+        <footer class="footer" id="footer" role="footer">
+            <?= $this->render('footer/index') ?>
+        </footer>
+        <!-- /footer -->
+    </div>
+    <!-- /wrapper -->
 
-    <?= $this->render('footer/index') ?>
 <?php $this->endBody() ?>
 </body>
 </html>
