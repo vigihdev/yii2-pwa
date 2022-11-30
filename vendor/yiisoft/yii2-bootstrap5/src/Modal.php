@@ -137,6 +137,17 @@ class Modal extends Widget
      */
     public $dialogOptions = [];
 
+    const EVENT_END_BODY = 'endBody';
+
+    public static function fixedBottom(array $options = [])
+    {
+        Yii::$app->view->on(self::EVENT_END_BODY,function($event) use (&$options){
+            $modal = static::begin(ArrayHelper::merge($options, [
+                'id' => 'modal-fixed-bottom',
+            ]));
+            return $modal;
+        });
+    }
 
     /**
      * {@inheritDoc}
@@ -177,6 +188,11 @@ class Modal extends Widget
     protected function renderHeader(): string
     {
         $button = $this->renderCloseButton();
+        if(is_array($this->headerOptions) && !empty($this->headerOptions)){
+            if( isset($this->headerOptions['header']) && is_bool($this->headerOptions['header']) && !$this->headerOptions['header'] ){
+                return '';
+            }
+        }
         if (isset($this->title)) {
             Html::addCssClass($this->titleOptions, ['widget' => 'modal-title']);
             $header = Html::tag('h5', $this->title, $this->titleOptions);

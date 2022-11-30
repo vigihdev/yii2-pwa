@@ -6,6 +6,7 @@ body.-test-bootstrap {
         padding: 0;
         margin: 0;
         position: relative;
+        overflow: hidden;
         .navbar {
             height: $sidebar-navbar-brand-height;
             @include BoxShadow(2);

@@ -17,11 +17,14 @@ use app\models\test\bootstrap\FloatingActionButton;
 use app\models\test\bootstrap\Form;
 use app\models\test\bootstrap\Lists;
 use app\models\test\bootstrap\MaterialIcons;
+use app\models\test\bootstrap\Pagination;
 use app\models\test\bootstrap\RadioButton;
 use app\models\test\bootstrap\Shadow;
 use app\models\test\bootstrap\Spinner;
 use app\models\test\bootstrap\TextFields;
 use app\models\test\bootstrap\Typography;
+use app\models\test\bootstrap\Modal;
+use app\models\test\bootstrap\ModalContent;
 
 class TestBootstrapController extends \yii\web\Controller
 {
@@ -148,9 +151,28 @@ class TestBootstrapController extends \yii\web\Controller
         return $this->render('floating-action-button',['model' => $model]);         
     }
 
+    public function actionPagination()
+    {
+        $model = new Pagination();
+        return $this->render('pagination',['model' => $model]);         
+    }
+
+    public function actionModal()
+    {
+        $model = new Modal();
+        return $this->render('modal',['model' => $model]);          
+    }
+
+    public function actionModalContent()
+    {
+        $model = new ModalContent();
+        return $this->renderAjax('modal-content',['model' => $model]);          
+    }
+
+    public function actionForms(){}
+
     public function actionCollapse(){}
     public function actionDropdowns(){}
-    public function actionForms(){}
     public function actionJumbotron(){}
     public function actionListGroup(){}
     public function actionMediaObject(){}
@@ -164,7 +186,6 @@ class TestBootstrapController extends \yii\web\Controller
 
     public function actionAccordion(){}
     public function actionDropdown(){}
-    public function actionPagination(){}
     public function actionStepper(){}
     public function actionFileInput(){}
     public function actionPopover(){}
@@ -176,7 +197,6 @@ class TestBootstrapController extends \yii\web\Controller
     public function actionThemesBootstrap(){}
     public function actionSidebar(){}
     public function actionToggleSwitch(){}
-    public function actionModal(){}
     public function actionSlider(){}
     public function actionTooltip(){}
     public function actionNavbar(){}

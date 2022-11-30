@@ -3,6 +3,7 @@ body.-test-bootstrap .wrapper {
   padding: 0;
   margin: 0;
   position: relative;
+  overflow: hidden;
 }
 body.-test-bootstrap .wrapper .navbar {
   height: 70px;

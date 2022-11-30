@@ -179,7 +179,9 @@
     vertical-align: middle;
     margin-left: -11px;
     margin-right: 16px;
-
+    &.radio-button-list{
+        flex: 0 0 100%;
+    }
     .radio-checkbox-container, .radio-button-container {
         @include checkboxContainer();
 

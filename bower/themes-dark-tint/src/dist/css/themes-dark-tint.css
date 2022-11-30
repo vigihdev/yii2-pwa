@@ -7,19 +7,25 @@
 }
 
 .border-top-dark-tint-0 {
-  border-top: 1px solid #393939 !important;
+  border-top: 0px !important;
 }
 
 .border-left-dark-tint-0 {
-  border-left: 1px solid #393939 !important;
+  border-left: 0px !important;
 }
 
 .border-right-dark-tint-0 {
-  border-right: 1px solid #393939 !important;
+  border-right: 0px !important;
 }
 
 .border-bottom-dark-tint-0 {
-  border-bottom: 1px solid #393939 !important;
+  border-bottom: 0px !important;
+}
+
+.border-dark-tint-0 {
+  border-style: solid;
+  border-color: #393939 !important;
+  border-width: 1px;
 }
 
 .bg-dark-tint-1 {
@@ -46,6 +52,12 @@
   border-bottom: 1px solid #4d4d4d !important;
 }
 
+.border-dark-tint-1 {
+  border-style: solid;
+  border-color: #4d4d4d !important;
+  border-width: 1px;
+}
+
 .bg-dark-tint-2 {
   background-color: #616161 !important;
 }
@@ -68,6 +80,12 @@
 
 .border-bottom-dark-tint-2 {
   border-bottom: 1px solid #616161 !important;
+}
+
+.border-dark-tint-2 {
+  border-style: solid;
+  border-color: #616161 !important;
+  border-width: 1px;
 }
 
 .bg-dark-tint-3 {
@@ -94,6 +112,12 @@
   border-bottom: 1px solid #888888 !important;
 }
 
+.border-dark-tint-3 {
+  border-style: solid;
+  border-color: #888888 !important;
+  border-width: 1px;
+}
+
 .bg-dark-tint-4 {
   background-color: #b0b0b0 !important;
 }
@@ -116,6 +140,12 @@
 
 .border-bottom-dark-tint-4 {
   border-bottom: 1px solid #b0b0b0 !important;
+}
+
+.border-dark-tint-4 {
+  border-style: solid;
+  border-color: #b0b0b0 !important;
+  border-width: 1px;
 }
 
 .bg-dark-tint-5 {
@@ -142,6 +172,12 @@
   border-bottom: 1px solid #d7d7d7 !important;
 }
 
+.border-dark-tint-5 {
+  border-style: solid;
+  border-color: #d7d7d7 !important;
+  border-width: 1px;
+}
+
 .bg-dark-tint-6 {
   background-color: white !important;
 }
@@ -164,6 +200,12 @@
 
 .border-bottom-dark-tint-6 {
   border-bottom: 1px solid white !important;
+}
+
+.border-dark-tint-6 {
+  border-style: solid;
+  border-color: white !important;
+  border-width: 1px;
 }
 
 /*# sourceMappingURL=themes-dark-tint.css.map */

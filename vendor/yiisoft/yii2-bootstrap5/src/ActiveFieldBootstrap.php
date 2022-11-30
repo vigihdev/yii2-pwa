@@ -369,6 +369,16 @@ class ActiveFieldBootstrap extends \yii\widgets\ActiveField
             $this->labelAppend = $this->parts['{beginLabel}'] . $this->parts['{labelTitle}'] . $this->parts['{endLabel}'];
         }
     }
+
+    private function unsetOptions(array $optionsKey,array $options):array
+    {
+        foreach ($optionsKey as $key => $value) {
+            if(isset($options[$value])){
+                unset($options[$value]);
+            }
+        }
+        return $options;
+    }
     
     /** @var End Block Item Input */
     
@@ -492,6 +502,7 @@ class ActiveFieldBootstrap extends \yii\widgets\ActiveField
         if (!isset($options['item'])) {
             $this->template = str_replace("\n{error}", '', $this->template);
             $itemOptions = $options['itemOptions'] ?? [];
+            $radioButtonOptions = $options['radioButtonOptions'] ?? [];
             $encode = ArrayHelper::getValue($options, 'encode', true);
             $itemCount = count($items) - 1;
             $error = $this->error()->parts['{error}'];
@@ -500,6 +511,7 @@ class ActiveFieldBootstrap extends \yii\widgets\ActiveField
                 $encode,
                 $itemCount,
                 &$theme,
+                &$radioButtonOptions,
                 $error
             ) {
                 $options = array_merge($this->radioOptions, [
@@ -508,13 +520,18 @@ class ActiveFieldBootstrap extends \yii\widgets\ActiveField
                     'class' => 'radio-button-form-control',
                     'value' => $value,
                 ], $itemOptions);
-                $radioLabel = Html::label($label,Inflector::camel2id($value . $i),['class' => 'form-label']);
+                $RBO = $radioButtonOptions;
+                $radioLabelClass = isset($RBO['labelOptions']) && isset($RBO['labelOptions']['class']) ? ' ' . $RBO['labelOptions']['class'] : null;
+                
+                $radioLabel = Html::label($label,Inflector::camel2id($value . $i),['class' => 'form-label' . $radioLabelClass]);
 
                 if ($this->inline) {
                 }
 
-               $context = [
-                    Html::beginTag('div',['class' => 'radio-button radio-button-' . $theme]),
+                $radioClass = isset($RBO['class']) ? ' ' . $RBO['class'] : null;
+
+                $context = [
+                    Html::beginTag('div',['class' => 'radio-button radio-button-' . $theme . $radioClass  ]),
                         Html::beginTag('div',['class' => 'radio-button-container']),
                             Html::radio($name, $checked, $options),
                             Html::beginTag('div',['class' => 'radio-button-thumb ripple-effect']),
@@ -533,6 +550,8 @@ class ActiveFieldBootstrap extends \yii\widgets\ActiveField
                 'widget' => 'radio-button-group'
             ],
         ]);
+
+        $options = $this->unsetOptions(['radioButtonOptions'],$options);
 
         parent::radioList($items, $options);
         return $this;
@@ -566,6 +585,12 @@ class ActiveFieldBootstrap extends \yii\widgets\ActiveField
     {
         $class = ArrayHelper::remove($this->options, 'class', null);
         $this->options = ['class' => $class . ' ' . $className];
+        return $this;
+    }
+
+    public function addClassLabel(string $className):self
+    {
+        $this->labelOptions = ['class' => ['widget' => 'form-label' . (empty($className) ? null : ' ' . $className) ]];
         return $this;
     }
     /** @var End Block Method Trait */

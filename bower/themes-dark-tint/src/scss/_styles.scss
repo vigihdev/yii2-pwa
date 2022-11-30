@@ -1,4 +1,12 @@
 
+@mixin borderSet($color,$direction,$width) {
+    @if $width != "0"{ border-width: 1px; }
+    @else{ border-width: 0px; }
+    border-style: solid;
+    @if $direction == ""{ border-color: $color !important; }
+    @else{ border-#{$direction}-color: $color !important; }
+}
+
 @each $name,$value in $dark-tints {
     .bg-dark-tint-#{$name}{
         background-color: $value !important;
@@ -6,9 +14,23 @@
     .text-dark-tint-#{$name}{
         color: $value !important;
     }
+
     @each $position in $list-position {
         .border-#{$position}-dark-tint-#{$name}{
-            border-#{$position}: 1px solid $value !important;
+            // @include borderSet($value,$position,$name);
+            @if $name == "0"{
+                border-#{$position}: 0px !important;
+            }
+            @else{
+                border-#{$position}: 1px solid $value !important;
+            }
         }
+        // @debug $name;
+    }
+    .border-dark-tint-#{$name}{
+        border-style: solid;
+        border-color: $value !important;
+        border-width: 1px;
+        // @include borderSet($value,"","1");
     }
 }

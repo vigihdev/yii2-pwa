@@ -2029,6 +2029,9 @@
   margin-left: -11px;
   margin-right: 16px;
 }
+.radio-checkbox.radio-button-list, .radio-button.radio-button-list {
+  flex: 0 0 100%;
+}
 .radio-checkbox .radio-checkbox-container, .radio-checkbox .radio-button-container, .radio-button .radio-checkbox-container, .radio-button .radio-button-container {
   display: inline-flex;
   -moz-box-align: center;
@@ -3201,6 +3204,18 @@
 }
 .checkbox-outline.checkbox-outline-information.checkbox-outline-ripple .checkbox-outline-container {
   background-color: rgba(13, 202, 240, 0.1);
+}
+
+#modal-fixed-bottom .modal-dialog {
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  left: 50%;
+  width: 100%;
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 /*# sourceMappingURL=bootstrap-components.css.map */

@@ -100,14 +100,17 @@ $themeComponents = function(string $icon,string $action = 'home'):string{
             <?= $themeComponents('upload','button') ?>
             <?= $themeComponents('timer','button-group') ?>
             <?= $themeComponents('timer','floating-action-button') ?>
+            <?= $themeComponents('usb','pagination') ?>
             <?= $themeComponents('usb','badge') ?>
             <?= $themeComponents('usb','chip') ?>
+            <?= $themeComponents('usb','lists') ?>
+            <?= $themeComponents('usb','modal') ?>
+
             <?= $themeComponents('usb','form') ?>
             <?= $themeComponents('usb','form-group') ?>
             <?= $themeComponents('timer','text-fields') ?>
             <?= $themeComponents('star','spinner') ?>
             <?= $themeComponents('work','alert') ?>
-            <?= $themeComponents('usb','lists') ?>
             <?= $themeComponents('timer','collapse') ?>
             <?= $themeComponents('work','material-icons') ?>
         <?= Html::endTag('ul') ?>

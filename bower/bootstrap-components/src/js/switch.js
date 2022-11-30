@@ -79,7 +79,7 @@
             this.$inputRadio = $(inputRadio);
             this.$inputRadio.on('change',function(e){
                 if(e.target.checked){
-                    self.#clearCheked();
+                    self.#clearCheked(e.target);
                     self.#addCheked($(e.target).closest(RADIO_BUTTON).get(0))
                 }
             });
@@ -89,8 +89,10 @@
             }
         }
 
-        #clearCheked(){
-            this.$listRadioButton.removeClass(CHECKED);
+        #clearCheked(inputRadio){
+            $(inputRadio).closest(ELEMENT).find(RADIO_BUTTON).each(function(i,radio){
+                $(radio).removeClass(CHECKED);
+            });
             return this;
         }
 
