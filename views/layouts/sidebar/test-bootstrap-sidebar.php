@@ -107,12 +107,17 @@ $themeComponents = function(string $icon,string $action = 'home'):string{
             <?= $themeComponents('usb','modal') ?>
             <?= $themeComponents('usb','carousel') ?>
 
+            <?= $themeComponents('work','alert') ?>
+            <?= $themeComponents('timer','collapse') ?>
+
+            <?= $themeComponents('work','navs') ?>
+            <?= $themeComponents('timer','navbar') ?>
+
             <?= $themeComponents('usb','form') ?>
             <?= $themeComponents('usb','form-group') ?>
             <?= $themeComponents('timer','text-fields') ?>
+
             <?= $themeComponents('star','spinner') ?>
-            <?= $themeComponents('work','alert') ?>
-            <?= $themeComponents('timer','collapse') ?>
             <?= $themeComponents('work','material-icons') ?>
         <?= Html::endTag('ul') ?>
     </li>

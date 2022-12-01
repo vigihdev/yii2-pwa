@@ -12,6 +12,7 @@ use app\models\test\bootstrap\ButtonGroup;
 use app\models\test\bootstrap\Card;
 use app\models\test\bootstrap\Carousel;
 use app\models\test\bootstrap\Checkbox;
+use app\models\test\bootstrap\Collapse;
 use app\models\test\bootstrap\Color;
 use app\models\test\bootstrap\components\Rating;
 use app\models\test\bootstrap\FloatingActionButton;
@@ -26,6 +27,8 @@ use app\models\test\bootstrap\TextFields;
 use app\models\test\bootstrap\Typography;
 use app\models\test\bootstrap\Modal;
 use app\models\test\bootstrap\ModalContent;
+use app\models\test\bootstrap\Navbar;
+use app\models\test\bootstrap\Navs;
 
 class TestBootstrapController extends \yii\web\Controller
 {
@@ -178,12 +181,28 @@ class TestBootstrapController extends \yii\web\Controller
 
     public function actionForms(){}
 
-    public function actionCollapse(){}
+    public function actionCollapse()
+    {
+        $model = new Collapse();
+        return $this->render('collapse',['model' => $model]);         
+    }
+
+    public function actionNavs()
+    {
+        $model = new Navs();
+        return $this->render('navs',['model' => $model]);           
+    }
+
+    public function actionNavbar()
+    {
+        $model = new Navbar();
+        return $this->render('navbar',['model' => $model]);   
+    }
+
     public function actionDropdowns(){}
     public function actionJumbotron(){}
     public function actionListGroup(){}
     public function actionMediaObject(){}
-    public function actionNavs(){}
     public function actionPopovers(){}
     public function actionProgress(){}
     public function actionScrollspy(){}
@@ -206,7 +225,6 @@ class TestBootstrapController extends \yii\web\Controller
     public function actionToggleSwitch(){}
     public function actionSlider(){}
     public function actionTooltip(){}
-    public function actionNavbar(){}
 
     /** @var Block Component */
     public function actionDataTable(){}
