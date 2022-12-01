@@ -20,7 +20,7 @@ $this->title = Inflector::titleize($this->actionId());
     <div class="row">
         <div class="card elevation-1 bg-dark-tint-0">
             <div class="card-media border-bottom-dark-tint-2">
-                <?= Html::img(Yii::$app->imgAssets . 'test-pic-1.png', ['class' => 'img-fluid img-media p-2', 'alt' => 'img media']) ?>
+                <?= Html::img(Yii::$app->imgAssets . 'test/test-pic-1.png', ['class' => 'img-fluid img-media p-2', 'alt' => 'img media']) ?>
             </div>
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div class="card-body-item">

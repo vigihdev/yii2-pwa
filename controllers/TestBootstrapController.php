@@ -10,6 +10,7 @@ use Yii;
 use app\models\test\bootstrap\Button;
 use app\models\test\bootstrap\ButtonGroup;
 use app\models\test\bootstrap\Card;
+use app\models\test\bootstrap\Carousel;
 use app\models\test\bootstrap\Checkbox;
 use app\models\test\bootstrap\Color;
 use app\models\test\bootstrap\components\Rating;
@@ -169,6 +170,12 @@ class TestBootstrapController extends \yii\web\Controller
         return $this->renderAjax('modal-content',['model' => $model]);          
     }
 
+    public function actionCarousel()
+    {
+        $model = new Carousel();
+        return $this->render('carousel',['model' => $model]);  
+    }
+
     public function actionForms(){}
 
     public function actionCollapse(){}
@@ -206,7 +213,6 @@ class TestBootstrapController extends \yii\web\Controller
     public function actionDatetimepicker(){}
     public function actionRangeSlider(){}
     public function actionSelect2(){}
-    public function actionCarousel(){}
     
     public function actionRating()
     {

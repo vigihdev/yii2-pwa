@@ -105,6 +105,7 @@ $themeComponents = function(string $icon,string $action = 'home'):string{
             <?= $themeComponents('usb','chip') ?>
             <?= $themeComponents('usb','lists') ?>
             <?= $themeComponents('usb','modal') ?>
+            <?= $themeComponents('usb','carousel') ?>
 
             <?= $themeComponents('usb','form') ?>
             <?= $themeComponents('usb','form-group') ?>

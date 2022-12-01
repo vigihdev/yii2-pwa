@@ -23,7 +23,9 @@ $font-family-sans-serif: Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Col
 	"Segoe UI Symbol" !default;
 $font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base: $font-family-sans-serif !default;
-$font-family-open-sans: "Open Sans", Arial, sans-serif !default !default;
+$font-family-open-sans: "Open Sans", Arial, sans-serif !default;
+$font-family-inter: Inter, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+"Segoe UI Symbol" !default;
 $font-family-sourcesanspro: Source Sans Pro, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 	"Segoe UI Symbol" !default;
 
@@ -173,3 +175,17 @@ $switch-shadow: 0px 0px 0px 8px !default;
 $switch-thumb-width: 20px !default;
 $switch-thumb-transition-duration: 150ms !default;
 $switch-thumb-ripple-width: 36px !default;
+
+// Carousel
+//
+$carousel-item-img-height : 480px !default;
+// Carousel Indicators Rounded
+$carousel-indicators-rounded-width: 12px !default;
+$carousel-indicators-rounded-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !default;
+$carousel-indicators-rounded-border-color: $warning;
+$carousel-indicators-rounded-background-color: $danger;
+$carousel-indicators-rounded-active-background-color: $white;
+// Carousel Control Custom
+$carousel-control-custom-width: 40px !default;
+$carousel-control-custom-transition-transform: transform 150ms cubic-bezier(0, 0, 0.2, 1) 0ms,border-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms !default;

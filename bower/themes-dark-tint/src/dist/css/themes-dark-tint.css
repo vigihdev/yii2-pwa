@@ -208,4 +208,50 @@
   border-width: 1px;
 }
 
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .input-group-prepend .input-group-text .material-icons,
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .input-group-append .input-group-text .material-icons {
+  color: #b0b0b0;
+}
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-outline .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-left,
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-outline .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-middle,
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-outline .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-right {
+  border-top: 1px solid #b0b0b0;
+  border-bottom: 1px solid #b0b0b0;
+}
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-outline .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-left {
+  border-left: 1px solid #b0b0b0;
+}
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-outline .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-right {
+  border-right: 1px solid #b0b0b0;
+}
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-outline .textfield-outline-wrapper .textfield-label-wrapper label {
+  color: #b0b0b0;
+}
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-outline .form-control {
+  color: #d7d7d7;
+}
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-floating-label.textfield-floating-label-active .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-left,
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-floating-label.textfield-floating-label-active .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-middle,
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-floating-label.textfield-floating-label-active .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-right {
+  border-top: 1px solid #0dcaf0;
+  border-bottom: 1px solid #0dcaf0;
+}
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-floating-label.textfield-floating-label-active .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-left {
+  border-left: 1px solid #0dcaf0;
+}
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-floating-label.textfield-floating-label-active .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-right {
+  border-right: 1px solid #0dcaf0;
+}
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-floating-label.textfield-floating-label-active label {
+  color: #0dcaf0 !important;
+  font-weight: 700;
+}
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-floating-label.textfield-floating-label-completed .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-middle {
+  border-top: none !important;
+}
+.input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-floating-label.textfield-floating-label-completed label {
+  background-color: transparent;
+  color: #b0b0b0;
+}
+
 /*# sourceMappingURL=themes-dark-tint.css.map */

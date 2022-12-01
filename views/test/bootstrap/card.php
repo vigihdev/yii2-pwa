@@ -31,7 +31,7 @@ $this->title = 'Test Bootstrap Card';
         </div>
         <div class="col-md-4 col-sm-6 mb-3">
             <div class="card elevation-1 bg-dark-tint-0">
-                <div class="card-media"><?= Html::img(Yii::$app->imgAssets . 'test-pic.png', ['class' => 'img-fluid img-media', 'alt' => 'img media']) ?></div>
+                <div class="card-media"><?= Html::img(Yii::$app->imgAssets . 'test/test-pic.png', ['class' => 'img-fluid img-media', 'alt' => 'img media']) ?></div>
             </div>
             <!-- /card -->
         </div>
@@ -197,7 +197,7 @@ $this->title = 'Test Bootstrap Card';
     <div class="row mb-3">
         <div class="col-md-4 col-sm-6 mb-3">
             <div class="card elevation-1 bg-dark-tint-0">
-                <div class="card-media border-bottom-dark-tint-2"><?= Html::img(Yii::$app->imgAssets . 'test-pic-1.png', ['class' => 'img-fluid img-media', 'alt' => 'img media']) ?></div>
+                <div class="card-media border-bottom-dark-tint-2"><?= Html::img(Yii::$app->imgAssets . 'test/test-pic-1.png', ['class' => 'img-fluid img-media', 'alt' => 'img media']) ?></div>
                 <div class="card-body"> Card provide context and an entry point to more robust information and views. Don't overload card with extraneous information or actions. </div>
                 <div class="card-footer d-flex justify-content-between border-top-dark-tint-2">
                     <button class="btn ripple-effect btn-outline-primary" type="button">Primary</button>
@@ -209,7 +209,7 @@ $this->title = 'Test Bootstrap Card';
         <div class="col-md-4 col-sm-6 mb-3">
             <div class="card elevation-1 bg-dark-tint-0">
                 <div class="card-media border-bottom-dark-tint-2">
-                    <?= Html::img(Yii::$app->imgAssets . 'test-pic-2.png', ['class' => 'img-fluid img-media p-2', 'alt' => 'img media']) ?>
+                    <?= Html::img(Yii::$app->imgAssets . 'test/test-pic-2.png', ['class' => 'img-fluid img-media p-2', 'alt' => 'img media']) ?>
                 </div>
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <div class="card-body-item">

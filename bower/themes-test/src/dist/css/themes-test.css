@@ -13,13 +13,13 @@ body.-test-bootstrap .wrapper .navbar {
   align-items: center;
 }
 body.-test-bootstrap .wrapper .sidebar {
-  flex: 0 1 250px;
+  flex: 0 1 260px;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1030;
-  width: 250px;
+  width: 260px;
   height: 100vh;
   -ms-transform: translate3d(0px, 0px, 0px);
   -webkit-transform: translate3d(0px, 0px, 0px);
@@ -35,12 +35,11 @@ body.-test-bootstrap .wrapper .sidebar {
   border-right: 1px solid #5f5f5f;
 }
 body.-test-bootstrap .wrapper .content {
-  margin-left: 250px;
+  margin-left: 260px;
   padding: 70px 0 0 0;
   flex: auto;
   position: relative;
   background-color: #333;
-  font-family: "Roboto";
 }
 body.-test-bootstrap .wrapper .sidebar-overlay {
   position: fixed;
@@ -58,9 +57,9 @@ body.-test-bootstrap .wrapper .sidebar-overlay.active {
   display: block;
 }
 body.-test-bootstrap.sidebar-left-hide .wrapper .sidebar {
-  -ms-transform: translate3d(-250px, 0px, 0px);
-  -webkit-transform: translate3d(-250px, 0px, 0px);
-  transform: translate3d(-250px, 0px, 0px);
+  -ms-transform: translate3d(-260px, 0px, 0px);
+  -webkit-transform: translate3d(-260px, 0px, 0px);
+  transform: translate3d(-260px, 0px, 0px);
 }
 body.-test-bootstrap.sidebar-left-hide .wrapper .content {
   margin-left: 0;

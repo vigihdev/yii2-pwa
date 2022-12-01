@@ -27,7 +27,7 @@
 }
 
 .textfield .custom-select,
-.textfield .form-control {
+.textfield .form-control{
     @include resetFormControl();
     height: $textfield-height-single;
     border-bottom: $textfield-border;
@@ -155,11 +155,16 @@
                 border-right: $textfield-outline-border-active;
             }
         }
-        &.textfield-floating-label.textfield-floating-label-completed label {
-            padding-left: 4px;
-            padding-right: 4px;
-            background-color: $white;
-            @include transform-translateY(-11px);
+        &.textfield-floating-label.textfield-floating-label-completed {
+            label{
+                padding-left: 4px;
+                padding-right: 4px;
+                background-color: $white;
+                @include transform-translateY(-11px);
+            }
+            .textfield-outline-wrapper .textfield-label-wrapper .textfield-outline-middle{
+                border-top: none !important;
+            }
         }
     }
 
@@ -189,7 +194,7 @@
             position: absolute;
             height: 100%;
             display: flex;
-
+            z-index: 4;
             .input-group-text {
                 background-color: transparent;
                 border: none;
@@ -246,3 +251,5 @@
     margin-bottom: 0;
     flex: 1 1 auto;
 }
+
+// Theme Color

@@ -1,0 +1,76 @@
+@use "sass:math";
+
+.carousel-item{
+    img{
+        width: 100%;
+        height: $carousel-item-img-height;
+    }
+}
+
+@include media-breakpoint-down(md){
+    .carousel-item img{
+        height: 260px;
+    }
+}
+
+// Carousel Indicators Rounded
+.carousel-indicators.carousel-indicators-rounded{
+    bottom: 40px;
+    .carousel-indicators-rounded-item {
+        @include size($carousel-indicators-rounded-width);
+        @include border-radius(50%);
+        @include BoxShadow(2);
+        border-width: 3px;
+        border-style: solid;
+        background-color: $carousel-indicators-rounded-background-color;
+        border-color: $carousel-indicators-rounded-border-color;
+        @include transition($carousel-indicators-rounded-transition);
+        @include transitionDuration(0.2s);
+        &.active {
+            border-color: $carousel-indicators-rounded-background-color;
+            background-color: $carousel-indicators-rounded-active-background-color;
+            filter: drop-shadow-elevation(4);
+        }
+    }
+}
+
+// Carousel Control Custom
+.carousel {
+    @include hover-focus-active {
+        .carousel-control-next.carousel-control-custom,
+        .carousel-control-prev.carousel-control-custom{
+            @include transform-scale(1);
+        }
+    }
+}
+
+.carousel-control-prev.carousel-control-custom,
+.carousel-control-next.carousel-control-custom {
+    opacity: 1;
+    top: 50%;
+    border-radius: 50%;
+    background-color: $warning;
+    @include BoxShadow(2);
+    filter: drop-shadow-elevation(4);
+    @include size($carousel-control-custom-width);
+    @include transform-translateX(-50%);
+    @include transform-scale(0);
+    @include transition($carousel-control-custom-transition-transform);
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon{
+        width: inherit;
+        height: inherit;
+        @include centerFlex();
+        .material-icons{
+            @include centerFlex();
+        }
+    }
+}
+
+.carousel-control-prev.carousel-control-custom {
+    left: $carousel-control-custom-width;
+}
+
+.carousel-control-next.carousel-control-custom {
+    right: $carousel-control-custom-width;
+}

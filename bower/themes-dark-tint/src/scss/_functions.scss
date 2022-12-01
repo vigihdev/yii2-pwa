@@ -1,6 +1,6 @@
 @import "variables";
 
-@function dark-tine($key: "1") {
+@function dark-tint($key: "1") {
     @if ( type-of($key) == "number" ) {
         @return map-get($dark-tints, #{$key});
     }

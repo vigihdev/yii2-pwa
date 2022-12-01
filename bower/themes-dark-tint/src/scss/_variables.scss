@@ -20,3 +20,12 @@ $dark-tints: map-merge(
 	),
 	$dark-tints
 );
+
+// Dark Tint Theme Color .input-group-outline-dark-tint
+$textfield-border-dark-tint: 1px solid dark-tint(4);
+$background-color-dark-tint: dark-tint(1);
+$textfield-color-dark-tint: dark-tint(4);
+$textfield-input-color-dark-tint: dark-tint(5);
+$textfield-active-color-dark-tint: theme-color("info");
+$textfield-active-border-color-dark-tint: 1px solid $textfield-active-color-dark-tint;
+$textfield-completed-color-dark-tint: dark-tint(4);
