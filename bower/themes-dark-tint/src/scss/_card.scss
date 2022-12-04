@@ -1,0 +1,5 @@
+.card.card-dark-tint{
+    filter: drop-shadow-elevation(2);
+    background-color: $dark-tint;
+    color: dark-tint(5);
+}

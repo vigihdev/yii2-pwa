@@ -16,7 +16,7 @@ $themeComponents = function(string $icon,string $action = 'home'):string{
         Html::beginTag('li',['class' => 'nav-item nav-item-collapse']),
             Html::beginTag('a',['class' => 'nav-link ripple-effect','href' => '/test-bootstrap' . ($action === 'home' ? null : '/' . $action) ]),
                 Html::tag('span',null,['class' => 'spacer-nav']),
-                Html::tag('i',$icon,['class' => 'material-icons']),
+                ( empty($icon) ? null : Html::tag('i',$icon,['class' => 'material-icons'])),
                 Html::tag('span',Inflector::camel2words($action),['class' => 'nav-text']),
             Html::endTag('a'),
         Html::endTag('li')
@@ -167,6 +167,8 @@ $themeComponents = function(string $icon,string $action = 'home'):string{
                 'aria-labelledby' => 'sidebar-nav'
             ]) ?>
             <?= $themeComponents('star','footer-section') ?>
+            <?= $themeComponents('star','login-section') ?>
+            <?= $themeComponents('','request-password-section') ?>
         <?= Html::endTag('ul') ?>
     </li>
 <?= Html::endTag('ul') ?>

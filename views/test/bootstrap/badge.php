@@ -16,7 +16,7 @@ $this->title = 'Test Bootstrap Badge';
 
     <div class="row mb-3">
         <div class="col-md-6">
-            <div class="card card-dp3 card-dark">
+            <div class="card card-dark-tint">
                 <div class="card-body">
                     <h1>Example heading <span class="badge badge-secondary">New</span></h1>
                     <h2>Example heading <span class="badge badge-secondary">New</span></h2>
@@ -28,7 +28,7 @@ $this->title = 'Test Bootstrap Badge';
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card card-dp3 card-dark">
+            <div class="card card-dark-tint">
                 <div class="card-body">
                     <button type="button" class="btn btn-primary">
                         Notifications <span class="badge badge-light">4</span>
@@ -41,7 +41,7 @@ $this->title = 'Test Bootstrap Badge';
 
     <div class="row mb-3">
         <div class="col-md-6">
-            <div class="card card-dp3 card-dark">
+            <div class="card card-dark-tint">
                 <div class="card-body">
                     <span class="badge badge-primary">Primary</span>
                     <span class="badge badge-secondary">Secondary</span>
@@ -55,7 +55,7 @@ $this->title = 'Test Bootstrap Badge';
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card card-dp3 card-dark">
+            <div class="card card-dark-tint">
                 <div class="card-body">
                     <span class="badge badge-pill badge-primary">Primary</span>
                     <span class="badge badge-pill badge-secondary">Secondary</span>

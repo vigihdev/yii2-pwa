@@ -29,6 +29,12 @@ use app\models\test\bootstrap\Modal;
 use app\models\test\bootstrap\ModalContent;
 use app\models\test\bootstrap\Navbar;
 use app\models\test\bootstrap\Navs;
+use app\models\test\bootstrap\uiSection\FooterSection;
+use app\models\test\bootstrap\uiSection\IntroSection;
+use app\models\test\bootstrap\uiSection\LoginSection;
+use app\models\test\bootstrap\uiSection\RequestPasswordSection;
+use app\models\test\bootstrap\uiSection\SignupSection;
+use app\models\test\bootstrap\uiSection\UserProfileSection;
 
 class TestBootstrapController extends \yii\web\Controller
 {
@@ -240,9 +246,43 @@ class TestBootstrapController extends \yii\web\Controller
     /** @var End Block Component */
 
     /** @var End Block UI Sections */
-    public function actionIntroSection(){}
-    public function actionFooterSection(){}
+    public function actionIntroSection()
+    {
+        $model = new IntroSection();
+        return $this->render('ui-section/intro-section',['model' => $model]); 
+    }
+
+    public function actionFooterSection()
+    {
+        $model = new FooterSection();
+        return $this->render('ui-section/footer-section',['model' => $model]); 
+    }
+
     public function actionContactSection(){}
+
+    public function actionUserProfileSection()
+    {
+        $model = new UserProfileSection();
+        return $this->render('ui-section/user-profile-section',['model' => $model]); 
+    }
+
+    public function actionLoginSection()
+    {
+        $model = new LoginSection();
+        return $this->render('ui-section/login-section',['model' => $model]); 
+    }
+
+    public function actionSignupSection()
+    {
+        $model = new SignupSection();
+        return $this->render('ui-section/signup-section',['model' => $model]); 
+    }
+
+    public function actionRequestPasswordSection()
+    {
+        $model = new RequestPasswordSection();
+        return $this->render('ui-section/request-password-section',['model' => $model]); 
+    }
     /** @var End Block UI Sections */
 
 }

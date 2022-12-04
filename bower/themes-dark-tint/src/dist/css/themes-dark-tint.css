@@ -208,6 +208,12 @@
   border-width: 1px;
 }
 
+.card.card-dark-tint {
+  filter: drop-shadow(0px 3px 1px rgba(0, 0, 0, 0.2)) drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.14)) drop-shadow(0px 1px 5px rgba(0, 0, 0, 0.12));
+  background-color: #393939;
+  color: #d7d7d7;
+}
+
 .input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .input-group-prepend .input-group-text .material-icons,
 .input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .input-group-append .input-group-text .material-icons {
   color: #b0b0b0;
@@ -252,6 +258,10 @@
 .input-group.input-group-outline.input-group-icon.input-group-outline-dark-tint .textfield.textfield-floating-label.textfield-floating-label-completed label {
   background-color: transparent;
   color: #b0b0b0;
+}
+
+.divider-dark-tint {
+  background-color: #616161;
 }
 
 /*# sourceMappingURL=themes-dark-tint.css.map */

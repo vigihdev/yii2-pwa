@@ -21,6 +21,15 @@
 		font-weight: $font-weight-bold;
 	}
 }
+.center-x{
+	@include absoluteCenterX();
+}
+.center-y{
+	@include absoluteCenterY();
+}
+.center-xy{
+	@include absoluteCenterXY();
+}
 
 .visually-hidden, 
 .visually-hidden-focusable:not(:focus):not(:focus-within) {

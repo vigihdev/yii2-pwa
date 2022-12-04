@@ -87,6 +87,15 @@ class ThemesBootstrap extends \yii\base\Model
     public $perempuan;
     public $bencong;
 
+    public $remember_me;
+    public $lupa_password;
+    public function attributeLabels()
+    {
+        return [
+            'remember_me' => 'Ingatkan Saya',
+        ];
+    }
+
     public function listActiveTheme():array
     {
         return [ 
